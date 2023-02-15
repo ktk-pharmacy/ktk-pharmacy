@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController as HomeController;
+use App\Http\Controllers\ProductsController as ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::controller(HomeController::class)
+    ->group(function () {
+        Route::get('/home', 'index')->name('HOME');
+        Route::get('/about', 'aboutus')->name('AboutUs');
+        Route::get('/contact', 'contactus')->name('ContactUs');
+    });
+
+Route::controller(ProductController::class)
+    ->group(function () {
+        Route::get('/products', 'products')->name('Products');
+    });

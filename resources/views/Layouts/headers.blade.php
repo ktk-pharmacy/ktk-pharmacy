@@ -34,30 +34,6 @@
   </head>
 
 <body>
-
-  <!-- Sub Header -->
-  <div class="sub-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-sm-8">
-          <div class="left-content">
-            <!-- <p>This is an Pharmacy  <em>HTML CSS</em> template by TemplateMo website.</p> -->
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-4">
-          <div class="right-icons">
-            <ul>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
       <div class="container">
@@ -65,7 +41,7 @@
               <div class="col-12">
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
-                      <a href="{{url('home')}}" class="logo">
+                      <a href="{{url('/')}}" class="logo">
                             <!-- {{asset('assets/images/ktk_icon_3tp.png')}} -->
                             <img width="50" height="100" class="img" src="" alt="">
                             <!-- <img width="50" height="100" alt=""> -->
@@ -73,21 +49,22 @@
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
-                          <li class="scroll-to-section"><a href="{{url('home')}}" class="active">Home</a></li>
-                          <li><a href="meetings.html">About Us</a></li>
+                         <li><a href="{{url('home')}}">Home</a></li>
+                          <!-- <li class="scroll-to-section"><a href="{{url('home')}}">Home</a></li> -->
+                          <li><a href="{{url('about')}}">About Us</a></li>
                           <li class="has-sub">
-                              <a href="javascript:void(0)">Products</a>
+                              <a href="{{ url('products') }}">Products</a>
                               <ul class="sub-menu">
-                                  <li><a href="meetings.html">Medicine</a></li>
-                                  <li><a href="meeting-details.html">Consumer</a></li>
-                                  <li><a href="meeting-details.html">Beauty & Wellness</a></li>
+                                  <li><a href="{{ url('products') }}">Medicine</a></li>
+                                  <li><a href="#">Consumer</a></li>
+                                  <li><a href="#">Beauty & Wellness</a></li>
                               </ul>
                           </li>
-                          <li class="scroll-to-section"><a href="#courses">News & Blog</a></li> 
+                          <li class="scroll-to-section"><a href="{{url('blog')}}">News & Blog</a></li> 
                           <li class="has-sub">
                               <a href="javascript:void(0)">Contact Us</a>
                               <ul class="sub-menu">
-                                  <li><a href="meetings.html">Contact Us</a></li>
+                                  <li><a href="{{url('contact')}}">Contact Us</a></li>
                                   <li><a href="meeting-details.html">CSR</a></li>
                               </ul>
                           </li>

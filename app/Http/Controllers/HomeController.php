@@ -14,72 +14,41 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        try{
+                return view('home');
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'message' => 'Something Went Wrong HomeController.index',
+                'error' => $ex->getMessage()
+            ],400);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+   
+    public function aboutus()
     {
-        //
+        try{
+            return view('aboutus');
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'message' => 'Something Went Wrong HomeController.aboutus',
+                'error' => $ex->getMessage()
+            ],400);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function contactus()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function show(home $home)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(home $home)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, home $home)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(home $home)
-    {
-        //
+        try{
+            return view('contactus');
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'message' => 'Something Went Wrong HomeController.contactus',
+                'error' => $ex->getMessage()
+            ],400);
+        }
     }
 }
