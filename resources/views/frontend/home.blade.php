@@ -1,4 +1,4 @@
-@include('Layouts.headers')
+@include('frontend.Layouts.headers')
 <!-- ***** Main Banner Area Start ***** -->
   <section class="section main-banner" id="top" data-section="section1">
       <video autoplay muted loop id="bg-video">
@@ -412,4 +412,4 @@
       </div>
     </div>
   </section>
-  @include('Layouts.footer')
+  @include('frontend.Layouts.footer')

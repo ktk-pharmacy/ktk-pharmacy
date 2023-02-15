@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Products;
 use Illuminate\Http\Request;
@@ -15,11 +17,11 @@ class ProductsController extends Controller
     public function products()
     {
         try{
-            return view('products');
+            return view('frontend.products');
         }
         catch(\Exception $ex){
             return response()->json([
-                'message' => 'Something Went Wrong HomeController.index',
+                'message' => 'Something Went Wrong ProductsController.index',
                 'error' => $ex->getMessage()
             ],400);
         }

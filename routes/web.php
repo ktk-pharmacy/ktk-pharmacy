@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+
+use App\Http\Controllers\Frontend\HomeController as HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +20,6 @@ Route::get('/', function () {
     return view('frontend.home');
 });
 
-
 Route::get('/admin', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -33,4 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 require __DIR__.'/auth.php';
+
+require __DIR__.'/frontend.php';

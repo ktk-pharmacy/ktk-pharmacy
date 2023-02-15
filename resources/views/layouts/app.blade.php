@@ -17,11 +17,11 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
-
+            @include('layouts.sidebar')
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header class="bg-white shadow w-full">
+                    <div class="max-w-4xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
@@ -29,7 +29,10 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <div class="max-w-lg mx-auto py-2 px-4 sm:px-6 lg:px-8 w-full bg-white">
+                        <span>this is testing</span>
+                </div>
+                <!-- {{ $slot }} -->
             </main>
         </div>
     </body>

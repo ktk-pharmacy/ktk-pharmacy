@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\home;
 use Illuminate\Http\Request;
@@ -12,10 +14,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
         try{
-                return view('home');
+                return view('frontend.home');
         }
         catch(\Exception $ex){
             return response()->json([
@@ -29,7 +31,7 @@ class HomeController extends Controller
     public function aboutus()
     {
         try{
-            return view('aboutus');
+            return view('frontend.aboutus');
         }
         catch(\Exception $ex){
             return response()->json([
@@ -42,7 +44,7 @@ class HomeController extends Controller
     public function contactus()
     {
         try{
-            return view('contactus');
+            return view('frontend.contactus');
         }
         catch(\Exception $ex){
             return response()->json([

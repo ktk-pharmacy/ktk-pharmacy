@@ -1,4 +1,4 @@
-@include('Layouts.headers')
+@include('frontend.Layouts.headers')
 
 <section class="upcoming-meetings" id="meetings">
     <div class="container">
@@ -96,4 +96,4 @@
     </div>
   </section>
 
-@include('Layouts.footer')
+@include('frontend.Layouts.footer')

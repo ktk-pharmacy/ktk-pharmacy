@@ -1,4 +1,4 @@
-@include('Layouts.headers')
+@include('frontend.Layouts.headers')
 <section class="apply-now" id="apply">
     <div class="container">
       <div class="row">
@@ -86,4 +86,4 @@
       </div>
     </div>
   </section>
-  @include('Layouts.footer')
+  @include('frontend.Layouts.footer')
