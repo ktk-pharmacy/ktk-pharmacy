@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController as HomeController;
-use App\Http\Controllers\ProductsController as ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,17 +15,22 @@ use App\Http\Controllers\ProductsController as ProductController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('frontend.home');
 });
 
-Route::controller(HomeController::class)
-    ->group(function () {
-        Route::get('/home', 'index')->name('HOME');
-        Route::get('/about', 'aboutus')->name('AboutUs');
-        Route::get('/contact', 'contactus')->name('ContactUs');
-    });
 
-Route::controller(ProductController::class)
-    ->group(function () {
-        Route::get('/products', 'products')->name('Products');
-    });
+Route::get('/admin', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
