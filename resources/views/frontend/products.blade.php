@@ -8,21 +8,21 @@
             <h2>Product Catgories</h2>
           </div>
         </div>
-        <div class="col-lg-4">
+        <!-- <div class="col-lg-4">
           <div class="categories">
             <h4>Product Catgories</h4>
             <ul>
               <li><a href="#">All Prescription Medicine</a></li>
               <li><a href="#">OTC Medicine</a></li>
             </ul>
-            <!-- <div class="main-button-red">
+             <div class="main-button-red">
               <a href="meetings.html">All Prescription Medicine</a>
-            </div> -->
+            </div>
           </div>
-        </div>
-        <div class="col-lg-8">
+        </div> -->
+        <div class="col-lg-12">
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
               <div class="meeting-item">
                 <div class="thumb">
                   <div class="price">
@@ -39,7 +39,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
               <div class="meeting-item">
                 <div class="thumb">
                   <div class="price">
@@ -56,7 +56,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
               <div class="meeting-item">
                 <div class="thumb">
                   <div class="price">
@@ -73,7 +73,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
               <div class="meeting-item">
                 <div class="thumb">
                   <div class="price">

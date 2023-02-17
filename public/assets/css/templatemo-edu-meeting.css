@@ -273,7 +273,7 @@ header
 .header-area {
   background-color: rgba(250,250,250,0.15);
   position: absolute;
-  top: 40px;
+  top: 0px;
   left: 0;
   right: 0;
   z-index: 100;
@@ -309,7 +309,7 @@ header
 
 /*changed 14 feb 2023*/
 .background-header .main-nav .logo {
-  line-height: 110px;
+  line-height: 90px;
   /* content: url('assets/images/ktk_icon_3tp.png'); */
 }
 
@@ -560,8 +560,8 @@ header
 }
 /*Changed 14-Feb-2023*/
 .header-area.header-sticky {
-  /* min-height: 80px; */
-  min-height: 110px;
+  min-height: 80px;
+  /* min-height: 110px; */
 }
 
 .header-area .nav {
@@ -701,15 +701,22 @@ banner
   margin-bottom: -7px;
 }
 
-#bg-video {
+/* #bg-video {
     min-width: 100%;
     min-height: 100vh;
     max-width: 100%;
     max-height: 100vh;
     object-fit: cover;
     z-index: -1;
+} */
+#bg-video {
+  min-width: 100%;
+  min-height: 70vh;
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: cover;
+  z-index: -1;
 }
-
 #bg-video::-webkit-media-controls {
     display: none !important;
 }
@@ -726,7 +733,8 @@ banner
 
 .main-banner .caption {
   position: absolute;
-  top: 50%;
+  /* top: 50%; */
+  top: 35%;
   transform: translateY(-50%);
 }
 
@@ -823,7 +831,8 @@ services
   text-align: center;
   position: absolute;
   width: 100%;
-  top: 50%;
+  /* top: 50%; */
+  top: 20%;
   transform: translateY(-25px);
 }
     
@@ -1126,6 +1135,16 @@ section.our-courses {
   background-size: cover;
   padding-top: 140px;
   padding-bottom: 130px;
+}
+
+section.blank-space {
+  background-image: url(../images/meetings-bg.jpg);
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 40px;
+  padding-bottom: 50px;
 }
 
 .our-courses .item .down-content {

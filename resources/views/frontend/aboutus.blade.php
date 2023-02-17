@@ -2,7 +2,7 @@
 <section class="apply-now" id="apply">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 align-self-center">
+        <!-- <div class="col-lg-6 align-self-center">
           <div class="row">
             <div class="col-lg-12">
               <div class="item">
@@ -23,25 +23,30 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-6">
+        </div> -->
+        <div class="col-lg-12">
           <div class="accordions is-first-expanded">
             <article class="accordion">
                 <div class="accordion-head">
-                    <span>About Edu Meeting HTML Template</span>
+                    <span>About KTK Pharmacy</span>
                     <span class="icon">
                         <i class="icon fa fa-chevron-right"></i>
                     </span>
                 </div>
                 <div class="accordion-body">
                     <div class="content">
-                        <p>If you want to get the latest collection of HTML CSS templates for your websites, you may visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too CSS website</a>. If you need a working contact form script, please visit <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.</p>
+                        <p>
+                            If you want to buy the latest collection of medical proudcts and consumer product, you may visit
+                             <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too KTK pharmacy website</a>. 
+                             If you need a working contact form script, please visit
+                            <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.
+                        </p>
                     </div>
                 </div>
             </article>
             <article class="accordion">
                 <div class="accordion-head">
-                    <span>HTML CSS Bootstrap Layout</span>
+                    <span>Our Mission</span>
                     <span class="icon">
                         <i class="icon fa fa-chevron-right"></i>
                     </span>
@@ -55,7 +60,7 @@
             </article>
             <article class="accordion">
                 <div class="accordion-head">
-                    <span>Please tell your friends</span>
+                    <span>Our Vision</span>
                     <span class="icon">
                         <i class="icon fa fa-chevron-right"></i>
                     </span>
@@ -69,7 +74,7 @@
             </article>
             <article class="accordion last-accordion">
                 <div class="accordion-head">
-                    <span>Share this to your colleagues</span>
+                    <span>Our Quality Policy</span>
                     <span class="icon">
                         <i class="icon fa fa-chevron-right"></i>
                     </span>

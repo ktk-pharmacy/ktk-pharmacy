@@ -1,100 +1,127 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
+<nav class="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
+          <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
+            <a class="navbar-brand brand-logo-mini align-self-center d-lg-none" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+            <button class="navbar-toggler navbar-toggler align-self-center mr-2" type="button" data-toggle="minimize">
+              <i class="mdi mdi-menu"></i>
+            </button>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                  <i class="mdi mdi-bell-outline"></i>
+                  <span class="count count-varient1">7</span>
+                </a>
+                <div class="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list" aria-labelledby="notificationDropdown">
+                  <h6 class="p-3 mb-0">Notifications</h6>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img src="assets/images/faces/face4.jpg" alt="" class="profile-pic" />
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="mb-0"> Dany Miles <span class="text-small text-muted">commented on your photo</span>
+                      </p>
+                    </div>
+                  </a>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img src="assets/images/faces/face3.jpg" alt="" class="profile-pic" />
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="mb-0"> James <span class="text-small text-muted">posted a photo on your wall</span>
+                      </p>
+                    </div>
+                  </a>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img src="assets/images/faces/face2.jpg" alt="" class="profile-pic" />
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="mb-0"> Alex <span class="text-small text-muted">just mentioned you in his post</span>
+                      </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <p class="p-3 mb-0">View all activities</p>
                 </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+              </li>
+              <li class="nav-item dropdown d-none d-sm-flex">
+                <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown">
+                  <i class="mdi mdi-email-outline"></i>
+                  <span class="count count-varient2">5</span>
+                </a>
+                <div class="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list" aria-labelledby="messageDropdown">
+                  <h6 class="p-3 mb-0">Messages</h6>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-item-content flex-grow">
+                      <span class="badge badge-pill badge-success">Request</span>
+                      <p class="text-small text-muted ellipsis mb-0"> Suport needed for user123 </p>
+                    </div>
+                    <p class="text-small text-muted align-self-start"> 4:10 PM </p>
+                  </a>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-item-content flex-grow">
+                      <span class="badge badge-pill badge-warning">Invoices</span>
+                      <p class="text-small text-muted ellipsis mb-0"> Invoice for order is mailed </p>
+                    </div>
+                    <p class="text-small text-muted align-self-start"> 4:10 PM </p>
+                  </a>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-item-content flex-grow">
+                      <span class="badge badge-pill badge-danger">Projects</span>
+                      <p class="text-small text-muted ellipsis mb-0"> New project will start tomorrow </p>
+                    </div>
+                    <p class="text-small text-muted align-self-start"> 4:10 PM </p>
+                  </a>
+                  <h6 class="p-3 mb-0">See all activity</h6>
                 </div>
-            </div>
-
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
-
-                            <div class="ml-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
-
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
+              </li>
+              <li class="nav-item nav-search border-0 ml-1 ml-md-3 ml-lg-5 d-none d-md-flex">
+                <form class="nav-link form-inline mt-2 mt-md-0">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" />
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-magnify"></i>
+                      </span>
+                    </div>
+                  </div>
                 </form>
-            </div>
-        </div>
-    </div>
-</nav>
+              </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right ml-lg-auto">
+              <li class="nav-item dropdown d-none d-xl-flex border-0">
+                <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown">
+                  <i class="mdi mdi-earth"></i> English </a>
+                <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
+                  <a class="dropdown-item" href="#"> Myanmar </a>
+                </div>
+              </li>
+              <li class="nav-item nav-profile dropdown border-0">
+                <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
+                  <img class="nav-profile-img mr-2" alt="" src="assets/images/faces/face1.jpg" />
+                  <span class="profile-name">{{ Auth::user()->name }}</span>
+                </a>
+                <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
+                  <a class="dropdown-item" href="#">
+                        <x-dropdown-link :href="route('profile.edit')">
+                                  {{ __('Profile') }}
+                        </x-dropdown-link>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                      <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                        </form>
+                  </a>
+                </div>
+              </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span class="mdi mdi-menu"></span>
+            </button>
+          </div>
+        </nav>

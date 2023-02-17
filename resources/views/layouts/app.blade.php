@@ -1,39 +1,79 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-            @include('layouts.sidebar')
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow w-full">
-                    <div class="max-w-4xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                <div class="max-w-lg mx-auto py-2 px-4 sm:px-6 lg:px-8 w-full bg-white">
-                        <span>this is testing</span>
-                </div>
-                <!-- {{ $slot }} -->
-            </main>
+    <title>{{ config('app.name', 'KTK Pharmacy') }}</title>
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css" />
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="shortcut icon" href="assets/images/ktk_icon_3tp.png" />
+    
+    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
+  </head>
+  <body>
+    <div class="container-scroller">
+     @include('layouts.sidebar')
+      <div class="container-fluid page-body-wrapper">
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close mdi mdi-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-default-theme">
+            <div class="img-ss rounded-circle bg-light border mr-3"></div> Default
+          </div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme">
+            <div class="img-ss rounded-circle bg-dark border mr-3"></div> Dark
+          </div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles light"></div>
+            <div class="tiles dark"></div>
+          </div>
         </div>
-    </body>
+        @include('layouts.navigation')
+        <div class="main-panel">
+          <div class="content-wrapper pb-0">
+              @yield('content')
+              {{ $slot }}
+          </div>
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © ktk pharmacy 2023</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> BUy Product from  <a href="http://127.0.0.1:8000/" target="_blank">KTK Pharmacy</a> ktkpharmacy.com</span>
+            </div>
+          </footer>
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="assets/vendors/flot/jquery.flot.js"></script>
+    <script src="assets/vendors/flot/jquery.flot.resize.js"></script>
+    <script src="assets/vendors/flot/jquery.flot.categories.js"></script>
+    <script src="assets/vendors/flot/jquery.flot.fillbetween.js"></script>
+    <script src="assets/vendors/flot/jquery.flot.stack.js"></script>
+    <script src="assets/vendors/flot/jquery.flot.pie.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+  </body>
 </html>

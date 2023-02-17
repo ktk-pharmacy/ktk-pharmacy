@@ -14,7 +14,7 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function products()
+    public function index()
     {
         try{
             return view('frontend.products');
@@ -27,7 +27,21 @@ class ProductsController extends Controller
         }
     }
 
-    /**
+
+    public function product_list()
+    {
+        try{
+            return view('products.product-list');
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'message' => 'Something Went Wrong ProductsController.index',
+                'error' => $ex->getMessage()
+            ],400);
+        }
+    }
+
+        /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -48,6 +62,7 @@ class ProductsController extends Controller
         //
     }
 
+    
     /**
      * Display the specified resource.
      *
@@ -56,7 +71,7 @@ class ProductsController extends Controller
      */
     public function show(Products $products)
     {
-        //
+        
     }
 
     /**

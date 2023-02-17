@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\ProductsController;
+use App\Http\Controllers\Frontend\ProductsController as ProductFrontend;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,7 +14,7 @@ Route::controller(HomeController::class)
         Route::get('/contact', 'contactus')->name('ContactUs');
     });
 
-Route::controller(ProductsController::class)
+Route::controller(ProductFrontend::class)
     ->group(function () {
-        Route::get('/products', 'products')->name('Products');
+        Route::get('/products', 'index')->name('Products');
     });
