@@ -3,4 +3,4 @@
 </svg> -->
 
 
-<img src="assets/images/ktk_icon_3tp.png" {{$attributes}}/>
+<img src="/assets/images/ktk_icon_3tp.png" {{$attributes}}/>

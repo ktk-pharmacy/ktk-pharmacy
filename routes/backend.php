@@ -26,6 +26,9 @@ Route::controller(CategoryGroupController::class)
         Route::get('/category_group_list', 'category_group_list')->name('category_group_list');
         Route::get('/category_group_create', 'create')->name('category_group_create');
         Route::post('/category_group_create', 'store')->name('category_group_store');
+        Route::get('/category_group_edit/{category}', 'edit')->name('category_group_edit');
+        Route::patch('/category_group_edit/{category}', 'update')->name('category_group_update');
+        Route::delete('/category_group_delete/{category}', 'destroy')->name('category_group_destroy');
     });
 
 Route::controller(CategoryController::class)

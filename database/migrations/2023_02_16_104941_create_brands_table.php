@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug');
+            $table->string('image_url');
+            $table->boolean('status')->default(1)->comment('1 is Active, 0 is Unactive');
+            $table->unsignedBigInteger('sorting')->default(1);
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

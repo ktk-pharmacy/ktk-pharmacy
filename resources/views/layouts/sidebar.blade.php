@@ -10,7 +10,7 @@
           <li class="nav-item nav-profile">
             <a href="{{ route('dashboard')}}" class="nav-link">
               <div class="nav-profile-image">
-                <img src="assets/images/faces/face1.jpg" alt="profile" />
+                <img src="/assets/images/faces/face1.jpg" alt="profile" />
                 <span class="login-status online"></span>
                 <!--change to offline or busy as needed-->
               </div>
@@ -38,14 +38,14 @@
               <span class="menu-title">Category Group</span>
             </a>
           </li>
-          
+
           <li class="nav-item">
             <a class="nav-link" href="{{ route('category_list')}}">
               <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               <span class="menu-title">Category</span>
             </a>
           </li>
-          
+
           <li class="nav-item">
             <a class="nav-link" href="{{ route('brand_list')}}">
               <i class="mdi mdi-chart-bar menu-icon"></i>

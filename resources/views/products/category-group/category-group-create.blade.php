@@ -6,8 +6,6 @@
                         <h4 class="card-title">Create Category Group</h4>
                         <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
 
-
-
                         </div>
                         <div class="table-responsive">
                             <!-- table table-striped -->
@@ -48,4 +46,4 @@
         $(document).ready(function () {
             $('#image').dropify();
         });
-      </script>
+    </script>

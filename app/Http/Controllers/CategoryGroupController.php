@@ -23,7 +23,8 @@ class CategoryGroupController extends Controller
     public function category_group_list()
     {
         try{
-            return view('products.category-group-list');
+            $category_groups = CategoryGroup::publish()->orderBy('sorting','asc')->get();
+            return view('products.category-group.category-group-list',compact("category_groups"));
         }
         catch(\Exception $ex){
             return response()->json([
@@ -40,7 +41,7 @@ class CategoryGroupController extends Controller
      */
     public function create() : View
     {
-        return view('products.category-group-create');
+        return view('products.category-group.category-group-create');
     }
 
 
@@ -73,9 +74,9 @@ class CategoryGroupController extends Controller
      * @param  \App\Models\MainCategory  $mainCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(MainCategory $mainCategory)
+    public function show(Request $request,CategoryGroup $category)
     {
-        //
+
     }
 
     /**
@@ -84,9 +85,9 @@ class CategoryGroupController extends Controller
      * @param  \App\Models\MainCategory  $mainCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(MainCategory $mainCategory)
+    public function edit(Request $request,CategoryGroup $category): View
     {
-        //
+        return view('products.category-group.category-group-edit',compact('category'));
     }
 
     /**
@@ -96,9 +97,22 @@ class CategoryGroupController extends Controller
      * @param  \App\Models\MainCategory  $mainCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MainCategory $mainCategory)
+    public function update(Request $request, CategoryGroup $category)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'sorting'=>'required'
+        ]);
+        $data = $this->helperCategoryGroup($request);
+        if ($request->name != $category->name) {
+            $data['slug'] = $this->generateSlug($data['name'],'category_groups');
+        }
+        $category->update($data);
+        if ($request->hasFile('image')) {
+            $category->media->delete();
+            $category->media()->create($data['image']);
+        }
+        return to_route('category_group_list')->with('success', 'Successfully updated!');
     }
 
     /**
@@ -107,9 +121,12 @@ class CategoryGroupController extends Controller
      * @param  \App\Models\MainCategory  $mainCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MainCategory $mainCategory)
+    public function destroy(CategoryGroup $category)
     {
-        //
+        $category->update([
+            'status'=>false,
+            'deleted_at' => now()
+        ]);
     }
 
     private function helperCategoryGroup($request)
