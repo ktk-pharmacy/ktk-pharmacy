@@ -5,19 +5,19 @@
                   <div class="card-body">
                     <h4 class="card-title">Category Group</h4>
                     <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
-                        <button type="button" class="btn btn-primary mb-2 float-left btn-icon-text">
-                                <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New 
-                        </button>
+                        <a href="{{ route('category_group_create') }}" class="btn btn-primary mb-2 float-left btn-icon-text">
+                                <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
+                        </a>
                         <button type="button" class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">
-                                <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import 
+                                <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import
                         </button>
                         <button type="button" class="btn btn-success mb-2  ml-2 float-left btn-icon-text">
-                                <i class="mdi mdi-file-download btn-icon-prepend"></i>Export 
+                                <i class="mdi mdi-file-download btn-icon-prepend"></i>Export
                         </button>
                     </div>
                     <div class="table-responsive">
                         <!-- table table-striped -->
-                      <table class="table w-full text-xl border-green"> 
+                      <table class="table w-full text-xl border-green">
                         <thead>
                           <tr>
                             <th>Category Group</th>
@@ -41,7 +41,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -62,7 +62,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -83,7 +83,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -104,7 +104,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -125,7 +125,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -146,7 +146,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -167,7 +167,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>

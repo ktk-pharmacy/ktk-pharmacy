@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CategoryGroup;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Models\CategoryGroup;
+use App\Traits\GenerateSlug;
 
 class CategoryGroupController extends Controller
 {
+    use GenerateSlug;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,7 @@ class CategoryGroupController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     public function category_group_list()
@@ -50,7 +53,18 @@ class CategoryGroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'image' => 'required|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:1024',
+            'sorting' => 'required'
+        ]);
+        $data = $this->helperCategoryGroup($request);
+        $data['slug'] = $this->generateSlug($data['name'],'category_groups');
+
+        $category_group = CategoryGroup::create($data);
+        $category_group->media()->create($data['image']);
+
+        return to_route('category_group_list')->with('success', 'Successfully created!');
     }
 
     /**
@@ -96,5 +110,29 @@ class CategoryGroupController extends Controller
     public function destroy(MainCategory $mainCategory)
     {
         //
+    }
+
+    private function helperCategoryGroup($request)
+    {
+        $data['name'] = $request->name;
+        $data['sorting'] = $request->sorting;
+        $data['status'] = $request->status ? true : false;
+
+        if ($request->hasFile('image')) {
+            $file_name = time().'.'.$request->image->extension();
+            $path = CategoryGroup::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";
+            $data['image'] = [
+                'image_url' => $path . $file_name,
+                'file_name' => $file_name,
+                'file_path' => $path,
+                'file_type' => $request->image->getClientOriginalExtension(),
+                'file_size' => $request->image->getSize(),
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString(),
+            ];
+            $request->image->move(public_path($path), $file_name);
+        }
+
+        return $data;
     }
 }

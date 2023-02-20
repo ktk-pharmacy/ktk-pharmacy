@@ -1,52 +1,51 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<x-app-layout>
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+    <div class="col-lg-7 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">Create Category Group</h4>
+                        <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+                        </div>
+                        <div class="table-responsive">
+                            <!-- table table-striped -->
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Category Group Name</label>
+                                    <input type="text" placeholder="Enter Name Here" id="name" name="name" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sorting" class="form-label">Category Group Sorting</label>
+                                    <input type="number" placeholder="Eg. 1" id="sorting" name="sorting" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Category Group Image</label>
+                                    <input type="file" id="image" name="image"  data-max-file-size="1000K"
+                                    data-allowed-file-extensions='["png", "PNG", "jpg", "JPG", "jpeg", "JPEG"]' required class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <div class="checkbox checkbox-success checkbox-circle mb-2">
+                                        <input id="category_group_status" type="checkbox" name="status" checked="" value="1">
+                                        <label for="category_group_status">
+                                            Active
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3 text-center">
+                                    <a href="{{ route('category_group_list') }}" class="btn btn-light mx-2">Cancel</a>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    </x-app-layout>
+    <script>
+        $(document).ready(function () {
+            $('#image').dropify();
+        });
+      </script>
