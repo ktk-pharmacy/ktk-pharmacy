@@ -115,6 +115,17 @@
         //     tabTrigger.show()
         //   })
         // })
+
+        $(document).on('click', '#change-language', function () {
+        var url = $(this).attr('data-url');
+        $.ajax({
+            url: url,
+            type:"POST",
+            success:function(data){
+                window.location.reload(true);
+            }
+        });
+      })
     </script>
 </body>
 </html>

@@ -87,6 +87,16 @@
                       </div>
                     </div>
                   </div>
+                  <div class="col-lg-12">
+                    <div class="pagination">
+                      <ul>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
           </div>
           <div class="tab-pane fade" id="v-pills-otc" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             <div class="bg-white">This is OTC Testing Area</div>
