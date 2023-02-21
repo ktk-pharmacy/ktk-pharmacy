@@ -16,5 +16,7 @@ Route::controller(HomeController::class)
 
 Route::controller(ProductFrontend::class)
     ->group(function () {
-        Route::get('/products', 'index')->name('Products');
+        Route::get('/categories', 'categories')->name('Categories');
+        Route::get('/products', 'products')->name('products');
+        Route::get('/product_detail', 'product_detail')->name('product_detail');
     });

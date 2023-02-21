@@ -118,6 +118,19 @@ img {
   overflow: hidden;
 }
 
+.contactus-logo{
+  width: 50px;
+  height: 50px;
+}
+
+.footerimage{
+  width: 20px;
+  height: 20px;
+}
+
+.google-map {
+  height: 800px;
+}
 /* 
 ---------------------------------------------
 global styles
@@ -305,6 +318,7 @@ header
 
 .header-area .main-nav .logo .img {
   content:url('../images/ktk_icon2.png');
+  width: 100px;
 }
 
 /*changed 14 feb 2023*/
@@ -315,6 +329,7 @@ header
 
 .background-header .main-nav .logo .img {
   content:url('../images/ktk_icon_3tp.png');
+  width: 100px;
 }
 
 .background-header .nav {

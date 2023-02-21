@@ -14,10 +14,25 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    /* Front End */
+    /** Product Category*/
+    public function categories()
     {
         try{
-            return view('frontend.products');
+            return view('frontend.categories');
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'message' => 'Something Went Wrong ProductsController.index',
+                'error' => $ex->getMessage()
+            ],400);
+        }
+    }
+    /**Product List*/
+    public function products()
+    {
+        try{
+            return view('frontend.product-list');
         }
         catch(\Exception $ex){
             return response()->json([
@@ -27,7 +42,20 @@ class ProductsController extends Controller
         }
     }
 
-
+    public function product_detail()
+    {
+        try{
+            return view('frontend.product-details');
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'message' => 'Something Went Wrong ProductsController.index',
+                'error' => $ex->getMessage()
+            ],400);
+        }
+    }
+    /* End Front End */
+    // admin panel
     public function product_list()
     {
         try{
@@ -41,6 +69,7 @@ class ProductsController extends Controller
         }
     }
 
+  
         /**
      * Show the form for creating a new resource.
      *

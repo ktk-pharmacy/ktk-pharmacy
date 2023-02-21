@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="shortcut icon" href="assets/images/ktk_icon_3tp.png" />
+    
+
     <style type="text/css">
         /* .img {
             content: url("/path/here/to/image.png");
@@ -35,7 +38,7 @@
 
 <body>
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
+  <header class="header-area header-sticky background-header">
       <div class="container">
           <div class="row">
               <div class="col-12">
@@ -53,9 +56,9 @@
                           <!-- <li class="scroll-to-section"><a href="{{url('home')}}">Home</a></li> -->
                           <li><a href="{{url('about')}}">About Us</a></li>
                           <li class="has-sub">
-                              <a href="{{ url('products') }}">Products</a>
+                              <a href="#">Products</a>
                               <ul class="sub-menu">
-                                  <li><a href="{{ url('products') }}">Medicine</a></li>
+                                  <li><a href="{{ url('categories') }}">Pharmaceuticals</a></li>
                                   <li><a href="#">Consumer</a></li>
                                   <li><a href="#">Beauty & Wellness</a></li>
                               </ul>

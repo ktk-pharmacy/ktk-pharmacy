@@ -5,7 +5,7 @@
                   <div class="card-body">
                     <h4 class="card-title">Category Group</h4>
                     <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
-                        <button type="button" class="btn btn-primary mb-2 float-left btn-icon-text">
+                        <button type="button" class="btn btn-primary mb-2 float-left btn-icon-text" onclick="{{url('category_create')}}">
                                 <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New 
                         </button>
                         <button type="button" class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">

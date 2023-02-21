@@ -74,7 +74,7 @@
             </article>
             <article class="accordion last-accordion">
                 <div class="accordion-head">
-                    <span>Our Quality Policy</span>
+                    <span>Core Value</span>
                     <span class="icon">
                         <i class="icon fa fa-chevron-right"></i>
                     </span>

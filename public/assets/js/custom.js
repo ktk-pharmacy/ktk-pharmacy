@@ -10,7 +10,8 @@
 	  if (scroll >= box - header) {
 	    $("header").addClass("background-header");
 	  } else {
-	    $("header").removeClass("background-header");
+	    // $("header").removeClass("background-header");
+		$("header").addClass("background-header");
 	  }
 	});
 	
@@ -217,7 +218,6 @@
 	        }
 	    });
 	}
-
 
 	// Page loading animation
 	$(window).on('load', function() {
