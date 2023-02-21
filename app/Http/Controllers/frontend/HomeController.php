@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 
 use App\Models\home;
+use App\Models\Brand;
+use App\Models\CategoryGroup;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,7 +19,9 @@ class HomeController extends Controller
     public function home()
     {
         try{
-                return view('frontend.home');
+                $brands = Brand::publish()->get();
+                $cateorygroup = CategoryGroup::publish()->get();
+                return view('frontend.home',compact('brands','cateorygroup'));
         }
         catch(\Exception $ex){
             return response()->json([
