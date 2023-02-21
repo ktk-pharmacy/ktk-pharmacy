@@ -19,7 +19,7 @@
           </div>
               </div>
             </div>
-          </div>    
+          </div>
       </div>
   </section>
   <!-- ***** Main Banner Area End ***** -->
@@ -35,7 +35,7 @@
           <div class="owl-service-item owl-carousel">
             <div class="item">
               <div class="icon">
-                <img src="assets/images/service-icon-01.png" alt="">
+                <img src="/assets/images/service-icon-01.png" alt="">
               </div>
               <div class="down-content">
                 <h4>Sales & Distributions</h4>
@@ -44,7 +44,7 @@
             </div>
             <div class="item">
               <div class="icon">
-                <img src="assets/images/service-icon-02.png" alt="">
+                <img src="/assets/images/service-icon-02.png" alt="">
               </div>
               <div class="down-content">
                 <h4>Warehousing</h4>
@@ -53,7 +53,7 @@
             </div>
             <div class="item">
               <div class="icon">
-                <img src="assets/images/service-icon-03.png" alt="">
+                <img src="/assets/images/service-icon-03.png" alt="">
               </div>
               <div class="down-content">
                 <h4>Distribution</h4>
@@ -196,7 +196,7 @@
                     <div class="count-digit">2345</div>
                     <div class="count-title">Total Product Brand</div>
                   </div>
-                </div> 
+                </div>
                 <div class="col-12">
                   <div class="count-area-content">
                     <div class="count-digit">32</div>
@@ -206,7 +206,7 @@
               </div>
             </div>
           </div>
-        </div> 
+        </div>
         <div class="col-lg-6 align-self-center">
           <div class="video">
             <a href="https://www.youtube.com/watch?v=HndV87XpkWg" target="_blank"><img src="assets/images/play-icon.png" alt=""></a>

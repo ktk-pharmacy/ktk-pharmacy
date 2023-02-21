@@ -11,9 +11,9 @@
                     <button type="button" class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">
                         <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import
                     </button>
-                    <button type="button" class="btn btn-success mb-2  ml-2 float-left btn-icon-text">
+                    <a href="{{ route('category_group_export') }}" class="btn btn-success mb-2  ml-2 float-left btn-icon-text">
                         <i class="mdi mdi-file-download btn-icon-prepend"></i>Export
-                    </button>
+                    </a>
                 </div>
                 <div class="table-responsive">
                     <!-- table table-striped -->

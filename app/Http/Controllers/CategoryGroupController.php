@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
+use App\Traits\GenerateSlug;
 use Illuminate\Http\Request;
 use App\Models\CategoryGroup;
-use App\Traits\GenerateSlug;
+use App\Exports\CategoryGroupExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryGroupController extends Controller
 {
@@ -127,6 +129,11 @@ class CategoryGroupController extends Controller
             'status'=>false,
             'deleted_at' => now()
         ]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new CategoryGroupExport, 'category.xlsx');
     }
 
     private function helperCategoryGroup($request)

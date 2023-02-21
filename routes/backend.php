@@ -29,6 +29,7 @@ Route::controller(CategoryGroupController::class)
         Route::get('/category_group_edit/{category}', 'edit')->name('category_group_edit');
         Route::patch('/category_group_edit/{category}', 'update')->name('category_group_update');
         Route::delete('/category_group_delete/{category}', 'destroy')->name('category_group_destroy');
+        Route::get('/category_group_export','export')->name('category_group_export');
     });
 
 Route::controller(CategoryController::class)
