@@ -8,10 +8,39 @@
                     <a href="{{ route('category_group_create') }}" class="btn btn-primary mb-2 float-left btn-icon-text">
                         <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
                     </a>
-                    <button type="button" class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">
                         <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import
                     </button>
-                    <a href="{{ route('category_group_export') }}" class="btn btn-success mb-2  ml-2 float-left btn-icon-text">
+                    <!-- Button trigger modal -->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <h3 class="mb-2">Import Category Groups</h3>
+                                    <form action="{{ route('category_group_import') }}" id="import_category_groups" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <label for="file" class="form-label mb-1">Please choose a file</label>
+                                        <input type="file" id="name"
+                                            name="file"
+                                            class="form-control">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" form="import_category_groups" class="btn btn-primary">Import</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="{{ route('category_group_export') }}"
+                        class="btn btn-success mb-2  ml-2 float-left btn-icon-text">
                         <i class="mdi mdi-file-download btn-icon-prepend"></i>Export
                     </a>
                 </div>
@@ -20,24 +49,23 @@
                     <table id="table" class="table w-full text-xl border-green">
                         <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Status</th>
                                 <th>Sorting</th>
+                                <th>Name</th>
+                                <th>Name_mm</th>
+                                <th>Status</th>
                                 <th class="justify-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($category_groups as $category_group)
+                            @foreach ($category_groups as $key => $category_group)
                                 <tr>
-                                    <td class="py-1">
-                                        <img src="{{ $category_group->media->image_url }}" alt="image" />
-                                    </td>
+                                    <td class="px-5">{{ $category_group->sorting }}</td>
                                     <td>{{ $category_group->name }}</td>
+                                    <td>{{ $category_group->name_mm??$category_group->name }}</td>
                                     <td>
                                         {!! getStatusBadge($category_group->status) !!}
                                     </td>
-                                    <td class="px-5">{{ $category_group->sorting }}</td>
+
                                     <td>
                                         <a href="{{ route('category_group_edit', $category_group->id) }}"
                                             class="mx-2"><i class="fa-regular fa-pen-to-square"></i></a>

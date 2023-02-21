@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('category_groups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('name_mm')->nullable();
             $table->string('slug');
             $table->boolean('status')->default(1)->comment('1 is Active, 0 is Unactive');
             $table->unsignedBigInteger('sorting')->default(1);

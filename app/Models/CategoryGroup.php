@@ -10,6 +10,7 @@ class CategoryGroup extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'name_mm',
         'status',
         'slug',
         'sorting',
@@ -22,7 +23,6 @@ class CategoryGroup extends Model
      * @var array
      */
     protected $hidden = [
-        'status',
         'deleted_at',
         'created_at',
         'updated_at',
@@ -40,9 +40,9 @@ class CategoryGroup extends Model
         return $query->where('status', true);
     }
 
-    public function media()
-    {
-        return $this->morphOne(Media::class, 'mediable');
-    }
+    // public function media()
+    // {
+    //     return $this->morphOne(Media::class, 'mediable');
+    // }
 
 }

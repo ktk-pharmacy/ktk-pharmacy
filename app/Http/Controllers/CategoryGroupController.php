@@ -7,6 +7,7 @@ use App\Traits\GenerateSlug;
 use Illuminate\Http\Request;
 use App\Models\CategoryGroup;
 use App\Exports\CategoryGroupExport;
+use App\Imports\CategoryGroupsImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryGroupController extends Controller
@@ -19,20 +20,18 @@ class CategoryGroupController extends Controller
      */
     public function index()
     {
-
     }
 
     public function category_group_list()
     {
-        try{
-            $category_groups = CategoryGroup::publish()->orderBy('sorting','asc')->get();
-            return view('products.category-group.category-group-list',compact("category_groups"));
-        }
-        catch(\Exception $ex){
+        try {
+            $category_groups = CategoryGroup::publish()->orderBy('sorting', 'asc')->get();
+            return view('products.category-group.category-group-list', compact("category_groups"));
+        } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong CategoryGroupController.category_group_list',
                 'error' => $ex->getMessage()
-            ],400);
+            ], 400);
         }
     }
 
@@ -41,7 +40,7 @@ class CategoryGroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() : View
+    public function create(): View
     {
         return view('products.category-group.category-group-create');
     }
@@ -58,14 +57,13 @@ class CategoryGroupController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:100',
-            'image' => 'required|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:1024',
-            'sorting' => 'required'
+            'sorting' => 'required|unique:category_groups,sorting'
         ]);
         $data = $this->helperCategoryGroup($request);
-        $data['slug'] = $this->generateSlug($data['name'],'category_groups');
+        $data['slug'] = $this->generateSlug($data['name'], 'category_groups');
 
-        $category_group = CategoryGroup::create($data);
-        $category_group->media()->create($data['image']);
+        CategoryGroup::create($data);
+        // $category_group->media()->create($data['image']);
 
         return to_route('category_group_list')->with('success', 'Successfully created!');
     }
@@ -76,9 +74,8 @@ class CategoryGroupController extends Controller
      * @param  \App\Models\MainCategory  $mainCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request,CategoryGroup $category)
+    public function show(Request $request, CategoryGroup $category)
     {
-
     }
 
     /**
@@ -87,9 +84,9 @@ class CategoryGroupController extends Controller
      * @param  \App\Models\MainCategory  $mainCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request,CategoryGroup $category): View
+    public function edit(Request $request, CategoryGroup $category): View
     {
-        return view('products.category-group.category-group-edit',compact('category'));
+        return view('products.category-group.category-group-edit', compact('category'));
     }
 
     /**
@@ -102,18 +99,18 @@ class CategoryGroupController extends Controller
     public function update(Request $request, CategoryGroup $category)
     {
         $request->validate([
-            'name'=>'required',
-            'sorting'=>'required'
+            'name' => 'required',
+            'sorting' => "required|unique:category_groups,sorting,$category->id"
         ]);
         $data = $this->helperCategoryGroup($request);
         if ($request->name != $category->name) {
-            $data['slug'] = $this->generateSlug($data['name'],'category_groups');
+            $data['slug'] = $this->generateSlug($data['name'], 'category_groups');
         }
         $category->update($data);
-        if ($request->hasFile('image')) {
-            $category->media->delete();
-            $category->media()->create($data['image']);
-        }
+        // if ($request->hasFile('image')) {
+        //     $category->media->delete();
+        //     $category->media()->create($data['image']);
+        // }
         return to_route('category_group_list')->with('success', 'Successfully updated!');
     }
 
@@ -126,36 +123,47 @@ class CategoryGroupController extends Controller
     public function destroy(CategoryGroup $category)
     {
         $category->update([
-            'status'=>false,
+            'status' => false,
             'deleted_at' => now()
         ]);
     }
 
     public function export()
     {
-        return Excel::download(new CategoryGroupExport, 'category.xlsx');
+        return Excel::download(new CategoryGroupExport(CategoryGroup::all()), 'category_groups.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required'
+        ]);
+        Excel::import(new CategoryGroupsImport, $request->file);
+
+        return redirect()->back()->with('success', 'Successfully imported!');
     }
 
     private function helperCategoryGroup($request)
     {
         $data['name'] = $request->name;
+        $data['name_mm'] = $request->name_mm??Null;
         $data['sorting'] = $request->sorting;
         $data['status'] = $request->status ? true : false;
 
-        if ($request->hasFile('image')) {
-            $file_name = time().'.'.$request->image->extension();
-            $path = CategoryGroup::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";
-            $data['image'] = [
-                'image_url' => $path . $file_name,
-                'file_name' => $file_name,
-                'file_path' => $path,
-                'file_type' => $request->image->getClientOriginalExtension(),
-                'file_size' => $request->image->getSize(),
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString(),
-            ];
-            $request->image->move(public_path($path), $file_name);
-        }
+        // if ($request->hasFile('image')) {
+        //     $file_name = time().'.'.$request->image->extension();
+        //     $path = CategoryGroup::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";
+        //     $data['image'] = [
+        //         'image_url' => $path . $file_name,
+        //         'file_name' => $file_name,
+        //         'file_path' => $path,
+        //         'file_type' => $request->image->getClientOriginalExtension(),
+        //         'file_size' => $request->image->getSize(),
+        //         'created_at' => now()->toDateTimeString(),
+        //         'updated_at' => now()->toDateTimeString(),
+        //     ];
+        //     $request->image->move(public_path($path), $file_name);
+        // }
 
         return $data;
     }

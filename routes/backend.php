@@ -30,6 +30,7 @@ Route::controller(CategoryGroupController::class)
         Route::patch('/category_group_edit/{category}', 'update')->name('category_group_update');
         Route::delete('/category_group_delete/{category}', 'destroy')->name('category_group_destroy');
         Route::get('/category_group_export','export')->name('category_group_export');
+        Route::post('/category_group_import','import')->name('category_group_import');
     });
 
 Route::controller(CategoryController::class)
@@ -40,4 +41,9 @@ Route::controller(CategoryController::class)
 Route::controller(BrandController::class)
     ->group(function () {
         Route::get('/brand_list', 'brand_list')->name('brand_list');
+        Route::get('/brand_create', 'create')->name('brand_create');
+        Route::post('/brand_create', 'store')->name('brand_store');
+        Route::get('/brand_edit/{brand}', 'edit')->name('brand_edit');
+        Route::patch('/brand_edit/{brand}', 'update')->name('brand_update');
+        Route::delete('/brand_delete/{brand}', 'destroy')->name('brand_destroy');
     });

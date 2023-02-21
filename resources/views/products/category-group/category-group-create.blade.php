@@ -13,17 +13,21 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Category Group Name</label>
-                                    <input type="text" placeholder="Enter Name Here" id="name" name="name" class="form-control">
+                                    <input type="text" placeholder="Enter Name Here" id="name" name="name" class="form-control" value="{{ old('name') }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name_mm" class="form-label">Category Group Name MM (Optional)</label>
+                                    <input type="text" placeholder="Enter Name Here" id="name_mm" name="name_mm" class="form-control" value="{{ old('name_mm') }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="sorting" class="form-label">Category Group Sorting</label>
-                                    <input type="number" placeholder="Eg. 1" id="sorting" name="sorting" class="form-control">
+                                    <input type="number" placeholder="Eg. 1" id="sorting" name="sorting" class="form-control" value="{{ old('sorting') }}">
                                 </div>
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label for="image" class="form-label">Category Group Image</label>
                                     <input type="file" id="image" name="image"  data-max-file-size="1000K"
                                     data-allowed-file-extensions='["png", "PNG", "jpg", "JPG", "jpeg", "JPEG"]' required class="form-control">
-                                </div>
+                                </div> --}}
                                 <div class="mb-3">
                                     <div class="checkbox checkbox-success checkbox-circle mb-2">
                                         <input id="category_group_status" type="checkbox" name="status" checked="" value="1">
