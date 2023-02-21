@@ -79,6 +79,10 @@
                   <i class="mdi mdi-settings menu-icon"></i>
                   <span>Site Setting</span>
                 </ul>
+                <ul class="mt-4 pl-0">
+                  <i class="mdi mdi-settings menu-icon"></i>
+                  <span>Services Setting</span>
+                </ul>
               </div>
             </div>
           </li>

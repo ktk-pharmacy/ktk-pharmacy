@@ -9,6 +9,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-sm-4">
+          
           <div class="right-icons">
             <ul>
               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -17,13 +18,28 @@
               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
             </ul>
           </div>
+
         </div>
       </div>
     </div>
   </div>
 <section class="footer">
     <div class="footer">
-      <p>Copyright © 2023 KTK Pharmacy Co., Ltd. All Rights Reserved. 
+      <div class="content-left">
+              <p>
+                <img  class="footerimage" src="../assets/images/phone.png" alt=""> +95 9 976 822711
+              </p>
+              <p>
+                <img  class="footerimage" src="../assets/images/email.png" alt=""> ktkpharmacy.info@gmail.com
+              </p>
+              <p>
+                <img  class="footerimage" src="../assets/images/home.png" alt=""> No A (11), 30 Street, Between 56 x 57 Street, Mandalay, Myanmar
+              </p>
+              <p>
+                <img  class="footerimage" src="../assets/images/webpage.png" alt=""> www.ktkpharmacy.com
+              </p>
+      </div>
+      <p>Copyright © 2023 KTK Pharmacy Co., Ltd. All Rights Reserved.</p>
           <!-- <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p> -->
     </div>
   </section>
@@ -31,10 +47,10 @@
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
 
-    <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
-
-    <script src="{{asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!--  -->
+    <script src="assets/js/isotope.js"></script>
     <script src="assets/js/isotope.min.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/lightbox.js"></script>
@@ -42,6 +58,8 @@
     <script src="assets/js/video.js"></script>
     <script src="assets/js/slick-slider.js"></script>
     <script src="assets/js/custom.js"></script>
+
+
     <script>
         //according to loftblog tut
         $('.nav li:first').addClass('active');
@@ -87,8 +105,27 @@
         $(window).scroll(function () {
           checkSection();
         });
-    </script>
-</body>
 
+        // var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+        // triggerTabList.forEach(function (triggerEl) {
+        //   var tabTrigger = new bootstrap.Tab(triggerEl)
+
+        //   triggerEl.addEventListener('click', function (event) {
+        //     event.preventDefault()
+        //     tabTrigger.show()
+        //   })
+        // })
+
+        $(document).on('click', '#change-language', function () {
+        var url = $(this).attr('data-url');
+        $.ajax({
+            url: url,
+            type:"POST",
+            success:function(data){
+                window.location.reload(true);
+            }
+        });
+      })
+    </script>
 </body>
 </html>

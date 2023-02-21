@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="shortcut icon" href="assets/images/ktk_icon_3tp.png" />
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    
     <style type="text/css">
         /* .img {
             content: url("/path/here/to/image.png");
@@ -35,7 +38,7 @@
 
 <body>
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
+  <header class="header-area header-sticky background-header">
       <div class="container">
           <div class="row">
               <div class="col-12">
@@ -55,17 +58,37 @@
                           <li class="has-sub">
                               <a href="{{ url('products') }}">Products</a>
                               <ul class="sub-menu">
-                                  <li><a href="{{ url('products') }}">Medicine</a></li>
+                                  <li><a href="{{ url('products') }}">Pharmaceuticals</a></li>
                                   <li><a href="#">Consumer</a></li>
                                   <li><a href="#">Beauty & Wellness</a></li>
                               </ul>
                           </li>
-                          <li class="scroll-to-section"><a href="{{url('blog')}}">News & Blog</a></li> 
+                          <li><a href="{{url('blogs')}}">News & Blog</a></li> 
                           <li class="has-sub">
                               <a href="javascript:void(0)">Contact Us</a>
                               <ul class="sub-menu">
                                   <li><a href="{{url('contact')}}">Contact Us</a></li>
                                   <li><a href="meeting-details.html">CSR</a></li>
+                              </ul>
+                          </li>
+                          <li class="has-sub">
+                              <a href="javascript:void(0);"
+															id="change-language"
+															data-url="{{ route('language', 'en') }}">Language</a>
+                              <ul class="sub-menu">
+                                  <li> 
+                                    <a class="dropdown-item" href="#">
+                                        <i class="footerimage"><img class="footerimage" src="assets/images/united-kingdom.png" alt=""> </i>English
+                                        <i class="fa fa-check text-success ms-2"></i></a>
+                                    </li>
+                                  <li>
+                                    <a href="javascript:void(0);"
+															id="change-language"
+															data-url="{{ route('language', 'mm') }}">
+                                        <i class="footerimage"><img class="footerimage" src="assets/images/myanmar.png" alt=""> </i>မြန်မာ
+                                    </a>
+                                </li>
+                                  
                               </ul>
                           </li>
                       </ul>        
