@@ -58,9 +58,9 @@
                           <li class="has-sub">
                               <a href="{{ url('products') }}">Products</a>
                               <ul class="sub-menu">
-                                  <li><a href="{{ url('products') }}">Pharmaceuticals</a></li>
-                                  <li><a href="#">Consumer</a></li>
-                                  <li><a href="#">Beauty & Wellness</a></li>
+                                @foreach($cateorygroup as $catg)
+                                  <li><a href="{{ url('products') }}">{{$catg->name}}</a></li>
+                                @endforeach  
                               </ul>
                           </li>
                           <li><a href="{{url('blogs')}}">News & Blog</a></li> 

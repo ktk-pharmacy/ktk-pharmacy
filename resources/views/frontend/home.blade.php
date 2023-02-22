@@ -87,78 +87,14 @@
         </div>
         <div class="col-lg-12">
           <div class="owl-courses-item owl-carousel">
+            @foreach ($brands as $brand)
             <div class="item">
-              <img src="assets/images/kable.jpg" alt="Course One">
+              <img width="270" height="170" src="{{$brand->image_url}}" alt="Course One">
               <div class="down-content">
-                <h4>Morbi tincidunt elit vitae justo rhoncus</h4>
+                <h4>{{$brand->name}}</h4>
               </div>
             </div>
-            <div class="item">
-              <img src="assets/images/denkpharma.png" alt="Course Two">
-              <div class="down-content">
-                <h4>Curabitur molestie dignissim purus vel</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/esti-pharma.jpg" alt="">
-              <div class="down-content">
-                <h4>Nulla at ipsum a mauris egestas tempor</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/pacific.jpg" alt="">
-              <div class="down-content">
-                <h4>Aenean molestie quis libero gravida</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/nipro.jpg" alt="">
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet adipiscing elit</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/medentech.jpg" alt="">
-              <div class="down-content">
-                <h4>TemplateMo is the best website for Free CSS</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/kp.jpg" alt="">
-              <div class="down-content">
-                <h4>Web Design Templates at your finger tips</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/psi.jpg" alt="">
-              <div class="down-content">
-                <h4>Please visit our website again</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/mega.jpg" alt="">
-              <div class="down-content">
-                <h4>Responsive HTML Templates for you</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/Unilever.png" alt="">
-              <div class="down-content">
-                <h4>Download Free CSS Layouts for your business</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-03.jpg" alt="">
-              <div class="down-content">
-                <h4>Morbi in libero blandit lectus cursus</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-04.jpg" alt="">
-              <div class="down-content">
-                <h4>Curabitur molestie dignissim purus</h4>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
