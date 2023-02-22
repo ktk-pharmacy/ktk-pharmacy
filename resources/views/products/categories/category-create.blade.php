@@ -67,9 +67,3 @@
         </div>
     </div>
 </x-app-layout>
-<script>
-    $(document).ready(function() {
-        $('.select2').select2();
-        $('#image').dropify();
-    })
-</script>

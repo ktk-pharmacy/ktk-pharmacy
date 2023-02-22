@@ -5,21 +5,21 @@
                   <div class="card-body">
                     <h4 class="card-title">Products</h4>
                     <div class="col-lg-6 mb-10 right py-4 flex ml-auto">
-                        <button type="button" class="btn btn-primary mb-2 float-left btn-icon-text">
-                                <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New 
-                        </button>
-                        
+                        <a href="{{ route('product_create') }}" class="btn btn-primary mb-2 float-left btn-icon-text">
+                                <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
+                        </a>
+
                         <button type="button" class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">
-                                <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import 
+                                <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import
                         </button>
 
                         <button type="button" class="btn btn-success mb-2  ml-2 float-left btn-icon-text">
-                                <i class="mdi mdi-file-download btn-icon-prepend"></i>Export 
+                                <i class="mdi mdi-file-download btn-icon-prepend"></i>Export
                         </button>
                     </div>
                     <div class="table-responsive">
                         <!-- table table-striped -->
-                      <table class="table w-full text-xl border-green"> 
+                      <table class="table w-full text-xl border-green">
                         <thead>
                           <tr>
                             <th>Product</th>
@@ -45,7 +45,7 @@
                             <td>Prescription Medicines</td>
                             <td>Box</td>
                             <td>R.X. Manufacturing</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -67,7 +67,7 @@
                             <td>Prescription Medicines</td>
                             <td>Box</td>
                             <td>R.X. Manufacturing</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -88,9 +88,9 @@
                             </td>
                             <td>Prescription Medicines</td>
                             <td>Box</td>
-                          
+
                             <td>R.X. Manufacturing</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -111,9 +111,9 @@
                             </td>
                             <td>Prescription Medicines</td>
                             <td>Box</td>
-                           
+
                             <td>R.X. Manufacturing</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -134,9 +134,9 @@
                             </td>
                             <td>Prescription Medicines</td>
                             <td>Box</td>
-                           
+
                             <td>R.X. Manufacturing</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -157,9 +157,9 @@
                             </td>
                             <td>Prescription Medicines</td>
                             <td>Box</td>
-                           
+
                             <td>R.X. Manufacturing</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -180,9 +180,9 @@
                             </td>
                             <td>Prescription Medicines</td>
                             <td>Box</td>
-                            
+
                             <td>R.X. Manufacturing</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>

@@ -19,6 +19,7 @@ Route::controller(ProductBackend::class)
     ->group(function () {
         // Route::get('/product', 'index')->name('product');
         Route::get('/product_list', 'product_list')->name('product_list');
+        Route::get('/product_create', 'create')->name('product_create');
     });
 
 Route::controller(CategoryGroupController::class)

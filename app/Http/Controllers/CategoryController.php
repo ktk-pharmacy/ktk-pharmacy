@@ -44,7 +44,7 @@ class CategoryController extends Controller
     public function create($type)
     {
         if ($type == 'main-category') {
-            $categories = CategoryGroup::publish()->get();
+            $categories = getCategoryGroups();
         } elseif ($type == 'sub-category') {
             $categories = MainCategory::with('group')->publish()->get();
         }
@@ -101,7 +101,7 @@ class CategoryController extends Controller
     {
         if ($type == 'main-category') {
             $category = MainCategory::where('slug',$slug)->first();
-            $categories = CategoryGroup::publish()->get();
+            $categories = getCategoryGroups();
         } elseif ($type == 'sub-category') {
             $category = SubCategory::where('slug',$slug)->first();
             $categories = MainCategory::with('group')->publish()->get();

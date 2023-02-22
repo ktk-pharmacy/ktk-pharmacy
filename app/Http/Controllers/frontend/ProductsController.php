@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-
+use App\Models\Brand;
 use App\Models\Products;
+use App\Models\MainCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductsController extends Controller
 {
@@ -69,7 +70,7 @@ class ProductsController extends Controller
         }
     }
 
-  
+
         /**
      * Show the form for creating a new resource.
      *
@@ -77,7 +78,9 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        $brands = Brand::publish()->get();
+        $main_categories = MainCategory::with('children')->publish()->get();
+        return view('products.product.product-create',compact('brands','main_categories'));
     }
 
     /**
@@ -91,7 +94,7 @@ class ProductsController extends Controller
         //
     }
 
-    
+
     /**
      * Display the specified resource.
      *
@@ -100,7 +103,7 @@ class ProductsController extends Controller
      */
     public function show(Products $products)
     {
-        
+
     }
 
     /**

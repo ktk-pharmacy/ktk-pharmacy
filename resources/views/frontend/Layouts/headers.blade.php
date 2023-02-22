@@ -12,7 +12,9 @@
     <title>KTK Pharmacy</title>
 
     <!-- Bootstrap core CSS -->
- 
+
+    <link h
+
     <link href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
 
@@ -23,7 +25,7 @@
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <link rel="shortcut icon" href="assets/images/ktk_icon_3tp.png" />
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    
+
     <style type="text/css">
         /* .img {
             content: url("/path/here/to/image.png");
@@ -58,12 +60,12 @@
                           <li class="has-sub">
                               <a href="{{ url('products') }}">Products</a>
                               <ul class="sub-menu">
-                                @foreach($cateorygroup as $catg)
+                                @foreach(getCategoryGroups() as $catg)
                                   <li><a href="{{ url('products') }}">{{$catg->name}}</a></li>
-                                @endforeach  
+                                @endforeach
                               </ul>
                           </li>
-                          <li><a href="{{url('blogs')}}">News & Blog</a></li> 
+                          <li><a href="{{url('blogs')}}">News & Blog</a></li>
                           <li class="has-sub">
                               <a href="javascript:void(0)">Contact Us</a>
                               <ul class="sub-menu">
@@ -76,7 +78,7 @@
 															id="change-language"
 															data-url="{{ route('language', 'en') }}">Language</a>
                               <ul class="sub-menu">
-                                  <li> 
+                                  <li>
                                     <a class="dropdown-item" href="#">
                                         <i class="footerimage"><img class="footerimage" src="assets/images/united-kingdom.png" alt=""> </i>English
                                         <i class="fa fa-check text-success ms-2"></i></a>
@@ -88,10 +90,10 @@
                                         <i class="footerimage"><img class="footerimage" src="assets/images/myanmar.png" alt=""> </i>မြန်မာ
                                     </a>
                                 </li>
-                                  
+
                               </ul>
                           </li>
-                      </ul>        
+                      </ul>
                       <a class='menu-trigger'>
                           <span>Menu</span>
                       </a>

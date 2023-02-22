@@ -82,8 +82,3 @@
         </div>
     </div>
 </x-app-layout>
-<script>
-    $(document).ready(function() {
-        $('#table').DataTable();
-    });
-</script>

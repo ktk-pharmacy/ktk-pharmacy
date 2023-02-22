@@ -10,12 +10,12 @@
     <title>{{ config('app.name', 'KTK Pharmacy') }}</title>
     <!-- Data Table -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    <!-- endDataTable -->
 
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- endSelect2 -->
 
-    <!-- endDataTable -->
     <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css" />
     <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css" />
@@ -36,6 +36,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- EndFontAwesome -->
 
+    <!-- SummerNote -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <!-- endSummerNote -->
 
 
     <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
@@ -62,7 +65,7 @@
             </div>
             @include('layouts.navigation')
             <div class="main-panel">
-                <div class="content-wrapper pb-0">
+                <div class="content-wrapper row pb-0">
                     @yield('content')
                     {{ $slot }}
                 </div>
@@ -128,6 +131,10 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- endSelect2 -->
 
+    <!-- SummerNote -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <!-- endSummerNote -->
+
     <!-- Custom js for this page -->
     <script src="/assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
@@ -173,6 +180,9 @@
                     }
                 })
             });
+            $('#table').DataTable();
+            $('.select2').select2();
+            $('#image').dropify();
         });
     </script>
 </body>
