@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\MainCategory;
 use Illuminate\Http\Request;
+use App\Models\CategoryGroup;
+use App\Models\SubCategory;
+use App\Traits\GenerateSlug;
 
 class CategoryController extends Controller
 {
+    use GenerateSlug;
     /**
      * Display a listing of the resource.
      *
@@ -14,13 +19,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     public function category_list()
     {
         try{
-            return view('products.category-list');
+            $main_categories = MainCategory::with('group','children')->publish()->latest()->get();
+            return view('products.category-list',compact('main_categories'));
         }
         catch(\Exception $ex){
             return response()->json([
@@ -35,9 +41,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($type)
     {
-        //
+        if ($type == 'main-category') {
+            $categories = CategoryGroup::publish()->get();
+        } elseif ($type == 'sub-category') {
+            $categories = MainCategory::with('group')->publish()->get();
+        }
+        return view('products.categories.category-create',compact('type','categories'));
     }
 
     /**
@@ -46,9 +57,27 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$type)
     {
-        //
+        $rules = [
+            'name'=>'required',
+            'category'=>'required'
+        ];
+        $request->validate($rules);
+        $data = $this->helperCategory($request);
+
+        if ($type == 'main-category') {
+            $data['category_group_id'] = $request->category;
+            $data['slug'] = $this->generateSlug($data['name'], 'main_categories');
+            MainCategory::create($data);
+
+        } elseif ($type == 'sub-category') {
+            $data['main_category_id'] = $request->category;
+            $data['slug'] = $this->generateSlug($data['name'], 'sub_categories');
+            SubCategory::create($data);
+
+        }
+        return to_route('category_list')->with('success', 'Successfully created!');
     }
 
     /**
@@ -68,9 +97,16 @@ class CategoryController extends Controller
      * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubCategory $subCategory)
+    public function edit($slug,$type)
     {
-        //
+        if ($type == 'main-category') {
+            $category = MainCategory::where('slug',$slug)->first();
+            $categories = CategoryGroup::publish()->get();
+        } elseif ($type == 'sub-category') {
+            $category = SubCategory::where('slug',$slug)->first();
+            $categories = MainCategory::with('group')->publish()->get();
+        }
+        return view('products.categories.category-edit',compact('category','type','categories'));
     }
 
     /**
@@ -80,9 +116,32 @@ class CategoryController extends Controller
      * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubCategory $subCategory)
+    public function update(Request $request, $slug, $type)
     {
-        //
+        $rules = [
+            'name'=>'required',
+            'category'=>'required'
+        ];
+        $request->validate($rules);
+        $data = $this->helperCategory($request);
+
+        if ($type == 'main-category') {
+            $category = MainCategory::where('slug',$slug)->first();
+            $data['category_group_id'] = $request->category;
+            if ($category->name != $request->name) {
+                $data['slug'] = $this->generateSlug($data['name'], 'main_categories');
+            }
+            $category->update($data);
+        } elseif ($type == 'sub-category') {
+            $category = SubCategory::where('slug',$slug)->first();
+            $data['main_category_id'] = $request->category;
+            if ($category->name != $request->name) {
+                $data['slug'] = $this->generateSlug($data['name'], 'sub_categories');
+            }
+            $category->update($data);
+
+        }
+        return to_route('category_list')->with('success', 'Successfully updated!');
     }
 
     /**
@@ -91,8 +150,34 @@ class CategoryController extends Controller
      * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubCategory $subCategory)
+    public function destroy($slug, $type)
     {
-        //
+        if ($type == 'main-category') {
+            MainCategory::where('slug',$slug)->first()->update([
+                'status'=>false,
+                'deleted_at'=>now()
+            ]);
+        } elseif ($type == 'sub-category') {
+            SubCategory::where('slug',$slug)->first()->update([
+                'status'=>false,
+                'deleted_at'=>now()
+            ]);
+        }
+    }
+
+    private function helperCategory($request)
+    {
+        $data['name'] = $request->name;
+        $data['name_mm'] = $request->name_mm??Null;
+        $data['status'] = $request->status ? true : false;
+
+        if ($request->hasFile('image')) {
+            $file_name = time().'.'.$request->image->extension();
+            $path = CategoryGroup::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";
+            $data['image_url'] = $path . $file_name;
+            $request->image->move(public_path($path), $file_name);
+        }
+
+        return $data;
     }
 }

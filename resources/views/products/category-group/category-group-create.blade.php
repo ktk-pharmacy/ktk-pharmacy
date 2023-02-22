@@ -9,7 +9,7 @@
                         </div>
                         <div class="table-responsive">
                             <!-- table table-striped -->
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('category_group_create') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Category Group Name</label>
@@ -46,8 +46,3 @@
                     </div>
                   </div>
     </x-app-layout>
-    <script>
-        $(document).ready(function () {
-            $('#image').dropify();
-        });
-    </script>

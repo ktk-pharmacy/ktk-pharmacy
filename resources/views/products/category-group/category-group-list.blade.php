@@ -85,40 +85,5 @@
 <script>
     $(document).ready(function() {
         $('#table').DataTable();
-        $('.delete-btn').click(function(e) {
-            var tr = $(this).parents('tr');
-            var url = $(this).data('url');
-            e.preventDefault();
-
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        'Deleted!',
-                        'Category group has been deleted.',
-                        'success'
-                    );
-                    try {
-                        $.ajax({
-                            type: "DELETE",
-                            url: url,
-                        });
-                        tr.hide();
-                    } catch (error) {
-                        Toast.fire({
-                            icon: 'error',
-                            title: error
-                        })
-                    }
-                }
-            })
-        });
     });
 </script>
