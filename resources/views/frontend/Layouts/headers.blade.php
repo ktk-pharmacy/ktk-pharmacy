@@ -59,7 +59,7 @@
                               <a href="{{ url('products') }}">Products</a>
                               <ul class="sub-menu">
                                 @foreach($cateorygroup as $catg)
-                                  <li><a href="{{ url('products') }}">{{$catg->name}}</a></li>
+                                  <li><a href="{{ url('categories') }}">{{$catg->name}}</a></li>
                                 @endforeach  
                               </ul>
                           </li>

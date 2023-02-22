@@ -29,7 +29,7 @@
           </li>
           <li class="nav-item">
             <span class="nav-link" href="#">
-              <span class="menu-title">Product Related</span>
+              <span class="menu-title font-weight-bold">Product Related</span>
             </span>
           </li>
           <li class="nav-item">
@@ -55,12 +55,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('product_list') }}">
               <i class="mdi mdi-table-large menu-icon"></i>
-              <span class="menu-title">Products</span>
+              <span class="menu-title ">Products</span>
             </a>
           </li>
           <li class="nav-item">
             <span class="nav-link" href="#">
-              <span class="menu-title">User management </span>
+              <span class="menu-title font-weight-bold">User management </span>
             </span>
           </li>
           <li class="nav-item">
@@ -69,22 +69,20 @@
               <span class="menu-title">User</span>
             </a>
           </li>
-          <li class="nav-item sidebar-actions">
-            <div class="nav-link">
-              <div class="mt-4">
-                <div class="border-none">
-                  <p class="text-black">Setting</p>
-                </div>
-                <ul class="mt-4 pl-0">
-                  <i class="mdi mdi-settings menu-icon"></i>
-                  <span>Site Setting</span>
-                </ul>
-                <ul class="mt-4 pl-0">
-                  <i class="mdi mdi-settings menu-icon"></i>
-                  <span>Services Setting</span>
-                </ul>
-              </div>
-            </div>
+          <li class="nav-item">
+              <span class="menu-title font-weight-bold">Settings</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('settings') }}">
+              <i class="mdi mdi-settings menu-icon"></i>
+              <span>Site Setting</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('user_list') }}">
+              <i class="mdi mdi-settings menu-icon"></i>
+              <span>Service Setting</span>
+            </a>
           </li>
         </ul>
       </nav>
