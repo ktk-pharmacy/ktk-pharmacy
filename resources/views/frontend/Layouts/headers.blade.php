@@ -51,6 +51,10 @@
                       </a>
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
+                      @php
+                         $categorygroup = getMenuCategories();
+                      @endphp
+
                       <ul class="nav">
                          <li><a href="{{url('home')}}">Home</a></li>
                           <!-- <li class="scroll-to-section"><a href="{{url('home')}}">Home</a></li> -->
@@ -58,7 +62,7 @@
                           <li class="has-sub">
                               <a href="{{ url('products') }}">Products</a>
                               <ul class="sub-menu">
-                                @foreach($cateorygroup as $catg)
+                                @foreach($categorygroup as $catg)
                                   <li><a href="{{ url('categories') }}">{{$catg->name}}</a></li>
                                 @endforeach  
                               </ul>
@@ -74,7 +78,7 @@
                           <li class="has-sub">
                               <a href="javascript:void(0);"
 															id="change-language"
-															data-url="{{ route('language', 'en') }}">Language</a>
+															data-url="{{ route('change', 'en') }}">Language</a>
                               <ul class="sub-menu">
                                   <li> 
                                     <a class="dropdown-item" href="#">
@@ -84,7 +88,7 @@
                                   <li>
                                     <a href="javascript:void(0);"
 															id="change-language"
-															data-url="{{ route('language', 'mm') }}">
+															data-url="{{ route('change', 'mm') }}">
                                         <i class="footerimage"><img class="footerimage" src="assets/images/myanmar.png" alt=""> </i>မြန်မာ
                                     </a>
                                 </li>

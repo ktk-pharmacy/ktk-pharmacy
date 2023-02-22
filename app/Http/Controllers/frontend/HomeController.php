@@ -20,8 +20,8 @@ class HomeController extends Controller
     {
         try{
                 $brands = Brand::publish()->get();
-                $cateorygroup = CategoryGroup::publish()->get();
-                return view('frontend.home',compact('brands','cateorygroup'));
+                $categorygroup = CategoryGroup::publish()->get();
+                return view('frontend.home',compact('brands','categorygroup'));
         }
         catch(\Exception $ex){
             return response()->json([

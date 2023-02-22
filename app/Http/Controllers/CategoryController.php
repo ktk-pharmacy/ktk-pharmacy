@@ -19,7 +19,18 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        try{
+            // dd("adfadf");
+            $categorygroup = CategoryGroup::publish()->get();
 
+            return view('frontend.categories',compact('categorygroup'));
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'message' => 'Something Went Wrong CategoryController.index',
+                'error' => $ex->getMessage()
+            ],400);
+        }
     }
 
     public function category_list()

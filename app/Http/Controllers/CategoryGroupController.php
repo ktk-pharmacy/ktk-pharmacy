@@ -20,6 +20,17 @@ class CategoryGroupController extends Controller
      */
     public function index()
     {
+        try{
+            
+            $category_group = CategoryGroup::publish()->get();
+            return view('frontend.categories');
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'message' => 'Something Went Wrong CategoryController.index',
+                'error' => $ex->getMessage()
+            ],400);
+        }
     }
 
     public function category_group_list()
