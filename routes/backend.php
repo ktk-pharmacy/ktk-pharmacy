@@ -36,6 +36,11 @@ Route::controller(CategoryGroupController::class)
 Route::controller(CategoryController::class)
     ->group(function () {
         Route::get('/category_list', 'category_list')->name('category_list');
+        Route::get('/category_create/{type}', 'create')->name('category_create');
+        Route::post('/category_create/{type}', 'store')->name('category_store');
+        Route::get('/{slug}/category_edit/{type}', 'edit')->name('category_edit');
+        Route::patch('/{slug}/category_edit/{type}', 'update')->name('category_update');
+        Route::delete('/{slug}/category_delete/{type}', 'destroy')->name('category_destroy');
     });
 
 Route::controller(BrandController::class)

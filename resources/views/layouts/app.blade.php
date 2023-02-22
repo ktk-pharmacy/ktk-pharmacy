@@ -10,6 +10,11 @@
     <title>{{ config('app.name', 'KTK Pharmacy') }}</title>
     <!-- Data Table -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- endSelect2 -->
+
     <!-- endDataTable -->
     <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css" />
@@ -30,6 +35,8 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- EndFontAwesome -->
+
+
 
     <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
 </head>
@@ -116,6 +123,11 @@
         integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- endDropify -->
+
+    <!-- Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- endSelect2 -->
+
     <!-- Custom js for this page -->
     <script src="/assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
@@ -124,6 +136,43 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+        $(document).ready(function() {
+            $('.delete-btn').click(function(e) {
+                var tr = $(this).parents('tr');
+                var url = $(this).data('url');
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Category group has been deleted.',
+                            'success'
+                        );
+                        try {
+                            $.ajax({
+                                type: "DELETE",
+                                url: url,
+                            });
+                            tr.hide();
+                        } catch (error) {
+                            Toast.fire({
+                                icon: 'error',
+                                title: error
+                            })
+                        }
+                    }
+                })
+            });
         });
     </script>
 </body>

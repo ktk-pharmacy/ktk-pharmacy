@@ -53,8 +53,3 @@
         </div>
     </div>
 </x-app-layout>
-<script>
-    $(document).ready(function() {
-        $('#image').dropify();
-    });
-</script>
