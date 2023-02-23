@@ -11,7 +11,6 @@
     <!-- Data Table -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
     <!-- endDataTable -->
-
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- endSelect2 -->
@@ -40,8 +39,19 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- endSummerNote -->
 
+    <!-- Switchery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css"
+        integrity="sha512-uyGg6dZr3cE1PxtKOCGqKGTiZybe5iSq3LsqOolABqAWlIRLo/HKyrMMD8drX+gls3twJdpYX0gDKEdtf2dpmw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- endSwitchery -->
+
 
     <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
+    <style>
+        .tb-card {
+           overflow-x: scroll !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -135,6 +145,12 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- endSummerNote -->
 
+    <!-- Switchery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"
+        integrity="sha512-lC8vSUSlXWqh7A/F+EUS3l77bdlj+rGMN4NB5XFAHnTR3jQtg4ibZccWpuSSIdPoPUlUxtnGktLyrWcDhG8RvA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- endSwitchery -->
+
     <!-- Custom js for this page -->
     <script src="/assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
@@ -145,6 +161,7 @@
             }
         });
         $(document).ready(function() {
+            //all delete method
             $('.delete-btn').click(function(e) {
                 var tr = $(this).parents('tr');
                 var url = $(this).data('url');
@@ -162,7 +179,7 @@
                     if (result.isConfirmed) {
                         Swal.fire(
                             'Deleted!',
-                            'Category group has been deleted.',
+                            'Data has been deleted.',
                             'success'
                         );
                         try {
@@ -180,9 +197,36 @@
                     }
                 })
             });
+            //jQuery Datatable
             $('#table').DataTable();
+            //Select 2
             $('.select2').select2();
+            //Dropify js
             $('#image').dropify();
+
+            //SummerNote js
+            $('.summernote').summernote({
+            height: 200,
+            minHeight: null,
+            maxHeight: null,
+            focus: false, // set focus to editable area after initializing summernote
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link']],
+                ['view', ['help']]
+            ]
+        });
+
+        //switchery Js
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
+        elems.forEach(function(html) {
+            var switchery = new Switchery(html, {
+                size: 'small'
+            });
+        });
         });
     </script>
 </body>

@@ -55,7 +55,7 @@
                         @endif
                         <div class="mb-3">
                             <div class="checkbox checkbox-success checkbox-circle mb-2">
-                                <input id="category_status" type="checkbox" name="status" {{ $category->status?'checked':'' }}
+                                <input id="category_status" type="checkbox" name="status" @checked($category->status)
                                     value="1">
                                 <label for="category_status">
                                     Active

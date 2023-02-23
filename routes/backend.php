@@ -20,6 +20,12 @@ Route::controller(ProductBackend::class)
         // Route::get('/product', 'index')->name('product');
         Route::get('/product_list', 'product_list')->name('product_list');
         Route::get('/product_create', 'create')->name('product_create');
+        Route::post('/product_create', 'store')->name('product_store');
+        Route::get('/product_edit/{product}', 'edit')->name('product_edit');
+        Route::patch('/product_edit/{product}', 'update')->name('product_update');
+        Route::delete('/product_delete/{product}', 'destroy')->name('product_destroy');
+        Route::get('/product_export', 'export')->name('product_export');
+        Route::post('/product_import', 'import')->name('product_import');
     });
 
 Route::controller(CategoryGroupController::class)

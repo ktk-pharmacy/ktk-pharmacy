@@ -2,7 +2,7 @@
 
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body tb-card">
                 <h4 class="card-title">Brand</h4>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
                     <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('brand_create') }}" id="add-btn" class="btn btn-primary mb-2 float-right btn-icon-text">

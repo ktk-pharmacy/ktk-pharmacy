@@ -2,7 +2,7 @@
 
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body tb-card">
                 <h4 class="card-title">Category Group</h4>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
                     <a href="{{ route('category_group_create') }}" class="btn btn-primary mb-2 float-left btn-icon-text">

@@ -46,7 +46,7 @@ class Products extends Model
 
     public function sub_category()
     {
-        return $this->belongsTo(Category::class, 'sub_category_id');
+        return $this->belongsTo(SubCategory::class, 'sub_category_id');
     }
 
     protected function imageUrl():Attribute

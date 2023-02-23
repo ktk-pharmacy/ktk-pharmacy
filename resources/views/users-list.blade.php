@@ -2,16 +2,16 @@
 
 <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
-                  <div class="card-body">
+                  <div class="card-body tb-card">
                     <h4 class="card-title">User List</h4>
                     <div class="col-lg-2 mb-7 right py-4 flex ml-auto">
                         <a type="button" class="btn btn-primary btn-icon-text bg-green"  href="{{ route('register') }}">
-                                <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New 
+                                <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
                         </a>
                     </div>
                     <div class="table-responsive">
                         <!-- table table-striped -->
-                      <table class="table w-full text-xl border-green"> 
+                      <table class="table w-full text-xl border-green">
                         <thead>
                           <tr>
                             <th>User</th>
@@ -35,7 +35,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -56,7 +56,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -77,7 +77,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -98,7 +98,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -119,7 +119,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -140,7 +140,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>
@@ -161,7 +161,7 @@
                             </td>
                             <td>16.Feb.2023</td>
                             <td>Admin</td>
-                            <td> 
+                            <td>
                                 <button type="button" class="btn btn-outline-secondary btn-icon-text">
                                     <i class="mdi mdi-file-check btn-icon-append"></i>
                                  </button>

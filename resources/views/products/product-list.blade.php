@@ -1,200 +1,95 @@
 <x-app-layout>
 
-<div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Products</h4>
-                    <div class="col-lg-6 mb-10 right py-4 flex ml-auto">
-                        <a href="{{ route('product_create') }}" class="btn btn-primary mb-2 float-left btn-icon-text">
-                                <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
-                        </a>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body tb-card">
+                <h4 class="card-title">Products</h4>
+                <div class="col-lg-6 mb-10 right py-4 flex ml-auto">
+                    <a href="{{ route('product_create') }}" class="btn btn-primary mb-2 float-left btn-icon-text">
+                        <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
+                    </a>
 
-                        <button type="button" class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">
-                                <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import
-                        </button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">
+                        <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import
+                    </button>
+                    <!-- Button trigger modal -->
 
-                        <button type="button" class="btn btn-success mb-2  ml-2 float-left btn-icon-text">
-                                <i class="mdi mdi-file-download btn-icon-prepend"></i>Export
-                        </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <h3 class="mb-2">Import Products</h3>
+                                    <form action="{{ route('product_import') }}" id="import_category_groups" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <label for="file" class="form-label mb-1">Please choose a file</label>
+                                        <input type="file" id="name"
+                                            name="file"
+                                            class="form-control">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" form="import_category_groups" class="btn btn-primary">Import</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="table-responsive">
-                        <!-- table table-striped -->
-                      <table class="table w-full text-xl border-green">
+
+                    <a href="{{ route('product_export') }}" class="btn btn-success mb-2  ml-2 float-left btn-icon-text">
+                        <i class="mdi mdi-file-download btn-icon-prepend"></i>Export
+                    </a>
+                </div>
+                <div class="table-responsive">
+                    <!-- table table-striped -->
+                    <table  class="table w-full text-xl border-green" id="table">
                         <thead>
-                          <tr>
-                            <th>Product</th>
-                            <th>Name</th>
-                            <th>Availability</th>
-                            <th>Category</th>
-                            <th>MOU</th>
-                            <th>Distribute By</th>
-                            <th class="justify-center">Action</th>
-                          </tr>
+                            <tr>
+                                <th>Product</th>
+                                <th>Name</th>
+                                <th>Availability</th>
+                                <th>Category</th>
+                                <th>Distributed By</th>
+                                <th>Status</th>
+                                <th class="justify-center">Action</th>
+                            </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td class="py-1">
-                              <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                            </td>
-                            <td>Arpimune Me-100 Capsule</td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td>Prescription Medicines</td>
-                            <td>Box</td>
-                            <td>R.X. Manufacturing</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-secondary btn-icon-text">
-                                    <i class="mdi mdi-file-check btn-icon-append"></i>
-                                 </button>
-                                 <button type="button" class="btn btn- btn-icon-text">
-                                    <i class="mdi mdi-file-eye btn-icon-append"></i>
-                                 </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="../../assets/images/faces-clipart/pic-2.png" alt="image" />
-                            </td>
-                            <td>Arpimune Me - 25 Capsule </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td>Prescription Medicines</td>
-                            <td>Box</td>
-                            <td>R.X. Manufacturing</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-secondary btn-icon-text">
-                                    <i class="mdi mdi-file-check btn-icon-append"></i>
-                                 </button>
-                                 <button type="button" class="btn btn- btn-icon-text">
-                                    <i class="mdi mdi-file-eye btn-icon-append"></i>
-                                 </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="../../assets/images/faces-clipart/pic-3.png" alt="image" />
-                            </td>
-                            <td>Mofetyl 250 Tablet</td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td>Prescription Medicines</td>
-                            <td>Box</td>
-
-                            <td>R.X. Manufacturing</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-secondary btn-icon-text">
-                                    <i class="mdi mdi-file-check btn-icon-append"></i>
-                                 </button>
-                                 <button type="button" class="btn btn- btn-icon-text">
-                                    <i class="mdi mdi-file-eye btn-icon-append"></i>
-                                 </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="../../assets/images/faces-clipart/pic-4.png" alt="image" />
-                            </td>
-                            <td>Mofetyl 500 Tablet</td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td>Prescription Medicines</td>
-                            <td>Box</td>
-
-                            <td>R.X. Manufacturing</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-secondary btn-icon-text">
-                                    <i class="mdi mdi-file-check btn-icon-append"></i>
-                                 </button>
-                                 <button type="button" class="btn btn- btn-icon-text">
-                                    <i class="mdi mdi-file-eye btn-icon-append"></i>
-                                 </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                            </td>
-                            <td>AMK 1000</td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td>Prescription Medicines</td>
-                            <td>Box</td>
-
-                            <td>R.X. Manufacturing</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-secondary btn-icon-text">
-                                    <i class="mdi mdi-file-check btn-icon-append"></i>
-                                 </button>
-                                 <button type="button" class="btn btn- btn-icon-text">
-                                    <i class="mdi mdi-file-eye btn-icon-append"></i>
-                                 </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="../../assets/images/faces-clipart/pic-2.png" alt="image" />
-                            </td>
-                            <td>AMK 156 Oral Suspension</td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td>Prescription Medicines</td>
-                            <td>Box</td>
-
-                            <td>R.X. Manufacturing</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-secondary btn-icon-text">
-                                    <i class="mdi mdi-file-check btn-icon-append"></i>
-                                 </button>
-                                 <button type="button" class="btn btn- btn-icon-text">
-                                    <i class="mdi mdi-file-eye btn-icon-append"></i>
-                                 </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="../../assets/images/faces-clipart/pic-3.png" alt="image" />
-                            </td>
-                            <td>AMK 375</td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                            <td>Prescription Medicines</td>
-                            <td>Box</td>
-
-                            <td>R.X. Manufacturing</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-secondary btn-icon-text">
-                                    <i class="mdi mdi-file-check btn-icon-append"></i>
-                                 </button>
-                                 <button type="button" class="btn btn- btn-icon-text">
-                                    <i class="mdi mdi-file-eye btn-icon-append"></i>
-                                 </button>
-                            </td>
-                          </tr>
+                            @foreach ($products as $product)
+                                <tr>
+                                    <td>
+                                        <img src="{{ $product->image_url }}" alt="">
+                                    </td>
+                                    <td>
+                                        <a style="text-decoration: none" class=" text-dark" href="{{ route('product_edit',$product->id) }}"><b>{{ $product->name }}</b></a>
+                                    </td>
+                                    <td>
+                                        {!! getAvaliableBadge($product->availability) !!}
+                                    </td>
+                                    <td>
+                                        {{ $product->sub_category->name }}
+                                    </td>
+                                    <td>{{ $product->distributed_by }}</td>
+                                    <td>
+                                        {!! getStatusBadge($product->status) !!}
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('product_edit',$product->id) }}"
+                                            class="mx-2"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        <a href="javascript:void(0)"
+                                            data-url="{{ route('product_destroy',$product->id) }}"
+                                            class="text-danger delete-btn"><i class="fa-solid fa-square-xmark"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
-                      </table>
-                    </div>
-                  </div>
+                    </table>
                 </div>
-              </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>

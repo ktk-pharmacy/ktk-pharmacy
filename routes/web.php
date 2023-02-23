@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Models\Brand;
 
-use App\Http\Controllers\Frontend\HomeController as HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\HomeController as HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontend.home');
+    $brands = Brand::publish()->get();
+    return view('frontend.home',compact('brands'));
 });
 
 Route::get('/admin', function () {

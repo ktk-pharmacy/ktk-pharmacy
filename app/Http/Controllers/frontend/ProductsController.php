@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Brand;
 use App\Models\Products;
 use App\Models\MainCategory;
+use App\Traits\GenerateSlug;
 use Illuminate\Http\Request;
+use App\Exports\ProductsExport;
 use App\Http\Controllers\Controller;
+use App\Imports\ProductsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductsController extends Controller
 {
+    use GenerateSlug;
     /**
      * Display a listing of the resource.
      *
@@ -60,7 +65,8 @@ class ProductsController extends Controller
     public function product_list()
     {
         try{
-            return view('products.product-list');
+            $products = Products::publish()->with('brand','sub_category')->latest()->get();
+            return view('products.product-list',compact('products'));
         }
         catch(\Exception $ex){
             return response()->json([
@@ -91,7 +97,17 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'category'=>'required',
+            'description'=>'required',
+            'availability'=>'required'
+        ]);
+        $data = $this->helperProduct($request);
+        $data['slug']=$this->generateSlug($data['name']??$request->name,'products');
+
+        Products::create($data);
+        return to_route('product_list')->with('success','Successfully Created!');
     }
 
 
@@ -112,9 +128,11 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit(Products $product)
     {
-        //
+        $brands = Brand::publish()->get();
+        $main_categories = MainCategory::with('children')->publish()->get();
+        return view('products.product.product-edit',compact('brands','main_categories','product'));
     }
 
     /**
@@ -124,9 +142,20 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $request, Products $product)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'category'=>'required',
+            'description'=>'required',
+            'availability'=>'required'
+        ]);
+        $data = $this->helperProduct($request);
+        if ($product->name != $request->name??$data['name']) {
+            $data['slug']=$this->generateSlug($data['name']??$request->name,'products');
+        }
+        $product->update($data);
+        return to_route('product_list')->with('success', 'Successfully updated!');
     }
 
     /**
@@ -135,8 +164,50 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy(Products $product)
     {
-        //
+        $product->update([
+            'status' => false,
+            'deleted_at' => now()
+        ]);
+    }
+
+    public function export()
+    {
+        $products =  Products::all();
+        return Excel::download(new ProductsExport($products), 'products.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required'
+        ]);
+        Excel::import(new ProductsImport, $request->file);
+
+        return redirect()->back()->with('success', 'Successfully imported!');
+    }
+
+    private function helperProduct($request)
+    {
+        $data['name'] = $request->name;
+        $data['sub_category_id'] = $request->category;
+        $data['brand_id'] = $request->brand_id;
+        $data['description'] = $request->description;
+        $data['packaging'] = $request->packaging;
+        $data['MOU'] = $request->MOU;
+        $data['availability'] = $request->availability==1?true:false;
+        $data['distributed_by'] = $request->distributed_by;
+        $data['manufacturer'] = $request->manufacturer;
+        $data['status'] = $request->status ? true : false;
+        $data['product_details'] = $request->product_details;
+        $data['other_information'] = $request->other_information;
+        if ($request->hasFile('image')) {
+            $file_name = time().'.'.$request->image->extension();
+            $path = Products::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";
+            $data['image_url'] = $path . $file_name;
+            $request->image->move(public_path($path), $file_name);
+        }
+        return $data;
     }
 }

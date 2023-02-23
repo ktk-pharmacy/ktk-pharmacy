@@ -20,16 +20,14 @@ return new class extends Migration
             $table->longText('product_details')->nullable()->after('description');
             $table->string('image_url')->default('assets/images/meeting-01.jpg')->after('product_details');
             $table->string('MOU')->nullable()->comment('measure of unit')->after('image_url');
-            $table->string('packaging')->default(1)->after('MOU');
+            $table->string('packaging')->nullable()->after('MOU');
             $table->boolean('availability')->after('packaging');
             $table->unsignedBigInteger('brand_id')->nullable()->after('availability');
-            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('set null');
             $table->unsignedBigInteger('sub_category_id')->nullable()->after('brand_id');
-            $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('set null');
             $table->longText('other_information')->nullable()->after('sub_category_id');
             $table->boolean('status')->default(1)->comment('1 is Active, 0 is Unactive')->after('other_information');
-            $table->string('manufacturer')->after('status');
-            $table->string('distributed_by')->after('manufacturer');
+            $table->string('manufacturer')->nullable()->after('status');
+            $table->string('distributed_by')->nullable()->after('manufacturer');
             $table->timestamp('deleted_at')->nullable()->after('distributed_by');
         });
     }
