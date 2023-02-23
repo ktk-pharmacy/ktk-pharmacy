@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 use App\Models\Category;
 use App\Models\MainCategory;
-use Illuminate\Http\Request;
+
 use App\Models\CategoryGroup;
 use App\Models\SubCategory;
 use App\Traits\GenerateSlug;

@@ -52,9 +52,10 @@
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
                       @php
-                         $categorygroup = getMenuCategories();
+                         $categorygroup = getGroupCategories();
+                         
                       @endphp
-
+                      
                       <ul class="nav">
                          <li><a href="{{url('home')}}">Home</a></li>
                           <!-- <li class="scroll-to-section"><a href="{{url('home')}}">Home</a></li> -->
@@ -63,7 +64,7 @@
                               <a href="{{ url('products') }}">Products</a>
                               <ul class="sub-menu">
                                 @foreach($categorygroup as $catg)
-                                  <li><a href="{{ url('categories') }}">{{$catg->name}}</a></li>
+                                <li><a href="{{ url('categories/'.$catg->id)}}">{{$catg->name}}</a></li>
                                 @endforeach  
                               </ul>
                           </li>

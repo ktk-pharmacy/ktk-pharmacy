@@ -32,10 +32,10 @@ Route::controller(ProductFrontend::class)
         Route::get('/product_detail', 'product_detail')->name('product_detail');
     });
 
-Route::controller(CategoryController::class)
-    ->group(function () {
-        Route::get('/categories', 'index')->name('Categories');
-    });
+// Route::controller(CategoryController::class)
+//     ->group(function () {
+//         Route::get('/categories/{{id}}', 'index')->name('Categories');
+//     });
 
 Route::controller(CategoryGroupController::class)
     ->group(function () {
