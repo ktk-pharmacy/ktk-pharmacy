@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Response::macro('success', function ($message, $status_code, $data = null) {
+            return response()->json([
+                'message' => $message,
+                'data' => $data
+            ], $status_code);
+        });
+
+        Response::macro('error', function ($message, $status_code, $data = null) {
+            return response()->json([
+                'message' => $message,
+                'errors' => $data
+            ], $status_code);
+        });
+
+        // view()->composer(['frontend.Layouts.headers'], function ($view) {
+        //     $categorygroup = CategoryGroup::publish()->get();
+        //         $view->with('categorygroup', $categorygroup);
+        //     });
     }
 }

@@ -5,7 +5,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryGroupController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,4 +58,10 @@ Route::controller(BrandController::class)
         Route::get('/brand_edit/{brand}', 'edit')->name('brand_edit');
         Route::patch('/brand_edit/{brand}', 'update')->name('brand_update');
         Route::delete('/brand_delete/{brand}', 'destroy')->name('brand_destroy');
+    });
+
+Route::controller(SettingsController::class)
+    ->group(function () {
+        Route::get('/settings', 'index')->name('settings');
+        Route::get('/update_setting', 'update')->name('update_setting');
     });

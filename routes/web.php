@@ -17,10 +17,10 @@ use App\Http\Controllers\Frontend\HomeController as HomeController;
 |
 */
 
-Route::get('/', function () {
-    $brands = Brand::publish()->get();
-    return view('frontend.home',compact('brands'));
-});
+// Route::get('/', function () {
+//     // return view('frontend.home');
+//     Route::get('/home', 'home')->name('HOME');
+// });
 
 Route::get('/admin', function () {
     return view('dashboard');

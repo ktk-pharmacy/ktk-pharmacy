@@ -83,7 +83,7 @@
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © ktk
                             pharmacy 2023</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> BUy Product from <a
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Buy Product from <a
                                 href="http://127.0.0.1:8000/" target="_blank">KTK Pharmacy</a> ktkpharmacy.com</span>
                     </div>
                 </footer>

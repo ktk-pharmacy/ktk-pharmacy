@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 use App\Models\Category;
 use App\Models\MainCategory;
-use Illuminate\Http\Request;
+
 use App\Models\CategoryGroup;
 use App\Models\SubCategory;
 use App\Traits\GenerateSlug;
@@ -19,7 +20,18 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        try{
+            // dd("adfadf");
+            $categorygroup = CategoryGroup::publish()->get();
 
+            return view('frontend.categories',compact('categorygroup'));
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'message' => 'Something Went Wrong CategoryController.index',
+                'error' => $ex->getMessage()
+            ],400);
+        }
     }
 
     public function category_list()
@@ -44,7 +56,7 @@ class CategoryController extends Controller
     public function create($type)
     {
         if ($type == 'main-category') {
-            $categories = getCategoryGroups();
+            $categories = getGroupCategories();
         } elseif ($type == 'sub-category') {
             $categories = MainCategory::with('group')->publish()->get();
         }
@@ -101,7 +113,7 @@ class CategoryController extends Controller
     {
         if ($type == 'main-category') {
             $category = MainCategory::where('slug',$slug)->first();
-            $categories = getCategoryGroups();
+            $categories = getGroupCategories();
         } elseif ($type == 'sub-category') {
             $category = SubCategory::where('slug',$slug)->first();
             $categories = MainCategory::with('group')->publish()->get();
