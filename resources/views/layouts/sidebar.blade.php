@@ -70,6 +70,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('role_list') }}">
+                <i class="mdi mdi-chart-bar menu-icon"></i>
+              <span class="menu-title">Role</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('permission_list') }}">
               <i class="mdi mdi-contacts menu-icon"></i>
               <span class="menu-title">Permission</span>
