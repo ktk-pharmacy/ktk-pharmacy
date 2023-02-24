@@ -70,6 +70,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('permission_list') }}">
+              <i class="mdi mdi-contacts menu-icon"></i>
+              <span class="menu-title">Permission</span>
+            </a>
+          </li>
+          <li class="nav-item">
               <span class="menu-title font-weight-bold">Settings</span>
           </li>
           <li class="nav-item">
