@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(PermissionController::class)
@@ -22,4 +23,14 @@ Route::controller(RoleController::class)
         Route::get('/role_edit/{role}', 'edit')->name('role_edit');
         Route::patch('/role_edit/{role}', 'update')->name('role_update');
         Route::delete('/role_delete/{role}', 'destroy')->name('role_destroy');
+    });
+
+Route::controller(UserController::class)
+    ->group(function(){
+        Route::get('/user_list', 'user_list')->name('user_list');
+        Route::get('/user_create', 'create')->name('user_create');
+        Route::post('/user_create', 'store')->name('user_store');
+        Route::get('/user_edit/{user}', 'edit')->name('user_edit');
+        Route::patch('/user_edit/{user}', 'update')->name('user_update');
+        Route::delete('/user_delete/{user}', 'destroy')->name('user_destroy');
     });

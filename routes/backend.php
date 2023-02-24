@@ -4,15 +4,8 @@ use App\Http\Controllers\Frontend\ProductsController as ProductBackend;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryGroupController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
-
-
-Route::controller(UserController::class)
-    ->group(function () {
-        Route::get('/user_list', 'index')->name('user_list');
-    });
 
 
 Route::controller(ProductBackend::class)

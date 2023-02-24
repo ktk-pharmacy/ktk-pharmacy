@@ -40,7 +40,7 @@
                             <div class="col-12">
                                 <div class="text-center mt-3 mb-3">
                                     <a href="{{ route('role_list') }}" class="btn btn-light mx-2">Cancel</a>
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-success">Save</button>
                                 </div>
                             </div> <!-- end col -->
                         </div>

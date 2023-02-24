@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -12,10 +15,17 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function user_list()
     {
         try{
-            return view('users-list');
+            if (auth()->user()->hasRole('Superadmin')) {
+                $users = User::all();
+            } else {
+                $users = User::whereHas('roles', function ($query) {
+                    $query->where('name', '!=', 'Superadmin');
+                })->get();
+            }
+            return view('users-list', compact('users'));
         }
         catch(\Exception $ex){
             return response()->json([
@@ -32,7 +42,13 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        if (auth()->user()->hasRole('Superadmin')) {
+            $roles = Role::all();
+        } else {
+            $roles = Role::where('name', '!=', 'Superadmin')->get();
+        }
+
+        return view('UserManagement.users.user-create', compact('roles'));
     }
 
     /**
@@ -43,7 +59,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+        ]);
+
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+
+        $user = User::create($input);
+        if (!empty($request['roles'])) {
+            $user->assignRole($request->input('roles'));
+        }
+
+        return to_route('user_list')->with('success', 'Successfully created users!');
     }
 
     /**
@@ -63,9 +93,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        if (auth()->user()->hasRole('Superadmin')) {
+            $roles = Role::all();
+        } else {
+            $roles = Role::where('name', '!=', 'Superadmin')->get();
+        }
+        $userRole = $user->roles->pluck('id', 'id')->all();
+
+        return view('UserManagement.users.user-edit', compact('user', 'roles', 'userRole'));
     }
 
     /**
@@ -75,9 +112,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+            'password' => 'same:confirm-password'
+        ]);
+
+        $input = $request->all();
+        if (!empty($input['password'])) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            $input = Arr::except($input, array('password'));
+        }
+
+        $user->update($input);
+        $user->syncRoles($request->input('roles'));
+
+        return to_route('user_list')->with('success', 'Sucessfully User Update!');
     }
 
     /**
@@ -86,8 +139,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
     }
 }

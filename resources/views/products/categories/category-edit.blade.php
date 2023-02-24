@@ -64,7 +64,7 @@
                         </div>
                         <div class="mb-3 text-center">
                             <a href="{{ route('category_list') }}" class="btn btn-light mx-2">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-success">Save</button>
                         </div>
                     </form>
                 </div>
