@@ -28,7 +28,8 @@ function getMenuCategories($groupid)
     $main_categories = MainCategory::with('group','children')->where('group_id',$groupid)->get();
 
     // $categorygroups = CategoryGroup::publish()->get();
-    // dd($categorygroups);
+    dd($main_categories);
+    die();
     return $main_categories;
 }
 

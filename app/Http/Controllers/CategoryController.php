@@ -18,13 +18,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($gid)
     {
         try{
-            // dd("adfadf");
-            $categorygroup = CategoryGroup::publish()->get();
-
-            return view('frontend.categories',compact('categorygroup'));
+           
+            $maincategories = MainCategory::with('group','children')
+                            ->where('category_group_id',$gid)
+                                ->get();;
+            // dd($maincategories);
+            // die();
+            return view('frontend.categories',compact('maincategories'));
         }
         catch(\Exception $ex){
             return response()->json([

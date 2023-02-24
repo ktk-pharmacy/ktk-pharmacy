@@ -19,12 +19,12 @@
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css">
-    <link rel="shortcut icon" href="assets/images/ktk_icon_3tp.png" />
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{asset('assets/css/fontawesome.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/templatemo-edu-meeting.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/owl.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/lightbox.css')}}">
+    <link rel="shortcut icon" href="{{asset('/assets/images/ktk_icon_3tp.png')}}" />
+    <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
 
     <style type="text/css">
         /* .img {
