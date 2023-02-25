@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\ProductsController as ProductBackend;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryGroupController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ServiceSettingController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +30,8 @@ Route::controller(CategoryGroupController::class)
         Route::get('/category_group_edit/{category}', 'edit')->name('category_group_edit');
         Route::patch('/category_group_edit/{category}', 'update')->name('category_group_update');
         Route::delete('/category_group_delete/{category}', 'destroy')->name('category_group_destroy');
-        Route::get('/category_group_export','export')->name('category_group_export');
-        Route::post('/category_group_import','import')->name('category_group_import');
+        Route::get('/category_group_export', 'export')->name('category_group_export');
+        Route::post('/category_group_import', 'import')->name('category_group_import');
     });
 
 Route::controller(CategoryController::class)
@@ -57,4 +58,14 @@ Route::controller(SettingsController::class)
     ->group(function () {
         Route::get('/settings', 'index')->name('settings');
         Route::get('/update_setting', 'update')->name('update_setting');
+    });
+
+Route::controller(ServiceSettingController::class)
+    ->group(function () {
+        Route::get('/service_setting_list', 'service_setting_list')->name('service_setting_list');
+        Route::get('/service_setting_create', 'create')->name('service_setting_create');
+        Route::post('/service_setting_create', 'store')->name('service_setting_store');
+        Route::get('/service_setting_edit/{service}', 'edit')->name('service_setting_edit');
+        Route::patch('/service_setting_edit/{service}', 'update')->name('service_setting_update');
+        Route::delete('/service_setting_delete/{service}', 'destroy')->name('service_setting_destroy');
     });
