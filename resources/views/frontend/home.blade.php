@@ -12,7 +12,7 @@
                 <div class="caption">
               <!-- <h6>Hello Customer</h6> -->
               <h2>Welcome to KTK Pharmacy Co., Ltd.</h2>
-              <p>This is an ktk pharmacy who's selling the Pharmaceuticals & Consumer Daily Needs with fair prices in one place</p>
+              <p>This is an ktk pharmacy who''s selling the Pharmaceuticals & Consumer Daily Needs with fair prices in one place</p>
               <div class="main-button-red">
                   <div class="scroll-to-section"><a href="#contact">Inquiry Us for more detail!</a></div>
               </div>
@@ -138,7 +138,7 @@
                 <div class="col-12">
                   <div class="count-area-content">
                     <div class="count-title">32</div>
-                    <div class="count-title">Awards</div>
+                    <div class="count-title">Distributed Regions</div>
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@
             <div class="col-lg-12">
               <div class="item">
                 <h3>APPLY FOR BACHELOR DEGREE</h3>
-                <p>You are allowed to use this edu meeting CSS template for your school or university or business. You can feel free to modify or edit this layout.</p>
+                <p>You are allowed to usethis edu meeting CSS template for your school or university or business. You can feel free to modify or edit this layout.</p>
                 <div class="main-button-red">
                   <div class="scroll-to-section"><a href="#contact">Join Us Now!</a></div>
               </div>
@@ -37,7 +37,7 @@
                     <div class="content">
                         <p>
                             If you want to buy the latest collection of medical proudcts and consumer product, you may visit
-                             <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too KTK pharmacy website</a>. 
+                             <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too KTK pharmacy website</a>.
                              If you need a working contact form script, please visit
                             <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.
                         </p>

@@ -9,7 +9,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-sm-4">
-          
+
           <div class="right-icons">
             <ul>
               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -125,7 +125,13 @@
                 window.location.reload(true);
             }
         });
-      })
+      });
+
+      $.ajaxSetup({
+        headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+     });
     </script>
 </body>
 </html>

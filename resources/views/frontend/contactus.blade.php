@@ -2,8 +2,8 @@
 
 <section class="contact-us" id="contact">
     <div class="container">
-      
-    
+
+
     <div class="googlemap">
       <div class="mapouter">
         <div class="gmap_canvas">
@@ -25,7 +25,7 @@
                             <img width="50" height="100" class="contactus-logo" src="{{asset('assets/images/ktk_icon_1.png')}}" alt="">
                             <!-- <img width="50" height="100" alt=""> -->
                     </a>
-                    KTK Pharmacy company limited
+                    KTK Pharmacy
               </span>
               </li>
               <li>
@@ -34,17 +34,17 @@
               </li>
               <li>
                 <h6>Email Address</h6>
-               
+
                 <span> <img class="footerimage" src="../assets/images/email.png" alt=""> ktkpharmacy.info@gmail.com</span>
               </li>
               <li>
                 <h6>Street Address</h6>
-               
+
                 <span><img class="footerimage" src="../assets/images/home.png" alt=""> No A (11), 30 Street, Between 56 * 57 Street, Mandalay, Myanmar</span>
               </li>
               <li>
                 <h6>Website URL</h6>
-               
+
                 <span><img class="footerimage" src="../assets/images/webpage.png" alt=""> www.ktkpharmacy.com</span>
               </li>
             </ul>

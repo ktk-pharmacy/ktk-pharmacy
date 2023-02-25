@@ -16,9 +16,11 @@ Route::controller(HomeController::class)
         Route::get('/contact', 'contactus')->name('ContactUs');
     });
 
+// Route::post('language/{locale}', 'LanguageController')->name('change');
+
 Route::controller(LanguageController::class)
     ->group(function () {
-        Route::post('change/{locale}','change')->name('change');
+        Route::post('language/{locale}')->name('change');
     });
 
 Route::controller(BlogController::class)
@@ -28,8 +30,8 @@ Route::controller(BlogController::class)
 
 Route::controller(ProductFrontend::class)
     ->group(function () {
-        Route::get('/products', 'products')->name('products');
-        Route::get('/product_detail', 'product_detail')->name('product_detail');
+        Route::get('/products/{id}', 'products')->name('products');
+        Route::get('/product_detail/{slug}', 'product_detail')->name('product_detail');
     });
 
 Route::controller(CategoryController::class)

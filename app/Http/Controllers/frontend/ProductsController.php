@@ -22,40 +22,49 @@ class ProductsController extends Controller
      */
     /* Front End */
     /** Product Category*/
-    public function categories()
-    {
-        try{
-            return view('frontend.categories');
-        }
-        catch(\Exception $ex){
-            return response()->json([
-                'message' => 'Something Went Wrong ProductsController.index',
-                'error' => $ex->getMessage()
-            ],400);
-        }
-    }
+    // public function categories()
+    // {
+    //     try{
+    //         return view('frontend.categories');
+    //     }
+    //     catch(\Exception $ex){
+    //         return response()->json([
+    //             'message' => 'Something Went Wrong ProductsController.index',
+    //             'error' => $ex->getMessage()
+    //         ],400);
+    //     }
+    // }
     /**Product List*/
-    public function products()
+    public function products($cat_id)
     {
         try{
-            return view('frontend.product-list');
+            $products = Products::publish()
+                        ->with('brand','sub_category')
+                        ->where('sub_category_id',$cat_id)
+                        ->get();
+            // dd($products);
+            return view('frontend.product-list',compact('products'));
         }
         catch(\Exception $ex){
             return response()->json([
-                'message' => 'Something Went Wrong ProductsController.index',
+                'message' => 'Something Went Wrong ProductsController.products',
                 'error' => $ex->getMessage()
             ],400);
         }
     }
 
-    public function product_detail()
+    public function product_detail($slug)
     {
         try{
-            return view('frontend.product-details');
+           $products = Products::publish()
+                        ->with('sub_category')
+                        ->where('slug',$slug)
+                        ->get();
+            return view('frontend.product-details',compact('products'));
         }
         catch(\Exception $ex){
             return response()->json([
-                'message' => 'Something Went Wrong ProductsController.index',
+                'message' => 'Something Went Wrong ProductsController.product_detail',
                 'error' => $ex->getMessage()
             ],400);
         }
@@ -70,7 +79,7 @@ class ProductsController extends Controller
         }
         catch(\Exception $ex){
             return response()->json([
-                'message' => 'Something Went Wrong ProductsController.index',
+                'message' => 'Something Went Wrong ProductsController.product_list',
                 'error' => $ex->getMessage()
             ],400);
         }

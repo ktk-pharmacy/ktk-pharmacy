@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mm">
 
   <head>
 
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="TemplateMo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
 
     <title>KTK Pharmacy</title>
 
@@ -15,16 +17,16 @@
 
     <link h
 
-    <link href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{asset('assets/css/fontawesome.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/templatemo-edu-meeting.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/owl.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/lightbox.css')}}">
-    <link rel="shortcut icon" href="{{asset('/assets/images/ktk_icon_3tp.png')}}" />
-    <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <link rel="stylesheet" href="../assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../assets/css/templatemo-edu-meeting.css">
+    <link rel="stylesheet" href="../assets/css/owl.css">
+    <link rel="stylesheet" href="../assets/css/lightbox.css">
+    <link rel="shortcut icon" href="../assets/images/ktk_icon_3tp.png" />
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 
     <style type="text/css">
         /* .img {
@@ -55,7 +57,6 @@
                       <!-- ***** Menu Start ***** -->
                       @php
                          $categorygroup = getGroupCategories();
-
                       @endphp
 
                       <ul class="nav">
@@ -78,21 +79,30 @@
                                   <li><a href="meeting-details.html">CSR</a></li>
                               </ul>
                           </li>
+                          @php
+                                $current_lang = session()->get('locale');
+
+                          @endphp
                           <li class="has-sub">
                               <a href="javascript:void(0);"
 															id="change-language"
-															data-url="{{ route('change', 'en') }}">Language</a>
+															data-url="{{ route('change', 'en')}}">Language</a>
                               <ul class="sub-menu">
                                   <li>
                                     <a class="dropdown-item" href="#">
-                                        <i class="footerimage"><img class="footerimage" src="assets/images/united-kingdom.png" alt=""> </i>English
+                                        <i class="footerimage">
+                                            {{--  <img class="footerimage" src="asset('assets/images/united-kingdom.png')" alt="">  --}}
+                                            {{--  <img class="footerimage"  src="asset('assets/images/united-kingdom.png')" alt="">  --}}
+                                        </i>English
                                         <i class="fa fa-check text-success ms-2"></i></a>
                                     </li>
                                   <li>
                                     <a href="javascript:void(0);"
 															id="change-language"
 															data-url="{{ route('change', 'mm') }}">
-                                        <i class="footerimage"><img class="footerimage" src="assets/images/myanmar.png" alt=""> </i>မြန်မာ
+                                        <i class="footerimage">
+                                            {{--  <img class="footerimage" src="asset('assets/images/myanmar.png')" alt="">   --}}
+                                        </i>မြန်မာ
                                     </a>
                                 </li>
 
