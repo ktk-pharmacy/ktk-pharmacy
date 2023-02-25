@@ -57,7 +57,8 @@ Route::controller(BrandController::class)
 Route::controller(SettingsController::class)
     ->group(function () {
         Route::get('/settings', 'index')->name('settings');
-        Route::get('/update_setting', 'update')->name('update_setting');
+        // Route::patch('/update_setting', 'update')->name('update_setting');
+        Route::post('/settings', 'update')->name('settings_update');
     });
 
 Route::controller(ServiceSettingController::class)
