@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\setting\Settings;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -14,14 +14,14 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        try{
-            return view('settings.setting');
-        }
-        catch(\Exception $ex){
+        try {
+            $site_settings = site_settings();
+            return view('settings.setting', compact('site_settings'));
+        } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong SettingsController.index',
                 'error' => $ex->getMessage()
-            ],400);
+            ], 400);
         }
     }
 
@@ -75,9 +75,15 @@ class SettingsController extends Controller
      * @param  \App\Models\setting\Settings  $settings
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Settings $settings)
+    public function update(Request $request)
     {
-        //
+        $keys = $request->except('_token');
+        foreach ($keys as $key => $value) {
+            $entry = Settings::where('key', $key)->firstOrFail();
+            $entry->value = $value;
+            $entry->saveOrFail();
+        }
+        return redirect()->back()->with('success', 'Successfully updated');
     }
 
     /**
