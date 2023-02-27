@@ -17,7 +17,7 @@
                                 </h4>
                                 <div class="form-group mt-3">
                                     <input type="text" class="form-control" name="title"
-                                        placeholder="Enter content title" required>
+                                        placeholder="Enter content title" value="{{ old('title') }}" required>
                                 </div>
                             </div> <!-- end col -->
 
@@ -38,7 +38,7 @@
                             <div class="col-md-7">
                                 <h4 class="header-title mt-5 mt-sm-0">Description <span class="text-danger">*</span>
                                 </h4>
-                                <textarea name="description" class="summernote"></textarea>
+                                <textarea name="description" class="summernote">{{ old('description') }}</textarea>
                             </div>
 
                             <div class="col-md-5">

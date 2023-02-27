@@ -46,9 +46,11 @@
                                     </td>
                                     <td>{!! getStatusBadge($content->status) !!}</td>
                                     <td>
-                                        <a href="" class="mx-2"><i class="fa-regular fa-pen-to-square"></i></a>
-                                        <a href="javascript:void(0)" data-url="" class="text-danger delete-btn"><i
-                                                class="fa-solid fa-square-xmark"></i></a>
+                                        <a href="{{ route('content_edit', $content->id) }}" class="mx-2"><i
+                                                class="fa-regular fa-pen-to-square"></i></a>
+                                        <a href="javascript:void(0)"
+                                            data-url="{{ route('content_destroy', $content->id) }}"
+                                            class="text-danger delete-btn"><i class="fa-solid fa-square-xmark"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

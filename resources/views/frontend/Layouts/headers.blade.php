@@ -63,11 +63,20 @@
                                 <a href="{{ url('products') }}">Products</a>
                                 <ul class="sub-menu">
                                     @foreach ($categorygroup as $catg)
-                                        <li><a href="{{ url('categories/' . $catg->id) }}">{{ $catg->name }}</a></li>
+                                        <li><a href="{{ url('categories/' . $catg->id) }}">{{ $catg->name }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="{{ url('blogs') }}">News & Blog</a></li>
+                            <li class="has-sub">
+                                <a href="javascript:void(0)">Content</a>
+                                {{-- <a href="{{ url('blogs') }}">News & Blog</a> --}}
+                                <ul class="sub-menu">
+                                    @foreach (getContentType() as $type)
+                                        <li><a href="{{ url("contents/$type->slug") }}">{{ $type->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             <li class="has-sub">
                                 <a href="javascript:void(0)">Contact Us</a>
                                 <ul class="sub-menu">

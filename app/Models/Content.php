@@ -31,6 +31,11 @@ class Content extends Model
         return $query->where('status', true);
     }
 
+    public function scopeTypeIn($query, $value)
+    {
+        return $query->where('content_type_id', $value);
+    }
+
     public function type()
     {
         return $this->belongsTo(ContentType::class, 'content_type_id');

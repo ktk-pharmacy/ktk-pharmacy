@@ -10,6 +10,21 @@ use Illuminate\Http\Request;
 class ContentController extends Controller
 {
     use GenerateSlug;
+
+    public function index($slug)
+    {
+        try {
+            $content_type = ContentType::where('slug', $slug)->first();
+            $contents = Content::typeIn($content_type->id)->active()->paginate(3);
+            return view('frontend.blogs', compact('contents'));
+        } catch (\Exception $ex) {
+            return response()->json([
+                'message' => 'Something Went Wrong BlogController.index',
+                'error' => $ex->getMessage()
+            ], 400);
+        }
+    }
+
     public function content_list()
     {
         try {
@@ -40,6 +55,34 @@ class ContentController extends Controller
         $data['slug'] = $this->generateSlug($request->name, 'contents');
         Content::create($data);
         return to_route('content_list')->with('success', 'Successfully created!');
+    }
+
+    public function edit(Content $content)
+    {
+        $content_types = ContentType::publish()->get();
+        return view('contents.content.content-edit', compact('content_types', 'content'));
+    }
+
+    public function update(Request $request, Content $content)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+        $data = $this->helperContent($request);
+        if ($data['title'] ?? $request->title != $content->title) {
+            $data['slug'] = $this->generateSlug($data['title'] ?? $request->title, 'contents');
+        }
+        $content->update($data);
+        return to_route('content_list')->with('success', 'Successfully updated!');
+    }
+
+    public function destroy(Content $content)
+    {
+        $content->update([
+            'status' => false,
+            'deleted_at' => now()
+        ]);
     }
 
     private function helperContent($request)
