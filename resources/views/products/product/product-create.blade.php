@@ -55,7 +55,7 @@
                                     class="form-control" value="{{ old('packaging') }}">
                             </div>
                             <div class="mb-3 col-6">
-                                <label for="" class="form-label">MOU <span class="text-danger">*</span></label>
+                                <label for="" class="form-label">MOU </label>
                                 <input type="text" placeholder="Enter MOU" id="" name="MOU"
                                     class="form-control" value="{{ old('MOU') }}">
                             </div>
@@ -113,8 +113,7 @@
                 <div class="table-responsive">
                     <!-- table table-striped -->
                     <div class="mb-3">
-                        <label for="image" class="form-label">Product Image <span
-                                class="text-danger">*</span></label>
+                        <label for="image" class="form-label">Product Image </label>
                         <input form="product_form" type="file" id="image" name="image"
                             data-max-file-size="1000K"
                             data-allowed-file-extensions='["png", "PNG", "jpg", "JPG", "jpeg", "JPEG"]'

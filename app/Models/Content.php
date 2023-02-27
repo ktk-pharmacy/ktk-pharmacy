@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 class Content extends Model
 {
     use HasFactory;
-    protected $filable = [
+    protected $fillable = [
         'title',
         'slug',
         'description',
+        'content_type_id',
         'image_url',
         'status',
         'deleted_at'
@@ -28,6 +29,11 @@ class Content extends Model
     public function scopeActive($query)
     {
         return $query->where('status', true);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(ContentType::class, 'content_type_id');
     }
 
     protected function imageUrl(): Attribute

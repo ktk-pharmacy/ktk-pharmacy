@@ -65,6 +65,12 @@
             </span>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('content_list') }}">
+                <i class="mdi mdi-contacts menu-icon"></i>
+                <span class="menu-title">Content</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('content_type_list') }}">
                 <i class="mdi mdi-contacts menu-icon"></i>
                 <span class="menu-title">Content Type</span>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->string('image_url');
+            $table->string('image_url')->default('assets/images/meeting-01.jpg');
             $table->longText('description');
             $table->boolean('status')->default(1)->comment('1 is Active, 0 is Unactive');
             $table->timestamp('deleted_at')->nullable();

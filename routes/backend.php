@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\ProductsController as ProductBackend;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryGroupController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContentController;
 use App\Http\Controllers\ContentTypeController;
 use App\Http\Controllers\ServiceSettingController;
 use App\Http\Controllers\SettingsController;
@@ -85,4 +86,14 @@ Route::controller(ContentTypeController::class)
         Route::post('/content_type_list', 'store')->name('content_type_store');
         Route::patch('/content_type_update/{content_type}', 'update')->name('content_type_update');
         Route::delete('/content_type_delete/{content_type}', 'destory')->name('content_type_destroy');
+    });
+
+Route::controller(ContentController::class)
+    ->group(function () {
+        Route::get('/content_list', 'content_list')->name('content_list');
+        Route::get('/content_create', 'create')->name('content_create');
+        Route::post('/content_create', 'store')->name('content_store');
+        Route::get('/content_edit/{content}', 'edit')->name('content_edit');
+        Route::patch('/content_edit/{content}', 'update')->name('content_update');
+        Route::delete('/content_delete/{content}', 'destroy')->name('content_destroy');
     });
