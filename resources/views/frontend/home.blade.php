@@ -32,6 +32,57 @@
               <h2>Our Services</h2>
              </div>
           </div>
+          {{--  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <div class="icon">
+                  <img src="/assets/images/service-icon-01.png" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>Retails</h4>
+                  <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="icon">
+                  <img src="/assets/images/service-icon-02.png" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>Warehousing</h4>
+                  <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="icon">
+                <img src="/assets/images/service-icon-03.png" alt="">
+              </div>
+              <div class="down-content">
+                <h4>Distribution</h4>
+                <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
+              </div>
+              </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>  --}}
           <div class="owl-service-item owl-carousel">
             <div class="item">
               <div class="icon">
