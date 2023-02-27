@@ -14,16 +14,16 @@ class BlogController extends Controller
      */
     public function index()
     {
-        try{
+        try {
             return view('frontend.blogs');
-        }
-        catch(\Exception $ex){
+        } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong BlogController.index',
                 'error' => $ex->getMessage()
-            ],400);
+            ], 400);
         }
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,7 +32,6 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
