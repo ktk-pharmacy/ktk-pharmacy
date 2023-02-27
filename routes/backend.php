@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Frontend\ProductsController as ProductBackend;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryGroupController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContentTypeController;
 use App\Http\Controllers\ServiceSettingController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
@@ -69,4 +71,18 @@ Route::controller(ServiceSettingController::class)
         Route::get('/service_setting_edit/{service}', 'edit')->name('service_setting_edit');
         Route::patch('/service_setting_edit/{service}', 'update')->name('service_setting_update');
         Route::delete('/service_setting_delete/{service}', 'destroy')->name('service_setting_destroy');
+    });
+
+Route::controller(BlogController::class)
+    ->group(function () {
+        Route::get('/blog_list', 'blog_list')->name('blog_list');
+    });
+
+Route::controller(ContentTypeController::class)
+    ->group(function () {
+        Route::get('/content_type_list', 'content_type_list')->name('content_type_list');
+        Route::get('/content_type_form', 'content_type_form')->name('content_type_form');
+        Route::post('/content_type_list', 'store')->name('content_type_store');
+        Route::patch('/content_type_update/{content_type}', 'update')->name('content_type_update');
+        Route::delete('/content_type_delete/{content_type}', 'destory')->name('content_type_destroy');
     });

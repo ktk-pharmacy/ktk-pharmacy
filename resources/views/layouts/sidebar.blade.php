@@ -61,6 +61,17 @@
         </li>
         <li class="nav-item">
             <span class="nav-link" href="#">
+                <span class="menu-title font-weight-bold">Content Management</span>
+            </span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('content_type_list') }}">
+                <i class="mdi mdi-contacts menu-icon"></i>
+                <span class="menu-title">Content Type</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link" href="#">
                 <span class="menu-title font-weight-bold">User management </span>
             </span>
         </li>

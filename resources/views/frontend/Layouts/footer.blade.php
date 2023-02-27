@@ -34,8 +34,8 @@
                 {{ site_settings()['default_email'] }}
             </p>
             <p>
-                <img class="footerimage" src="../assets/images/home.png"
-                    alt="">{{ site_settings()['default_address'] }}
+                <img class="footerimage" src="../assets/images/home.png" alt="">
+                {{ site_settings()['default_address'] }}
             </p>
             <p>
                 <img class="footerimage" src="../assets/images/webpage.png" alt="">
