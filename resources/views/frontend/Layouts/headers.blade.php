@@ -22,6 +22,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/lightbox.css') }}">
     <link rel="shortcut icon" href="{{ asset('/assets/images/ktk_icon_3tp.png') }}" />
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- endFontAwesome -->
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 
     <style type="text/css">
@@ -91,14 +96,14 @@
                                     <li>
                                         <a class="dropdown-item" href="#">
                                             <i class="footerimage"><img class="footerimage"
-                                                    src="assets/images/united-kingdom.png" alt=""> </i>English
+                                                    src="/assets/images/united-kingdom.png" alt=""> </i>English
                                             <i class="fa fa-check text-success ms-2"></i></a>
                                     </li>
                                     <li>
                                         <a href="javascript:void(0);" id="change-language"
                                             data-url="{{ route('change', 'mm') }}">
                                             <i class="footerimage"><img class="footerimage"
-                                                    src="assets/images/myanmar.png" alt=""> </i>မြန်မာ
+                                                    src="/assets/images/myanmar.png" alt=""> </i>မြန်မာ
                                         </a>
                                     </li>
 

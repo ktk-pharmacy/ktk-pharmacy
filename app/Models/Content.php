@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
@@ -45,6 +46,13 @@ class Content extends Model
     {
         return Attribute::make(
             get: fn ($v) => asset($v),
+        );
+    }
+
+    protected function shortDesc(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Str::limit(strip_tags($this->description), 180, '...')
         );
     }
 }

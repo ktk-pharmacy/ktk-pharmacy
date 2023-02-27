@@ -11,10 +11,14 @@
 
                 <div class="right-icons">
                     <ul>
-                        <li><a href="{{ site_settings()['social_facebook'] }}"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="{{ site_settings()['social_twitter'] }}"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="{{ site_settings()['social_instagram'] }}"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="{{ site_settings()['social_linkedin'] }}"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="{{ site_settings()['social_facebook'] }}"><i class="fa-brands fa-facebook"></i></a>
+                        </li>
+                        <li><a href="{{ site_settings()['social_twitter'] }}"><i class="fa-brands fa-twitter"></i></a>
+                        </li>
+                        <li><a href="{{ site_settings()['social_instagram'] }}"><i
+                                    class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="{{ site_settings()['social_linkedin'] }}"><i
+                                    class="fa-brands fa-linkedin"></i></i></a></li>
                     </ul>
                 </div>
 
