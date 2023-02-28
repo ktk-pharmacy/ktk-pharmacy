@@ -83,13 +83,14 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li class="has-sub">
+                            <li><a href="{{ url('contact') }}">Contact Us</a></li>
+                            {{-- <li class="has-sub">
                                 <a href="javascript:void(0)">Contact Us</a>
                                 <ul class="sub-menu">
                                     <li><a href="{{ url('contact') }}">Contact Us</a></li>
                                     <li><a href="meeting-details.html">CSR</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li class="has-sub">
                                 <a href="javascript:void(0);" id="change-language"
                                     data-url="{{ route('change', 'en') }}">Language</a>
