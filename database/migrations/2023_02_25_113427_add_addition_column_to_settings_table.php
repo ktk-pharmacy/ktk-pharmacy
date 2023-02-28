@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::table('settings', function (Blueprint $table) {
             $table->string('key')->after('id');
+            $table->string('key_mm')->after('key')->nullable();;
             $table->text('value')->after('key')->nullable();
+            $table->text('value_mm')->after('value')->nullable();
         });
     }
 
@@ -28,7 +30,7 @@ return new class extends Migration
     {
         Schema::table('settings', function (Blueprint $table) {
             $table->dropColumn([
-                'key', 'value'
+                'key','key_mm', 'value','value_mm'
             ]);
         });
     }

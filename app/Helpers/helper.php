@@ -39,8 +39,10 @@ function site_settings()
 {
     foreach (Settings::all() as $setting) {
         $data[$setting->key] = $setting->value;
+        $data[$setting->key_mm] = $setting->value_mm;
     }
-
+    // dd($data);
+    // die();
     return $data;
 }
 
