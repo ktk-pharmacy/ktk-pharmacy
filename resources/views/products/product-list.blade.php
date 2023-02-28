@@ -22,19 +22,18 @@
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <h3 class="mb-2">Import Products</h3>
-                                    <form action="{{ route('product_import') }}" id="import_category_groups" method="POST"
-                                        enctype="multipart/form-data">
+                                    <form action="{{ route('product_import') }}" id="import_category_groups"
+                                        method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <label for="file" class="form-label mb-1">Please choose a file</label>
-                                        <input type="file" id="name"
-                                            name="file"
-                                            class="form-control">
+                                        <input type="file" id="name" name="file" class="form-control">
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" form="import_category_groups" class="btn btn-primary">Import</button>
+                                    <button type="submit" form="import_category_groups"
+                                        class="btn btn-primary">Import</button>
                                 </div>
                             </div>
                         </div>
@@ -46,11 +45,12 @@
                 </div>
                 <div class="table-responsive">
                     <!-- table table-striped -->
-                    <table  class="table w-full text-xl border-green" id="table">
+                    <table class="table w-full text-xl border-green" id="table">
                         <thead>
                             <tr>
                                 <th>Product</th>
                                 <th>Name</th>
+                                <th>Name MM</th>
                                 <th>Availability</th>
                                 <th>Category</th>
                                 <th>Distributed By</th>
@@ -65,7 +65,8 @@
                                         <img src="{{ $product->image_url }}" alt="">
                                     </td>
                                     <td>
-                                        <a style="text-decoration: none" class=" text-dark" href="{{ route('product_edit',$product->id) }}"><b>{{ $product->name }}</b></a>
+                                        <a style="text-decoration: none" class=" text-dark"
+                                            href="{{ route('product_edit', $product->id) }}"><b>{{ $product->name }}</b></a>
                                     </td>
                                     <td>
                                         {!! getAvaliableBadge($product->availability) !!}
@@ -73,15 +74,18 @@
                                     <td>
                                         {{ $product->sub_category->name }}
                                     </td>
+                                    <td>
+                                        {{ $product->sub_category->name_mm }}
+                                    </td>
                                     <td>{{ $product->distributed_by }}</td>
                                     <td>
                                         {!! getStatusBadge($product->status) !!}
                                     </td>
                                     <td>
-                                        <a href="{{ route('product_edit',$product->id) }}"
-                                            class="mx-2"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        <a href="{{ route('product_edit', $product->id) }}" class="mx-2"><i
+                                                class="fa-regular fa-pen-to-square"></i></a>
                                         <a href="javascript:void(0)"
-                                            data-url="{{ route('product_destroy',$product->id) }}"
+                                            data-url="{{ route('product_destroy', $product->id) }}"
                                             class="text-danger delete-btn"><i class="fa-solid fa-square-xmark"></i></a>
                                     </td>
                                 </tr>

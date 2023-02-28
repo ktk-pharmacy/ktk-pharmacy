@@ -27,6 +27,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
+                                <th>Name MM</th>
                                 <th>Content Count</th>
                                 <th>Action</th>
                             </tr>
@@ -36,6 +37,7 @@
                                 <tr>
                                     <td>{{ $key += 1 }}</td>
                                     <td>{{ $content_type->name }}</td>
+                                    <td>{{ $content_type->name_mm }}</td>
                                     <td class="pl-5">
                                         {{ count($content_type->blogs) }}
                                     </td>
@@ -43,6 +45,7 @@
                                         @if (!in_array($content_type->id, [1, 2]))
                                             <a href="javascript:void(0);" class="mx-2 edit-btn" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal" data-name="{{ $content_type->name }}"
+                                                data-name-mm="{{ $content_type->name_mm }}"
                                                 data-url="{{ route('content_type_update', $content_type->id) }}">
                                                 <i class="fa-regular fa-pen-to-square"></i>
                                             </a>
@@ -90,6 +93,7 @@
         $('.edit-btn').click(function(e) {
             var url = $(this).data('url');
             var name = $(this).data('name');
+            var name_mm = $(this).data('name-mm')
             e.preventDefault();
 
             $.ajax({
@@ -99,6 +103,7 @@
                     $('#modal_container').html(response);
 
                     $('#name').val(name);
+                    $('#name_mm').val(name_mm);
                     $('#content_type_method').val('PATCH');
                     $('#content_type_form').attr('action', url);
                 }

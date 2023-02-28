@@ -15,7 +15,10 @@ class SettingsController extends Controller
     public function index()
     {
         try {
-            $site_settings = site_settings();
+            foreach (Settings::all() as $setting) {
+                $site_settings[$setting->key]['value'] = $setting->value;
+                $site_settings[$setting->key]['value_mm'] = $setting->value_mm;
+            }
             return view('settings.setting', compact('site_settings'));
         } catch (\Exception $ex) {
             return response()->json([
@@ -79,9 +82,16 @@ class SettingsController extends Controller
     {
         $keys = $request->except('_token');
         foreach ($keys as $key => $value) {
-            $entry = Settings::where('key', $key)->firstOrFail();
-            $entry->value = $value;
-            $entry->saveOrFail();
+            $entry = Settings::where('key', $key)->first();
+
+            if ($entry) {
+                $entry->value = $value;
+                $entry->saveOrFail();
+            } else {
+                $new_entry = Settings::where('key', str_replace("_mm", "", $key))->firstOrFail();
+                $new_entry->value_mm = $value;
+                $new_entry->saveOrFail();
+            }
         }
         return redirect()->back()->with('success', 'Successfully updated');
     }

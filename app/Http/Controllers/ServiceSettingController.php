@@ -118,6 +118,7 @@ class ServiceSettingController extends Controller
     private function helperService($request)
     {
         $data['title'] = $request->title;
+        $data['title_mm'] = $request->title_mm;
         $data['description'] = $request->description;
         $data['status'] = $request->status ? true : false;
         if ($request->hasFile('image')) {

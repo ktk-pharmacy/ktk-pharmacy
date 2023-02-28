@@ -11,11 +11,11 @@
                 <div class="col-lg-12">
                     <div class="caption">
                         <!-- <h6>Hello Customer</h6> -->
-                        <h2>Welcome to KTK Pharmacy Co., Ltd.</h2>
-                        <p>This is an ktk pharmacy who''s selling the Pharmaceuticals & Consumer Daily Needs with fair
-                            prices in one place</p>
+                        <h2>{{ site_settings()['site_title'] }}</h2>
+                        <p>{{ site_settings()['header_text'] }}</p>
                         <div class="main-button-red">
-                            <div class="scroll-to-section"><a href="#contact">Inquiry Us for more detail!</a></div>
+                            <div class="scroll-to-section"><a href="{{ route('ContactUs') }}">Inquiry Us for more
+                                    detail!</a></div>
                         </div>
                     </div>
                 </div>
@@ -30,21 +30,23 @@
             <div class="col-lg-12">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>Our Services</h2>
+                        <h2>{{ __('root.services') }}</h2>
                     </div>
                 </div>
-                <div class="owl-service-item owl-carousel">
-                    <div class="item">
-                        <div class="icon">
-                            <img src="/assets/images/service-icon-01.png" alt="">
+                <div class="owl-service-item owl-carousel col-12">
+                    @foreach ($service_settings as $service)
+                        <div class="item">
+                            <div class="icon">
+                                <img src="{{ $service->image_url }}" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>{{ $service->titleFilter }}</h4>
+                                <p>{{ $service->description }}</p>
+                            </div>
                         </div>
-                        <div class="down-content">
-                            <h4>Retails</h4>
-                            <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non
-                                vestibulum.</p>
-                        </div>
-                    </div>
-                    <div class="item">
+                    @endforeach
+
+                    {{-- <div class="item">
                         <div class="icon">
                             <img src="/assets/images/service-icon-02.png" alt="">
                         </div>
@@ -73,14 +75,14 @@
                             <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non
                                 vestibulum.</p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section class="blank-space" height="100">
-    <div>
+<section class="blank-space" height="700px">
+    <div height="200px">
         <h2>sdadas</h2>
     </div>
 </section>
@@ -88,8 +90,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2>Our Partners</h2>
+                <div class="section-heading partner">
+                    <h2>{{ __('root.partners') }}</h2>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -114,21 +116,21 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>A Few Facts About Our Company</h2>
+                        <h2>{{ __('root.facts_or_co.lt') }}</h2>
                     </div>
                     <div class="col-lg-6">
                         <div class="row">
                             <div class="col-12">
                                 <div class="count-area-content">
                                     <div class="count-title">{{ site_settings()['default_staffs'] }} +</div>
-                                    <div class="count-title">Staffs</div>
+                                    <div class="count-title">{{ __('root.staffs') }}</div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="count-area-content">
                                     <!-- <div class="count-digit">250+</div> -->
                                     <div class="count-title">{{ site_settings()['default_curr_partner'] }} +</div>
-                                    <div class="count-title">Current Partners</div>
+                                    <div class="count-title">{{ __('root.current partners') }}</div>
                                 </div>
                             </div>
                         </div>
@@ -139,13 +141,13 @@
                                 <!--  new-students -->
                                 <div class="count-area-content">
                                     <div class="count-title">{{ site_settings()['default_products'] }} +</div>
-                                    <div class="count-title">Products</div>
+                                    <div class="count-title">{{ __('header.products') }}</div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="count-area-content">
-                                    <div class="count-title">32</div>
-                                    <div class="count-title">Awards</div>
+                                    <div class="count-title">{{ site_settings()['default_dist_region'] }}</div>
+                                    <div class="count-title">{{ __('root.distributed_region') }}</div>
                                 </div>
                             </div>
                         </div>
