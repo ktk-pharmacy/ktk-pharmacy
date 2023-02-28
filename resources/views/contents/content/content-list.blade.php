@@ -46,6 +46,7 @@
                                     </td>
                                     <td>{!! getStatusBadge($content->status) !!}</td>
                                     <td>
+
                                         <a href="{{ route('content_edit', $content->id) }}" class="mx-2"><i
                                                 class="fa-regular fa-pen-to-square"></i></a>
                                         <a href="javascript:void(0)"

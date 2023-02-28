@@ -1,11 +1,10 @@
 <?php
-
-use App\Models\Settings;
-use App\Models\ContentType;
-use App\Models\SubCategory;
-use App\Models\MainCategory;
 use App\Models\CategoryGroup;
-
+use App\Models\MainCategory;
+use App\Models\Settings;
+use App\Models\SubCategory;
+use App\Models\ServiceSetting;
+use App\Models\ContentType;
 
 function getStatusBadge($status)
 {
@@ -45,7 +44,13 @@ function site_settings()
     return $data;
 }
 
+
 function getContentType()
 {
     return ContentType::publish()->get();
+}
+function get_service_setting(){
+    $services = ServiceSetting::publish()->get();
+    return $services;
+
 }

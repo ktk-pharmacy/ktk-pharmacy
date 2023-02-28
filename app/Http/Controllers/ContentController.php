@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 class ContentController extends Controller
 {
     use GenerateSlug;
-
     public function index($slug)
     {
         try {
@@ -56,6 +55,7 @@ class ContentController extends Controller
         Content::create($data);
         return to_route('content_list')->with('success', 'Successfully created!');
     }
+
 
     public function edit(Content $content)
     {

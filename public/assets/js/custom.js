@@ -131,6 +131,7 @@
 	  })
 
 	$('.owl-courses-item').owlCarousel({
+
 		items:4,
 		loop:true,
 		dots: true,
@@ -316,3 +317,6 @@
 
 
 })(window.jQuery);
+
+
+

@@ -14,7 +14,6 @@ class ServiceSettingController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
