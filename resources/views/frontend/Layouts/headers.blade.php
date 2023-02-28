@@ -62,28 +62,29 @@
                         @endphp
 
                         <ul class="nav">
-                            <li><a href="{{ url('home') }}">Home</a></li>
+                            <li><a href="{{ url('home') }}">{{ __('header.home') }}</a></li>
                             <!-- <li class="scroll-to-section"><a href="{{ url('home') }}">Home</a></li> -->
-                            <li><a href="{{ url('about') }}">About Us</a></li>
+                            <li><a href="{{ url('about') }}">{{ __('header.about_us') }}</a></li>
                             <li class="has-sub">
-                                <a href="{{ url('products') }}">Products</a>
+                                <a href="{{ url('products') }}">{{ __('header.products') }}</a>
                                 <ul class="sub-menu">
                                     @foreach ($categorygroup as $catg)
-                                        <li><a href="{{ url('categories/' . $catg->id) }}">{{ $catg->name }}</a>
+                                        <li><a href="{{ url('categories/' . $catg->id) }}">{{ $catg->nameFilter }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
                             </li>
                             <li class="has-sub">
-                                <a href="javascript:void(0)">Content</a>
+                                <a href="javascript:void(0)">{{ __('header.content') }}</a>
                                 {{-- <a href="{{ url('blogs') }}">News & Blog</a> --}}
                                 <ul class="sub-menu">
                                     @foreach (getContentType() as $type)
-                                        <li><a href="{{ url("contents/$type->slug") }}">{{ $type->name }}</a></li>
+                                        <li><a href="{{ url("contents/$type->slug") }}">{{ $type->nameFilter }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="{{ url('contact') }}">Contact Us</a></li>
+                            <li><a href="{{ url('contact') }}">{{ __('header.contact_us') }}</a></li>
                             {{-- <li class="has-sub">
                                 <a href="javascript:void(0)">Contact Us</a>
                                 <ul class="sub-menu">
@@ -93,19 +94,26 @@
                             </li> --}}
                             <li class="has-sub">
                                 <a href="javascript:void(0);" id="change-language"
-                                    data-url="{{ route('change', 'en') }}">Language</a>
+                                    data-url="{{ route('change', 'en') }}">{{ __('header.language') }}</a>
                                 <ul class="sub-menu">
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ url('/language/en') }}">
                                             <i class="footerimage"><img class="footerimage"
                                                     src="/assets/images/united-kingdom.png" alt=""> </i>English
-                                            <i class="fa fa-check text-success ms-2"></i></a>
+                                            @if (session()->get('locale') == 'en')
+                                                <i class="fa fa-check text-success ms-2"></i>
+                                            @endif
+                                        </a>
+
+
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0);" id="change-language"
-                                            data-url="{{ route('change', 'mm') }}">
+                                        <a href="{{ url('/language/mm') }}" {{-- data-url="{{ route('change', 'mm') }}" --}}>
                                             <i class="footerimage"><img class="footerimage"
                                                     src="/assets/images/myanmar.png" alt=""> </i>မြန်မာ
+                                            @if (session()->get('locale') == 'mm')
+                                                <i class="fa fa-check text-success ms-2"></i>
+                                            @endif
                                         </a>
                                     </li>
 

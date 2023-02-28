@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\CategoryGroup;
 use App\Models\MainCategory;
 use App\Models\Settings;
@@ -38,8 +39,7 @@ function getMenuCategories($groupid)
 function site_settings()
 {
     foreach (Settings::all() as $setting) {
-        $data[$setting->key] = $setting->value;
-        $data[$setting->key_mm] = $setting->value_mm;
+        $data[$setting->key] = $setting->valueFilter;
     }
     // dd($data);
     // die();
@@ -51,8 +51,8 @@ function getContentType()
 {
     return ContentType::publish()->get();
 }
-function get_service_setting(){
+function get_service_setting()
+{
     $services = ServiceSetting::publish()->get();
     return $services;
-
 }
