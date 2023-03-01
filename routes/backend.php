@@ -9,6 +9,7 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\ContentTypeController;
 use App\Http\Controllers\ServiceSettingController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -98,5 +99,15 @@ Route::middleware('auth')
                 Route::get('/content_edit/{content}', 'edit')->name('content_edit');
                 Route::patch('/content_edit/{content}', 'update')->name('content_update');
                 Route::delete('/content_delete/{content}', 'destroy')->name('content_destroy');
+            });
+
+        Route::controller(SliderController::class)
+            ->group(function () {
+                Route::get('/slider_list', 'slider_list')->name('slider_list');
+                Route::get('/slider_create', 'create')->name('slider_create');
+                Route::post('/slider_create', 'store')->name('slider_store');
+                Route::get('/slider_edit/{slider}', 'edit')->name('slider_edit');
+                Route::patch('/slider_edit/{slider}', 'update')->name('slider_update');
+                Route::delete('/slider_delete/{slider}', 'destroy')->name('slider_destroy');
             });
     });

@@ -49,7 +49,7 @@
     <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
     <style>
         .tb-card {
-           overflow-x: scroll !important;
+            overflow-x: scroll !important;
         }
     </style>
 </head>
@@ -206,27 +206,41 @@
 
             //SummerNote js
             $('.summernote').summernote({
-            height: 200,
-            minHeight: null,
-            maxHeight: null,
-            focus: false, // set focus to editable area after initializing summernote
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'italic', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['insert', ['link']],
-                ['view', ['help']]
-            ]
-        });
-
-        //switchery Js
-        var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
-        elems.forEach(function(html) {
-            var switchery = new Switchery(html, {
-                size: 'small'
+                height: 200,
+                minHeight: null,
+                maxHeight: null,
+                focus: false, // set focus to editable area after initializing summernote
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link']],
+                    ['view', ['help']]
+                ]
             });
-        });
+
+            //switchery Js
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
+            elems.forEach(function(html) {
+                var switchery = new Switchery(html, {
+                    size: 'small'
+                });
+            });
+
+            $('.form-btn').click(function(e) {
+                e.preventDefault();
+                var url = $(this).data('url');
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    success: function(view) {
+                        $('.modal-content').html(view);
+                        $('#image').dropify();
+                    }
+                });
+            });
+            //end
         });
     </script>
 </body>

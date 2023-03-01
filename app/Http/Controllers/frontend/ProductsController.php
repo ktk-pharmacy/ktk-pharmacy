@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Exports\ProductsExport;
 use App\Http\Controllers\Controller;
 use App\Imports\ProductsImport;
+use App\Models\SubCategory;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductsController extends Controller
@@ -35,15 +36,15 @@ class ProductsController extends Controller
     //     }
     // }
     /**Product List*/
-    public function products($cat_id)
+    public function products(SubCategory $sub_category)
     {
         try {
             $products = Products::publish()
                 ->with('brand', 'sub_category')
-                ->where('sub_category_id', $cat_id)
+                ->where('sub_category_id', $sub_category->id)
                 ->get();
-            // dd($products);
-            return view('frontend.product-list', compact('products'));
+            $sub_ctgs = SubCategory::all();
+            return view('frontend.product-list', compact('products', 'sub_category', 'sub_ctgs'));
         } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong ProductsController.products',
@@ -55,11 +56,11 @@ class ProductsController extends Controller
     public function product_detail($slug)
     {
         try {
-            $products = Products::publish()
+            $product = Products::publish()
                 ->with('sub_category')
                 ->where('slug', $slug)
-                ->get();
-            return view('frontend.product-details', compact('products'));
+                ->first();
+            return view('frontend.product-details', compact('product'));
         } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong ProductsController.product_detail',

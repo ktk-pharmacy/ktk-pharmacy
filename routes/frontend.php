@@ -5,7 +5,6 @@ use App\Http\Controllers\Frontend\ProductsController as ProductFrontend;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CategoryGroupController;
 use App\Http\Controllers\ContentController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,13 +37,13 @@ Route::controller(BlogController::class)
 
 Route::controller(ProductFrontend::class)
     ->group(function () {
-        Route::get('/products/{id}', 'products')->name('products');
+        Route::get('/products/{sub_category}', 'products')->name('products');
         Route::get('/product_detail/{slug}', 'product_detail')->name('product_detail');
     });
 
 Route::controller(CategoryController::class)
     ->group(function () {
-        Route::get('/categories/{id}', 'index')->name('categories');
+        Route::get('/categories/{slug}', 'index')->name('categories');
     });
 
 

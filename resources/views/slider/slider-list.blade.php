@@ -3,10 +3,10 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body tb-card">
-                <h4 class="card-title">Brand</h4>
+                <h4 class="card-title">Sliders</h4>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
-                    <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('brand_create') }}"
-                        id="add-btn" class="btn btn-primary mb-2 form-btn float-right btn-icon-text">
+                    <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('slider_create') }}"
+                        id="add-btn" class="btn btn-primary form-btn mb-2 float-right btn-icon-text">
                         <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
                     </button>
                     <!-- Modal -->
@@ -18,12 +18,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <button type="button" class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">
-                        <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import
-                    </button>
-                    <a href="{{ route('category_group_export') }}" class="btn btn-success mb-2  ml-2 float-left btn-icon-text">
-                        <i class="mdi mdi-file-download btn-icon-prepend"></i>Export
-                    </a> --}}
                 </div>
                 <div class="table-responsive">
                     <!-- table table-striped -->
@@ -32,29 +26,30 @@
                             <tr>
                                 <th>No</th>
                                 <th>Image</th>
-                                <th>Name</th>
+                                <th>Url</th>
                                 <th>Status</th>
                                 <th class="justify-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($brands as $key => $brand)
+                            @foreach ($sliders as $key => $slider)
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td class="py-1">
-                                        <img src="{{ $brand->image_url }}" alt="image" />
+                                        <img style="width:80px;height:40px;" src="{{ $slider->image_url }}"
+                                            alt="image" />
                                     </td>
-                                    <td>{{ $brand->name }}</td>
+                                    <td><b>{{ $slider->url }}</b></td>
                                     <td>
-                                        {!! getStatusBadge($brand->status) !!}
+                                        {!! getStatusBadge($slider->status) !!}
                                     </td>
                                     <td>
-                                        <button data-bs-toggle="modal" style="border: none;outline:none;"
+                                        <a href="javascript:void(0)" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"
-                                            data-url="{{ route('brand_edit', $brand->id) }}"
-                                            class="mx-2 text-primary form-btn"><i
-                                                class="fa-regular fa-pen-to-square"></i></button>
-                                        <a href="javascript:void(0)" data-url="{{ route('brand_destroy', $brand->id) }}"
+                                            data-url="{{ route('slider_edit', $slider->id) }}" class="mx-2 form-btn"><i
+                                                class="fa-regular fa-pen-to-square"></i></a>
+                                        <a href="javascript:void(0)"
+                                            data-url="{{ route('slider_destroy', $slider->id) }}"
                                             class="text-danger delete-btn"><i class="fa-solid fa-square-xmark"></i></a>
                                     </td>
                                 </tr>

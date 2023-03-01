@@ -100,18 +100,29 @@
             </a>
         </li>
         <li class="nav-item">
-            <span class="menu-title font-weight-bold">Settings</span>
+            <span class="nav-link" href="#">
+                <span class="menu-title font-weight-bold">Settings</span>
+            </span>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('slider_list') }}">
+                <i class="mdi mdi-settings menu-icon"></i>
+                <span class="menu-title">Slider</span>
+            </a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ route('settings') }}">
                 <i class="mdi mdi-settings menu-icon"></i>
-                <span>Site Setting</span>
+                <span class="menu-title">Site Setting</span>
             </a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ route('service_setting_list') }}">
                 <i class="mdi mdi-settings menu-icon"></i>
-                <span>Service Setting</span>
+                <span class="menu-title">Service Setting</span>
             </a>
         </li>
     </ul>
