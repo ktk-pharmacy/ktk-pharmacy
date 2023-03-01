@@ -17,6 +17,11 @@
                                 class="form-control" value="{{ old('title') }}">
                         </div>
                         <div class="mb-3">
+                            <label for="title_mm" class="form-label">Service Title MM</label>
+                            <input type="text" placeholder="Enter Title Here" id="title_mm" name="title_mm"
+                                class="form-control" value="{{ old('title_mm') }}">
+                        </div>
+                        <div class="mb-3">
                             <label for="description" class="form-label">Service Description</label>
                             {{-- <input type="text" placeholder="Enter Name Here" id="description" name="description"
                                 class="form-control" value="{{ old('description') }}"> --}}

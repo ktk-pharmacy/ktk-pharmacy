@@ -18,14 +18,21 @@ class DefaultContentTypesSeeder extends Seeder
     public function run()
     {
         $content_types = [
-            'News & Blogs',
-            'CSR'
+            [
+                'name' => 'News & Blogs',
+                'name_mm' => 'သတင်းများနှင့်ဘလော့များ'
+            ],
+            [
+                'name' => 'CSR',
+                'name_mm' => 'အသင်းအဖွဲ့ လူမှုရေး လုပ်ဆောင်ချက်များ'
+            ]
         ];
 
-        foreach ($content_types as $key => $name) {
+        foreach ($content_types as $key => $content_type) {
             ContentType::create([
-                'name' => $name,
-                'slug' => $this->generateSlug($name, 'content_types'),
+                'name' => $content_type['name'],
+                'name_mm' => $content_type['name_mm'],
+                'slug' => $this->generateSlug($content_type['name'], 'content_types'),
                 'deleted_at' => Null
             ]);
         }

@@ -11,6 +11,7 @@ class Products extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'name_mm',
         'slug',
         'description',
         'product_details',
@@ -49,10 +50,17 @@ class Products extends Model
         return $this->belongsTo(SubCategory::class, 'sub_category_id');
     }
 
-    protected function imageUrl():Attribute
+    protected function imageUrl(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => asset($value),
+        );
+    }
+
+    protected function nameFilter(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => session()->get('locale') == 'en' ? $this->name : $this->name_mm ?? $this->name,
         );
     }
 }

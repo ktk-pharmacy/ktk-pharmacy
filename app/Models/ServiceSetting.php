@@ -12,6 +12,7 @@ class ServiceSetting extends Model
 
     protected $fillable = [
         'title',
+        'title_mm',
         'image_url',
         'description',
         'status',
@@ -34,6 +35,13 @@ class ServiceSetting extends Model
     {
         return Attribute::make(
             get: fn ($value) => asset($value),
+        );
+    }
+
+    protected function titleFilter(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => session()->get('locale') == 'en' ? $this->title : $this->title_mm ?? $this->title,
         );
     }
 }

@@ -23,8 +23,13 @@ Route::controller(LanguageController::class)
     ->group(function () {
 
         Route::post('change/{locale}', 'change')->name('change');
-
     });
+
+Route::get('/language/{locale}', function ($locale) {
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
+
 
 Route::controller(BlogController::class)
     ->group(function () {
@@ -47,4 +52,3 @@ Route::controller(ContentController::class)
     ->group(function () {
         Route::get('/contents/{slug}', 'index')->name('contents');
     });
-

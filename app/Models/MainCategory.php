@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class MainCategory extends Model
 {
@@ -46,5 +47,12 @@ class MainCategory extends Model
     public function children()
     {
         return $this->hasMany(SubCategory::class)->publish();
+    }
+
+    protected function nameFilter(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => session()->get('locale') == 'en' ? $this->name : $this->name_mm ?? $this->name,
+        );
     }
 }

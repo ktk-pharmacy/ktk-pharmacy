@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\home;
 use App\Models\Brand;
 use App\Models\CategoryGroup;
+use App\Models\ServiceSetting;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,43 +19,41 @@ class HomeController extends Controller
      */
     public function home()
     {
-        try{
-                $brands = Brand::publish()->get();
-                $categorygroup = CategoryGroup::publish()->get();
-                return view('frontend.home',compact('brands','categorygroup'));
-        }
-        catch(\Exception $ex){
+        try {
+            $brands = Brand::publish()->get();
+            $service_settings = ServiceSetting::active()->publish()->get();
+            $categorygroup = CategoryGroup::publish()->get();
+            return view('frontend.home', compact('brands', 'categorygroup', 'service_settings'));
+        } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong HomeController.index',
                 'error' => $ex->getMessage()
-            ],400);
+            ], 400);
         }
     }
 
 
     public function aboutus()
     {
-        try{
+        try {
             return view('frontend.aboutus');
-        }
-        catch(\Exception $ex){
+        } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong HomeController.aboutus',
                 'error' => $ex->getMessage()
-            ],400);
+            ], 400);
         }
     }
 
     public function contactus()
     {
-        try{
+        try {
             return view('frontend.contactus');
-        }
-        catch(\Exception $ex){
+        } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong HomeController.contactus',
                 'error' => $ex->getMessage()
-            ],400);
+            ], 400);
         }
     }
 }

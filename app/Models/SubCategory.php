@@ -42,13 +42,20 @@ class SubCategory extends Model
 
     public function parent()
     {
-        return $this->belongsTo(MainCategory::class,'main_category_id')->publish();
+        return $this->belongsTo(MainCategory::class, 'main_category_id')->publish();
     }
 
-    protected function imageUrl():Attribute
+    protected function imageUrl(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => asset($value),
+        );
+    }
+
+    protected function nameFilter(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => session()->get('locale') == 'en' ? $this->name : $this->name_mm ?? $this->name,
         );
     }
 }

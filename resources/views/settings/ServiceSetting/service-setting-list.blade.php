@@ -19,6 +19,7 @@
                                 <th>No</th>
                                 <th>Image</th>
                                 <th>Title</th>
+                                <th>Title MM</th>
                                 <th>Status</th>
                                 <th class="justify-center">Action</th>
                             </tr>
@@ -31,6 +32,7 @@
                                         <img src="{{ $service->image_url }}" alt="image" />
                                     </td>
                                     <td>{{ $service->title }}</td>
+                                    <td>{{ $service->title_mm }}</td>
                                     <td>
                                         {!! getStatusBadge($service->status) !!}
                                     </td>

@@ -9,7 +9,7 @@
                         <img src="{{ $content->image_url }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $content->title }}</h5>
-                            <p class="card-text">{!! $content->shortDesc !!}</p>
+                            <p class="card-text mb-2">{!! $content->shortDesc !!}</p>
                             <a href="#" class="btn btn-primary">Read More ...</a>
                         </div>
                     </div>
@@ -29,6 +29,6 @@
                         <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
                     </ul> --}}
                 </div>
-    </div>
+            </div>
 </section>
 @include('frontend.Layouts.footer')

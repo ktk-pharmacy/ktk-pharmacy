@@ -13,14 +13,17 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class ProductsExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize, WithEvents, WithStyles {
-    function __construct(protected $products){
-
+class ProductsExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize, WithEvents, WithStyles
+{
+    function __construct(protected $products)
+    {
     }
     public function headings(): array
     {
         return [
             'Name',
+            'Name MM',
+            'Product Code',
             'Brand',
             'Category',
             'Description',
@@ -40,14 +43,16 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping, Shoul
     public function map($item): array
     {
 
-        $status = $item->status == 1?'Acitve':'Inactive';
+        $status = $item->status == 1 ? 'Acitve' : 'Inactive';
         if ($item->deleted_at) {
-           $status = "Deleted";
-           $deleted_at = date("Y-m-d H:i A",strtotime($item->deleted_at));
+            $status = "Deleted";
+            $deleted_at = date("Y-m-d H:i A", strtotime($item->deleted_at));
         }
 
         return [
             $item->name,
+            $item->name_mm,
+            $item->product_code,
             $item->brand->name,
             $item->sub_category->name,
             $item->description,
@@ -57,9 +62,9 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping, Shoul
             $item->distributed_by,
             $item->manufacturer,
             $status,
-            strip_tags(preg_replace("/&#?[a-z0-9]+;/i","",$item->product_details)),
-            strip_tags(preg_replace("/&#?[a-z0-9]+;/i","",$item->other_information)),
-            $item->deleted_at?$deleted_at:"",
+            strip_tags(preg_replace("/&#?[a-z0-9]+;/i", "", $item->product_details)),
+            strip_tags(preg_replace("/&#?[a-z0-9]+;/i", "", $item->other_information)),
+            $item->deleted_at ? $deleted_at : "",
             // strip_tags(preg_replace("/&#?[a-z0-9]+;/i","",$item->other_information)),
             "",
         ];
@@ -68,14 +73,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping, Shoul
     public function collection()
     {
         return $this->products;
-
     }
 
-    public function setImage($workSheet) {
-        $this->collection()->each(function($product,$index) use($workSheet) {
-            $orgPath = explode('/',$product['image_url']);
+    public function setImage($workSheet)
+    {
+        $this->collection()->each(function ($product, $index) use ($workSheet) {
+            $orgPath = explode('/', $product['image_url']);
             $delPath = array_splice($orgPath, 3, 5);
-            $realPath = implode('/',$delPath);
+            $realPath = implode('/', $delPath);
 
             $drawing = new Drawing();
             $drawing->setName($product->name);
@@ -83,13 +88,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping, Shoul
             $drawing->setPath(public_path($realPath));
             $drawing->setWidth(80);
             $drawing->setHeight(80);
-            $index+=2;
-            $drawing->setCoordinates("N$index");
+            $index += 2;
+            $drawing->setCoordinates("P$index");
             $drawing->setWorksheet($workSheet);
         });
     }
 
-    public function registerEvents():array {
+    public function registerEvents(): array
+    {
         return [
             AfterSheet::class => function (AfterSheet $event) {
                 $event->sheet->getDefaultRowDimension()->setRowHeight(60);
@@ -98,10 +104,11 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping, Shoul
             },
         ];
     }
-    public function styles(Worksheet $sheet) {
+    public function styles(Worksheet $sheet)
+    {
         $count = count($this->products);
-        $sheet->getStyle('A1:N1')->getFont()->setBold(true);
-        $sheet->getStyle('A1:N1')->applyFromArray([
+        $sheet->getStyle('A1:P1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:P1')->applyFromArray([
             'borders' => [
                 'allBorders' => [
                     'borderStyle' => Border::BORDER_THIN,

@@ -15,5 +15,6 @@ return [
     'about_us' => 'About Us',
     'search_here' => 'Search here...',
     'language' => 'Language',
-    'csr' => 'Corporate Social Responsibility'
+    'csr' => 'Corporate Social Responsibility',
+    'content' => 'Contents'
 ];

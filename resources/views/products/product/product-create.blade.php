@@ -16,6 +16,18 @@
                             <input type="text" placeholder="Enter Name Here" id="name" name="name"
                                 class="form-control" value="{{ old('name') }}">
                         </div>
+                        <div class="mb-3">
+                            <label for="name_mm" class="form-label">Product Name MM<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" placeholder="Enter Name Mm Here" id="name_mm" name="name_mm"
+                                class="form-control" value="{{ old('name_mm') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product_code" class="form-label">Product Code<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" placeholder="Enter Product Code Here" id="product_code" name="name_mm"
+                                class="form-control" value="{{ old('product_code') }}">
+                        </div>
                         <div class="form-group mb-3">
                             <label class="form-label d-block" for="product-category">Categories <span
                                     class="text-danger">*</span></label>

@@ -15,7 +15,19 @@
                             <label for="name" class="form-label">Product Name <span
                                     class="text-danger">*</span></label>
                             <input type="text" placeholder="Enter Name Here" id="name" name="name"
-                                class="form-control" value="{{ old('name',$product->name) }}">
+                                class="form-control" value="{{ old('name', $product->name) }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name_mm" class="form-label">Product Name MM<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" placeholder="Enter Name Mm Here" id="name_mm" name="name_mm"
+                                class="form-control" value="{{ old('name_mm', $product->name_mm) }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product_code" class="form-label">Product Code<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" placeholder="Enter Product Code Here" id="product_code" name="name_mm"
+                                class="form-control" value="{{ old('product_code', $product->product_code) }}">
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-label d-block" for="product-category">Categories <span
@@ -25,8 +37,7 @@
                                 @foreach ($main_categories as $main_category)
                                     <optgroup label="{{ $main_category->name }}">
                                         @foreach ($main_category->children as $sub_category)
-                                            <option value="{{ $sub_category->id }}"
-                                                @selected($sub_category->id == $product->sub_category_id)>
+                                            <option value="{{ $sub_category->id }}" @selected($sub_category->id == $product->sub_category_id)>
                                                 {{ $sub_category->name }}
                                                 ({{ $sub_category->parent->name }})
                                             </option>
@@ -40,9 +51,8 @@
                             <select class="form-control w-100 select2" name="brand_id" id="product-brand">
                                 <option value="">--Select Brand--</option>
                                 @foreach ($brands as $brand)
-                                    <option value="{{ $brand->id }}"
-                                        @selected($brand->id==$product->brand_id)
-                                        >{{ $brand->name }}</option>
+                                    <option value="{{ $brand->id }}" @selected($brand->id == $product->brand_id)>{{ $brand->name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -56,12 +66,12 @@
                             <div class="mb-3 col-6">
                                 <label for="" class="form-label">Packaging</label>
                                 <input type="text" placeholder="Enter packaging" id="" name="packaging"
-                                    class="form-control" value="{{ old('packaging',$product->packaging) }}">
+                                    class="form-control" value="{{ old('packaging', $product->packaging) }}">
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="" class="form-label">MOU <span class="text-danger">*</span></label>
                                 <input type="text" placeholder="Enter MOU" id="" name="MOU"
-                                    class="form-control" value="{{ old('MOU',$product->MOU) }}">
+                                    class="form-control" value="{{ old('MOU', $product->MOU) }}">
                             </div>
                         </div>
                         <div class="mb3 row">
@@ -77,7 +87,8 @@
                             <div class="mb-3 col-6">
                                 <label for="" class="form-label">Distributed By </label>
                                 <input type="text" placeholder="Enter Distributed By" id=""
-                                    name="distributed_by" class="form-control" value="{{ old('distributed_by',$product->distributed_by) }}">
+                                    name="distributed_by" class="form-control"
+                                    value="{{ old('distributed_by', $product->distributed_by) }}">
                             </div>
                         </div>
 
@@ -92,7 +103,8 @@
                             <div class="mb-3 col-6">
                                 <label for="" class="form-label">Manufacturer</label>
                                 <input type="text" placeholder="Enter manufacturer" id=""
-                                    name="manufacturer" class="form-control" value="{{ old('manufacturer',$product->manufacturer) }}">
+                                    name="manufacturer" class="form-control"
+                                    value="{{ old('manufacturer', $product->manufacturer) }}">
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-3">
@@ -122,8 +134,7 @@
                         <input form="product_form" type="file" id="image" name="image"
                             data-max-file-size="1000K"
                             data-allowed-file-extensions='["png", "PNG", "jpg", "JPG", "jpeg", "JPEG"]'
-                            data-default-file="{{ $product->image_url }}"
-                            class="form-control">
+                            data-default-file="{{ $product->image_url }}" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Product Detail </label>

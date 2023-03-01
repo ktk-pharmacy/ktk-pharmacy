@@ -34,6 +34,7 @@ class ContentTypeController extends Controller
         ]);
         ContentType::create([
             'name' => $request->name,
+            'name_mm' => $request->name_mm,
             'slug' => $this->generateSlug($request->name, 'content_types'),
             'deleted_at' => Null
         ]);
@@ -48,6 +49,7 @@ class ContentTypeController extends Controller
         $content_type->name == $request->name ? $slug = $content_type->slug : $slug = $this->generateSlug($request->name, 'content_types');
         $content_type->update([
             'name' => $request->name,
+            'name_mm' => $request->name_mm,
             'slug' => $slug,
             'deleted_at' => Null
         ]);

@@ -18,8 +18,8 @@ class SettingsTableSeeder extends Seeder
         [
             'key'                       =>  'site_title',
             'key_mm'                    =>  'site_title_mm',
-            'value'                     =>  'KTK Pharmacy',
-            'value_mm'                  =>  'KTK Pharmacy',
+            'value'                     =>  'WELCOME TO KTK PHARMACY CO., LTD.',
+            'value_mm'                  =>  'KTK Pharmacy မှကြိုဆိုပါ တယ်',
         ],
         [
             'key'                       =>  'site_url',
@@ -149,7 +149,11 @@ class SettingsTableSeeder extends Seeder
     public function run()
     {
         foreach ($this->settings as $index => $setting) {
-            $result = Settings::create($setting);
+            $result = Settings::create([
+                'key' => $setting['key'],
+                'value' => $setting['value'],
+                'value_mm' => $setting['value_mm'] ?? $setting['value']
+            ]);
             if (!$result) {
                 $this->command->info("Insert failed at record $index.");
                 return;

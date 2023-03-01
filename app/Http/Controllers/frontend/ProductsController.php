@@ -37,56 +37,53 @@ class ProductsController extends Controller
     /**Product List*/
     public function products($cat_id)
     {
-        try{
+        try {
             $products = Products::publish()
-                        ->with('brand','sub_category')
-                        ->where('sub_category_id',$cat_id)
-                        ->get();
+                ->with('brand', 'sub_category')
+                ->where('sub_category_id', $cat_id)
+                ->get();
             // dd($products);
-            return view('frontend.product-list',compact('products'));
-        }
-        catch(\Exception $ex){
+            return view('frontend.product-list', compact('products'));
+        } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong ProductsController.products',
                 'error' => $ex->getMessage()
-            ],400);
+            ], 400);
         }
     }
 
     public function product_detail($slug)
     {
-        try{
-           $products = Products::publish()
-                        ->with('sub_category')
-                        ->where('slug',$slug)
-                        ->get();
-            return view('frontend.product-details',compact('products'));
-        }
-        catch(\Exception $ex){
+        try {
+            $products = Products::publish()
+                ->with('sub_category')
+                ->where('slug', $slug)
+                ->get();
+            return view('frontend.product-details', compact('products'));
+        } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong ProductsController.product_detail',
                 'error' => $ex->getMessage()
-            ],400);
+            ], 400);
         }
     }
     /* End Front End */
     // admin panel
     public function product_list()
     {
-        try{
-            $products = Products::publish()->with('brand','sub_category')->latest()->get();
-            return view('products.product-list',compact('products'));
-        }
-        catch(\Exception $ex){
+        try {
+            $products = Products::publish()->with('brand', 'sub_category')->latest()->get();
+            return view('products.product-list', compact('products'));
+        } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong ProductsController.product_list',
                 'error' => $ex->getMessage()
-            ],400);
+            ], 400);
         }
     }
 
 
-        /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -95,7 +92,7 @@ class ProductsController extends Controller
     {
         $brands = Brand::publish()->get();
         $main_categories = MainCategory::with('children')->publish()->get();
-        return view('products.product.product-create',compact('brands','main_categories'));
+        return view('products.product.product-create', compact('brands', 'main_categories'));
     }
 
     /**
@@ -107,16 +104,17 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'category'=>'required',
-            'description'=>'required',
-            'availability'=>'required'
+            'name' => 'required',
+            'name_mm' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'availability' => 'required'
         ]);
         $data = $this->helperProduct($request);
-        $data['slug']=$this->generateSlug($data['name']??$request->name,'products');
+        $data['slug'] = $this->generateSlug($data['name'] ?? $request->name, 'products');
 
         Products::create($data);
-        return to_route('product_list')->with('success','Successfully Created!');
+        return to_route('product_list')->with('success', 'Successfully Created!');
     }
 
 
@@ -128,7 +126,6 @@ class ProductsController extends Controller
      */
     public function show(Products $products)
     {
-
     }
 
     /**
@@ -141,7 +138,7 @@ class ProductsController extends Controller
     {
         $brands = Brand::publish()->get();
         $main_categories = MainCategory::with('children')->publish()->get();
-        return view('products.product.product-edit',compact('brands','main_categories','product'));
+        return view('products.product.product-edit', compact('brands', 'main_categories', 'product'));
     }
 
     /**
@@ -154,14 +151,15 @@ class ProductsController extends Controller
     public function update(Request $request, Products $product)
     {
         $request->validate([
-            'name'=>'required',
-            'category'=>'required',
-            'description'=>'required',
-            'availability'=>'required'
+            'name' => 'required',
+            'name_mm' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'availability' => 'required'
         ]);
         $data = $this->helperProduct($request);
-        if ($product->name != $request->name??$data['name']) {
-            $data['slug']=$this->generateSlug($data['name']??$request->name,'products');
+        if ($product->name != $request->name ?? $data['name']) {
+            $data['slug'] = $this->generateSlug($data['name'] ?? $request->name, 'products');
         }
         $product->update($data);
         return to_route('product_list')->with('success', 'Successfully updated!');
@@ -200,19 +198,21 @@ class ProductsController extends Controller
     private function helperProduct($request)
     {
         $data['name'] = $request->name;
+        $data['name_mm'] = $request->name_mm;
+        $data['product_code'] = $request->product_code;
         $data['sub_category_id'] = $request->category;
         $data['brand_id'] = $request->brand_id;
         $data['description'] = $request->description;
         $data['packaging'] = $request->packaging;
         $data['MOU'] = $request->MOU;
-        $data['availability'] = $request->availability==1?true:false;
+        $data['availability'] = $request->availability == 1 ? true : false;
         $data['distributed_by'] = $request->distributed_by;
         $data['manufacturer'] = $request->manufacturer;
         $data['status'] = $request->status ? true : false;
         $data['product_details'] = $request->product_details;
         $data['other_information'] = $request->other_information;
         if ($request->hasFile('image')) {
-            $file_name = time().'.'.$request->image->extension();
+            $file_name = time() . '.' . $request->image->extension();
             $path = Products::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";
             $data['image_url'] = $path . $file_name;
             $request->image->move(public_path($path), $file_name);

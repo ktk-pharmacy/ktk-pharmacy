@@ -12,10 +12,10 @@ class ProductsImport implements ToModel, WithHeadingRow
 {
     use GenerateSlug;
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function sheets(): array
     {
         return [
@@ -27,17 +27,19 @@ class ProductsImport implements ToModel, WithHeadingRow
     {
         return new Products([
             'name' => $row['name'],
+            'name' => $row['name_mm'] ?? Null,
+            'product_code' => $row['product_code'],
             'slug' => $this->generateSlug($row['name'], 'products'),
             'description' => $row['description'],
-            'product_details' => $row['product_details']??Null,
-            'MOU' => $row['MOU']??Null,
-            'packaging' => $row['packaging']??Null,
-            'brand_id' => $row['brand_id']??Null,
+            'product_details' => $row['product_details'] ?? Null,
+            'MOU' => $row['MOU'] ?? Null,
+            'packaging' => $row['packaging'] ?? Null,
+            'brand_id' => $row['brand_id'] ?? Null,
             'sub_category_id' => $row['sub_category_id'],
-            'other_information' => $row['other_information']??Null,
-            'manufacturer' => $row['manufacturer']??Null,
-            'distributed_by' => $row['distributed_by']??Null,
-            'availability' => $row['availability']
+            'other_information' => $row['other_information'] ?? Null,
+            'manufacturer' => $row['manufacturer'] ?? Null,
+            'distributed_by' => $row['distributed_by'] ?? Null,
+            'availability' => $row['availability'] ?? 1
         ]);
     }
 }
