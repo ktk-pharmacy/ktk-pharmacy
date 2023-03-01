@@ -8,10 +8,10 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'services' => 'our services',
-    'partners' => 'our partners',
+    'services' => 'Our services',
+    'partners' => 'Our partners',
     'facts_or_co.lt' => 'A Few Facts About Our Company',
-    'staffs' => 'staffs',
-    'distributed_region' => 'distributed region',
-    'current partners' => 'current partners'
+    'staffs' => 'Staffs',
+    'distributed_region' => 'Distributed region',
+    'current partners' => 'Cooperated Company'
 ];

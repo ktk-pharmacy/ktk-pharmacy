@@ -1,4 +1,5 @@
 @include('frontend.Layouts.headers')
+
 <!-- ***** Main Banner Area Start ***** -->
 <section class="section main-banner" id="top" data-section="section1">
     <video autoplay muted loop id="bg-video">
@@ -45,7 +46,6 @@
                             </div>
                         </div>
                     @endforeach
-
                     {{-- <div class="item">
                         <div class="icon">
                             <img src="/assets/images/service-icon-02.png" alt="">
@@ -83,7 +83,7 @@
 </section>
 <section class="blank-space" height="700px">
     <div height="200px">
-        <h2>sdadas</h2>
+        {{--  <h2>sdadas</h2>  --}}
     </div>
 </section>
 <section class="our-courses" id="courses">
@@ -163,4 +163,5 @@
         </div>
     </div>
 </section>
+
 @include('frontend.Layouts.footer')
