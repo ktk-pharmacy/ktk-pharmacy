@@ -11,10 +11,10 @@
 
             <div class="row">
 
-                <div class="col-md-8">
+                <div class="col-12">
                     <div class="row">
                         @foreach ($products as $prod)
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-lg-4">
                                 <div class="meeting-item">
                                     <div class="thumb">
                                         <a href="{{ url('product_detail', $prod->slug) }}"><img class="logoimage"
@@ -31,7 +31,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="col-md-4 mt-3 bg-white rounded-2 py-2 ps-3">
+                {{-- <div class="col-md-4 mt-3 bg-white rounded-2 py-2 ps-3">
                     <h5 class="mb-2">Sub Categories</h2>
                         @foreach ($sub_ctgs as $ctg)
                             <div>
@@ -39,7 +39,7 @@
                             </div>
                         @endforeach
 
-                </div>
+                </div> --}}
                 {{-- <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link mb-2 bg-red button active" id="v-pills-home-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
