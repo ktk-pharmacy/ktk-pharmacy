@@ -20,14 +20,14 @@
                     @endforeach
                     <!-- <button class="nav-link bg-red mb-2 button active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Precription</button>
           {{--  <button class="nav-link bg-red button" id="v-pills-otc-tab" data-bs-toggle="pill" data-bs-target="#v-pills-otc" type="button" role="tab" aria-controls="v-pills-otc" aria-selected="false">OTC</button> -->  --}}
-          <!-- <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button> -->
+           <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button> -->
                     <!-- <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button> -->
                 </div>
                 <div class="tab-content" id="v-pills-tabContent">
                     @foreach ($maincategories as $mcat)
                         <div class="tab-pane fade  {{ $mcat->count() != 0 ? 'show active' : '' }}"
                             id="v-pills-{{ $mcat->id }}" role="tabpanel"
-                            aria-labelledby="v-pills-{{ $mcat->id }}-tab">
+                            aria-labelled-by="v-pills-{{ $mcat->id }}-tab">
                             <div class="row">
                                 @foreach ($mcat->children as $subcat)
                                     <div class="col-lg-4 mb-4">
@@ -49,9 +49,6 @@
                                 @endforeach
 
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                            <div class="bg-white">This is OTC Testing Area</div>
                         </div>
                     @endforeach
                 </div>

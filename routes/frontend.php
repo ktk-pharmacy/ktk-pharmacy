@@ -38,7 +38,7 @@ Route::controller(BlogController::class)
 
 Route::controller(ProductFrontend::class)
     ->group(function () {
-        Route::get('/products/{id}', 'products')->name('products');
+        Route::get('/products/{sub_category}', 'products')->name('products');
         Route::get('/product_detail/{slug}', 'product_detail')->name('product_detail');
     });
 

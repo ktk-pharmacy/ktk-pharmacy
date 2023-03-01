@@ -66,7 +66,7 @@
                             <!-- <li class="scroll-to-section"><a href="{{ url('home') }}">Home</a></li> -->
                             <li><a href="{{ url('about') }}">{{ __('header.about_us') }}</a></li>
                             <li class="has-sub">
-                                <a href="{{ url('products') }}">{{ __('header.products') }}</a>
+                                <a href="javascript:void(0)">{{ __('header.products') }}</a>
                                 <ul class="sub-menu">
                                     @foreach ($categorygroup as $catg)
                                         <li><a href="{{ url('categories/' . $catg->id) }}">{{ $catg->nameFilter }}</a>
