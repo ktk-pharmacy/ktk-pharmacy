@@ -43,8 +43,8 @@ class ProductsController extends Controller
                 ->with('brand', 'sub_category')
                 ->where('sub_category_id', $sub_category->id)
                 ->get();
-            // dd($products);
-            return view('frontend.product-list', compact('products', 'sub_category'));
+            $sub_ctgs = SubCategory::all();
+            return view('frontend.product-list', compact('products', 'sub_category', 'sub_ctgs'));
         } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong ProductsController.products',

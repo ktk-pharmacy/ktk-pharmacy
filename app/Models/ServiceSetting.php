@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,6 +43,13 @@ class ServiceSetting extends Model
     {
         return Attribute::make(
             get: fn () => session()->get('locale') == 'en' ? $this->title : $this->title_mm ?? $this->title,
+        );
+    }
+
+    protected function shortDesc(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Str::limit(strip_tags($this->description), 220, '...')
         );
     }
 }

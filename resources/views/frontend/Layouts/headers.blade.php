@@ -69,7 +69,8 @@
                                 <a href="javascript:void(0)">{{ __('header.products') }}</a>
                                 <ul class="sub-menu">
                                     @foreach ($categorygroup as $catg)
-                                        <li><a href="{{ url('categories/' . $catg->id) }}">{{ $catg->nameFilter }}</a>
+                                        <li><a
+                                                href="{{ url('categories/' . $catg->slug) }}">{{ $catg->nameFilter }}</a>
                                         </li>
                                     @endforeach
                                 </ul>

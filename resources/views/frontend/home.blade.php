@@ -35,13 +35,13 @@
                 </div>
                 <div class="owl-service-item owl-carousel col-12">
                     @foreach ($service_settings as $service)
-                        <div class="item">
+                        <div style="height: 315px;" class="item py-3">
                             <div class="icon">
                                 <img src="{{ $service->image_url }}" alt="">
                             </div>
                             <div class="down-content">
                                 <h4>{{ $service->titleFilter }}</h4>
-                                <p>{{ $service->description }}</p>
+                                <p>{{ $service->shortDesc }}</p>
                             </div>
                         </div>
                     @endforeach
