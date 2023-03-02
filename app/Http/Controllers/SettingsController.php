@@ -88,6 +88,9 @@ class SettingsController extends Controller
             $entry = Settings::where('key', $key)->first();
 
             if ($entry) {
+                if ($key=='pop_up') {
+                    $entry->value_mm = $value;
+                }
                 $entry->value = $value;
                 $entry->saveOrFail();
             } else {
