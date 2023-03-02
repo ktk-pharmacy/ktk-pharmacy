@@ -34,6 +34,10 @@
                                         href="#setting-aboutus-tab" role="tab" aria-controls="setting-aboutus-tab"
                                         aria-selected="false">
                                         About Us</a>
+                                    <a class="nav-link mb-1" id="setting-theme" data-toggle="pill"
+                                        href="#setting-theme-tab" role="tab" aria-controls="setting-theme-tab"
+                                        aria-selected="false">
+                                        Theme</a>
                                 </div>
                             </div> <!-- end col-->
                             <div class="col-md-6 mt-3">
@@ -340,6 +344,20 @@
                                             </div>
                                         </div>
                                     </div><!-- end about us-->
+
+                                    <div class="tab-pane fade" id="setting-theme-tab" role="tabpanel"
+                                        aria-labelledby="setting-theme">
+                                        <div class="form-group row mb-3">
+                                            <div class="col-12">
+                                                <label for="pop_up" class="form-label">Pop-Up Image</label>
+                                                <input type="file" id="image" name="pop_up"
+                                                    data-max-file-size="1000K"
+                                                    data-default-file="{{ $site_settings['pop_up']['value'] }}"
+                                                    data-allowed-file-extensions='["png", "PNG", "jpg", "JPG", "jpeg", "JPEG"]'
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div> <!-- end col-->

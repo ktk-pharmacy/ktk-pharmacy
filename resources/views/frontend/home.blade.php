@@ -24,6 +24,19 @@
         </div>
     </div>
 </section>
+<button id="modal_call" data-bs-toggle="modal" data-bs-target="#exampleModal" class="d-none">Modal</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modal-dialog-centered">
+        <div class="modal-body" id="modal_container">
+          <img src="{{ asset(site_settings()['pop_up']) }}" alt="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id='modal-clear-btn' class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <!-- ***** Main Banner Area End ***** -->
 <section class="services">
     <div class="container">
@@ -36,16 +49,19 @@
                 </div>
                 <div class="owl-service-item owl-carousel col-12">
                     @foreach ($service_settings as $service)
-                        <div style="height: 315px;" class="item py-3">
-                            <div class="icon">
-                                <img src="{{ $service->image_url }}" alt="">
+                        <a href="javascript:void(0)" class="modal-open-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('service_setting_show',$service->id) }}">
+                            <div style="height: 315px;" class="item py-3">
+                                <div class="icon">
+                                    <img src="{{ $service->image_url }}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>{{ $service->titleFilter }}</h4>
+                                    <p>{{ $service->shortDesc }}</p>
+                                </div>
                             </div>
-                            <div class="down-content">
-                                <h4>{{ $service->titleFilter }}</h4>
-                                <p>{{ $service->shortDesc }}</p>
-                            </div>
-                        </div>
+                        </a>
                     @endforeach
+
                     {{-- <div class="item">
                         <div class="icon">
                             <img src="/assets/images/service-icon-02.png" alt="">
@@ -165,3 +181,23 @@
 </section>
 
 @include('frontend.Layouts.footer')
+<script>
+    $(document).ready(function () {
+        setTimeout(() => {
+            $('#modal_call').click()
+        }, 1500);
+
+        $('.modal-open-btn').click(function (e) {
+            e.preventDefault();
+            var url = $(this).data('url')
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (view) {
+                    $('#modal_container').html(view);
+                }
+            });
+        });
+
+    });
+</script>

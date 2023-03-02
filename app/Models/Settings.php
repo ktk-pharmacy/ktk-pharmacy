@@ -10,6 +10,8 @@ class Settings extends Model
 {
     use HasFactory;
 
+    public const UPLOAD_PATH = 'upload/settings';
+
     protected function valueFilter(): Attribute
     {
         return Attribute::make(
