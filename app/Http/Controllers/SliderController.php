@@ -24,8 +24,9 @@ class SliderController extends Controller
     public function slider_list()
     {
         try {
+            $active_sldrs = Slider::active()->get();
             $sliders = Slider::publish()->get();
-            return view('slider.slider-list', compact('sliders'));
+            return view('slider.slider-list', compact('sliders', 'active_sldrs'));
         } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong CategoryController.category_list',
@@ -114,6 +115,8 @@ class SliderController extends Controller
     {
         $data['url'] = $request->url;
         $data['status'] = $request->status ? true : false;
+        $active_sldrs = Slider::active()->get();
+        $data['status'] = count($active_sldrs) == 4 ? false : true;
         if ($request->hasFile('image')) {
             $path = Slider::UPLOAD_PATH . date('Y') . '/' . date('m') . '/';
             $file_name = uniqid() . time() . "." . $request->image->extension();

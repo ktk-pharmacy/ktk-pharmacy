@@ -12,7 +12,8 @@
                             <div class="d-flex h-100 pb-4 flex-column justify-content-between">
                                 <p class="card-text mb-2">{!! $content->shortDesc !!}</p>
                                 <div>
-                                    <a href="#" class="btn btn-primary">Read More ...</a>
+                                    <a href="{{ route('content_show', $content->slug) }}" class="btn btn-primary">Read
+                                        More ...</a>
                                 </div>
                             </div>
                         </div>

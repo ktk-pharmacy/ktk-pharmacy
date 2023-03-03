@@ -3,14 +3,25 @@
     <div id="wowslider-container1">
         <div class="ws_images">
             <ul>
-                <li><img src="{{asset('assets/images/carousel/banner_1.jpg')}}" alt="banner_1" title="banner_1" id="wows1_0"/></li>
-                <li><img src="{{asset('assets/images/carousel/banner_2.jpg')}}" alt="banner_2" title="banner_2" id="wows1_1"/></li>
-                <li><a href="http://wowslider.net"><img src="{{asset('assets/images/carousel/banner_3.jpg')}}" alt="css slider" title="banner_3" id="wows1_2"/></a></li>
-                <li><img src="{{asset('assets/images/carousel/banner_3.jpg')}}" alt="banner_4" title="banner_4" id="wows1_3"/></li>
+                @foreach ($sliders as $slider)
+                    <li>
+                        <a href="{{ $slider->url }}">
+                            <img src="{{ $slider->image_url }}" />
+                        </a>
+                    </li>
+                @endforeach
+                {{-- <li><img src="{{ asset('assets/images/carousel/banner_1.jpg') }}" alt="banner_1" title="banner_1" /></li>
+                <li><img src="{{ asset('assets/images/carousel/banner_2.jpg') }}" alt="banner_2" title="banner_2" /></li>
+                <li><a href="http://wowslider.net"><img src="{{ asset('assets/images/carousel/banner_3.jpg') }}"
+                            alt="css slider" title="banner_3" /></a></li>
+                <li><img src="{{ asset('assets/images/carousel/banner_3.jpg') }}" alt="banner_4" title="banner_4" />
+                </li>
+                <li><img src="{{ asset('assets/images/carousel/banner_3.jpg') }}" alt="banner_5" title="banner_5" />
+                </li> --}}
             </ul>
         </div>
         <div class="ws_shadow"></div>
-        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

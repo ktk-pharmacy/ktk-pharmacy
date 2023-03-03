@@ -56,6 +56,18 @@ class ContentController extends Controller
         return to_route('content_list')->with('success', 'Successfully created!');
     }
 
+    public function show($slug)
+    {
+        $content = Content::where('slug', $slug)->first();
+        $rlated_contents = Content::where('content_type_id', $content->content_type_id)
+            ->where('id', '!=', $content->id)
+            ->active()
+            ->inRandomOrder()
+            ->limit(3)
+            ->get();
+        return view('frontend.blog-detail', compact('content', 'rlated_contents'));
+    }
+
 
     public function edit(Content $content)
     {

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Slider;
 
 use App\Models\Category;
-use App\Models\MainCategory;
-
-use App\Models\CategoryGroup;
 use App\Models\SubCategory;
+
+use App\Models\MainCategory;
 use App\Traits\GenerateSlug;
+use Illuminate\Http\Request;
+use App\Models\CategoryGroup;
 
 class CategoryController extends Controller
 {
@@ -26,9 +27,10 @@ class CategoryController extends Controller
             $maincategories = MainCategory::with('group', 'children')
                 ->where('category_group_id', $ctgp->id)
                 ->get();
+            $sliders = Slider::active()->get();
             // dd($maincategories);
             // die();
-            return view('frontend.categories', compact('maincategories'));
+            return view('frontend.categories', compact('maincategories', 'sliders'));
         } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong CategoryController.index',

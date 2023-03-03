@@ -2,7 +2,7 @@
     <form method="post" action="{{ route('slider_update', $slider->id) }}" id="brand_form" enctype="multipart/form-data"
         class="forms-sample">
         @csrf
-
+        @method('PATCH')
         <div class="form-group">
             <label for="brand_name" class="form-label d-block">Url</label>
             <div class="">

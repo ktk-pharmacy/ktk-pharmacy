@@ -6,7 +6,8 @@
                 <h4 class="card-title">Sliders</h4>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
                     <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('slider_create') }}"
-                        id="add-btn" class="btn btn-primary form-btn mb-2 float-right btn-icon-text">
+                        id="add-btn" class="btn btn-primary form-btn mb-2 float-right btn-icon-text"
+                        @disabled(count($active_sldrs) == 4)>
                         <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
                     </button>
                     <!-- Modal -->
@@ -39,7 +40,12 @@
                                         <img style="width:80px;height:40px;" src="{{ $slider->image_url }}"
                                             alt="image" />
                                     </td>
-                                    <td><b>{{ $slider->url }}</b></td>
+                                    <td>
+                                        <b>
+                                            <a target="_blank" class="text-decoration-none"
+                                                href="{{ $slider->url }}">{{ $slider->url }}</a>
+                                        </b>
+                                    </td>
                                     <td>
                                         {!! getStatusBadge($slider->status) !!}
                                     </td>
