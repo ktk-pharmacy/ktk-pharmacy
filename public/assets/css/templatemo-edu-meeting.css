@@ -932,7 +932,8 @@ section.upcoming-meetings {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 230px;
+  /* padding-top: 230px; */
+  padding-top: 110px;
   padding-bottom: 110px;
 }
 
@@ -953,7 +954,7 @@ section.upcoming-meetings .categories h4 {
   font-weight: 600;
   color: #1f272b;
   margin-bottom: 30px;
-  padding-bottom: 20px;.section-heading
+  padding-bottom: 20px;
   border-bottom: 1px solid #eee;
 }
 
@@ -1635,7 +1636,11 @@ section.meetings-page .pagination ul li a:hover {
 .meeting-single-item .thumb img {
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+  width: 70%;
+  height: 500px !important;
 }
+
+
 
 .meeting-single-item .thumb .price {
   position: absolute;
@@ -1657,6 +1662,7 @@ section.meetings-page .pagination ul li a:hover {
   padding: 40px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
+  width: 70%;
 }
 
 .meeting-single-item .thumb .date {
@@ -1740,6 +1746,13 @@ section.meetings-page .pagination ul li a:hover {
 .meeting-single-item .down-content .share ul li a:hover {
   color: #f5a425;
 }
+
+.top-rated-product-img {
+  max-width: 90px;
+  float: left;
+  margin-right: 20px;
+}
+
 
 .down-content {
     padding: 7px 20px;

@@ -60,7 +60,9 @@ class ProductsController extends Controller
                 ->with('sub_category')
                 ->where('slug', $slug)
                 ->first();
-            return view('frontend.product-details', compact('product'));
+            // $category = SubCategory::with('products')->findOrFail($product->sub_category_id);
+            $top_related_products = $product->limit(config('custom_value.related_product_limit'))->get()->except($product->id);
+            return view('frontend.product-details', compact('product','top_related_products'));
         } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong ProductsController.product_detail',
