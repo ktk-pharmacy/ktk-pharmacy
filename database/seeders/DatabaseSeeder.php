@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(SuperAdminSeeder::class);
         // $this->call(SettingsTableSeeder::class);
         // $this->call(DefaultContentTypesSeeder::class);
-            $this->call(SettingPopUpImgSeeder::class);
+        // $this->call(SettingPopUpImgSeeder::class);
+        $this->call(SliderSeeder::class);
     }
 }

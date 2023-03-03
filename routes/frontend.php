@@ -51,9 +51,10 @@ Route::controller(CategoryController::class)
 Route::controller(ContentController::class)
     ->group(function () {
         Route::get('/contents/{slug}', 'index')->name('contents');
+        Route::get('/contents/show/{slug}', 'show')->name('content_show');
     });
 
 Route::controller(ServiceSettingController::class)
     ->group(function () {
-        Route::get('/service_setting_show/{service}','show')->name('service_setting_show');
+        Route::get('/service_setting_show/{service}', 'show')->name('service_setting_show');
     });

@@ -30,19 +30,19 @@
     <div class="footer">
         <div class="content-left">
             <p>
-                <img class="footerimage" src="../assets/images/phone.png" alt="">
+                <img class="footerimage" src="/assets/images/phone.png" alt="">
                 {{ site_settings()['default_phone_number'] }}
             </p>
             <p>
-                <img class="footerimage" src="../assets/images/email.png" alt="">
+                <img class="footerimage" src="/assets/images/email.png" alt="">
                 {{ site_settings()['default_email'] }}
             </p>
             <p>
-                <img class="footerimage" src="../assets/images/home.png" alt="">
+                <img class="footerimage" src="/assets/images/home.png" alt="">
                 {{ site_settings()['default_address'] }}
             </p>
             <p>
-                <img class="footerimage" src="../assets/images/webpage.png" alt="">
+                <img class="footerimage" src="/assets/images/webpage.png" alt="">
                 {{ site_settings()['site_url'] }}
             </p>
         </div>

@@ -29,6 +29,15 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div class="col-lg-12">
+                            <div class="pagination">
+                                @include('frontend.share.paginate', [
+                                    'paginator' => $products,
+                                    $products->links(),
+                                    'link_limit' => 4,
+                                ])
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {{-- <div class="col-md-4 mt-3 bg-white rounded-2 py-2 ps-3">
