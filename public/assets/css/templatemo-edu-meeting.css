@@ -970,7 +970,7 @@ section.upcoming-meetings .categories ul li a {
 }
 
 .partner {
-    margin-top: 80px;}
+    margin-top: 110px;}
 
 section.upcoming-meetings .categories ul li a:hover {
   color: #a12c2f;
@@ -1839,7 +1839,7 @@ responsive
   }
 
   .partner {
-    margin-top: 280px;
+    margin-top: 310px;
   }
 
   .main-banner .caption h2 {
@@ -1895,7 +1895,7 @@ responsive
 @media (max-width: 550px) {
 
     .partner {
-        margin-top: 280px;
+        margin-top: 320px;
     }
 
 }

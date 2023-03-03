@@ -67,9 +67,9 @@ class ServiceSettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ServiceSetting $service)
     {
-        //
+        return view('frontend.share.modals.service-setting_modal',compact('service'));
     }
 
     /**

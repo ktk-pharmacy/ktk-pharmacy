@@ -6,6 +6,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\ServiceSettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)
@@ -50,4 +51,9 @@ Route::controller(CategoryController::class)
 Route::controller(ContentController::class)
     ->group(function () {
         Route::get('/contents/{slug}', 'index')->name('contents');
+    });
+
+Route::controller(ServiceSettingController::class)
+    ->group(function () {
+        Route::get('/service_setting_show/{service}','show')->name('service_setting_show');
     });

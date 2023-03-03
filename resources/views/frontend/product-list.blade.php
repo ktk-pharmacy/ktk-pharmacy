@@ -14,7 +14,7 @@
                 <div class="col-12">
                     <div class="row">
                         @foreach ($products as $prod)
-                            <div class="col-md-6 col-lg-4">
+                            <div class="col-md-6 col-lg-4 mb-3">
                                 <div class="meeting-item">
                                     <div class="thumb">
                                         <a href="{{ url('product_detail', $prod->slug) }}"><img class="logoimage"
