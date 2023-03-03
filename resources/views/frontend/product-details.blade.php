@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="row">
-                    <div class="col-lg-10">
+                    <div class="col-lg-8">
                         <div class="meeting-single-item">
                             <div class="thumb">
                                 <a href="#"><img src="{{ $product->image_url }}" alt=""></a>
@@ -104,8 +104,9 @@
                         </div>
                     </div>
                     <!--Top Related-->
-                    <div class="col-lg-2">
-                        <div class="col-sm-2">
+                    <div class="col-lg-4 ml-4">
+                        {{--  <div><h2>Top Related Product</h2></div>  --}}
+                        <div class="col-lg-12 mr-5">
                             <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
                                <!-- Top Rated Product Widget -->
                                <div class="widget ltn__top-rated-product-widget">
