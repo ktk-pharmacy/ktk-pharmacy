@@ -11,10 +11,10 @@
         <div class="row">
             <div class="col-md-11 col-lg-9 mx-auto">
                 <div class="meeting-single-item">
-                    <div class="thumb">
+                    <div class="">
                         <img src="{{ $content->image_url }}" class="w-100" alt="">
                     </div>
-                    <div class="py-2 px-3 bg-white rounded-2">
+                    <div class="py-4 px-5 bg-white rounded-2">
                         <h3 class="mb-3">{{ $content->title }}</h3>
                         <p class="content-dsc">{!! $content->description !!}</p>
                         <p class="mt-3">{{ "#{$content->type->name}" }}</p>
@@ -28,13 +28,14 @@
                         <div class="col-lg-4 mb-3">
                             <div style="height: 400px" class="card">
                                 <img src="{{ $related_content->image_url }}" class="card-img-top" alt="...">
-                                <div class="card-body">
+                                <div class="card-body position-relative">
                                     <h5 class="card-title">{{ $related_content->title }}</h5>
-                                    <div class="d-flex h-100 pb-4 flex-column justify-content-between">
-                                        <p class="card-text mb-2">{!! $related_content->shortDesc !!}</p>
+                                    <div class=" pb-4 ">
+                                        <p class="card-text mb-3">{!! $related_content->shortDesc !!}</p>
                                         <div>
-                                            <a href="{{ route('content_show', $related_content->slug) }}"
-                                                class="btn btn-primary">Read
+                                            <a style="left: 15px;bottom:5px;"
+                                                href="{{ route('content_show', $related_content->slug) }}"
+                                                class="btn btn-primary position-absolute">Read
                                                 More ...</a>
                                         </div>
                                     </div>

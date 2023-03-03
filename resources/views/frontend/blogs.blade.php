@@ -7,12 +7,13 @@
                 <div class="col-lg-4 mb-3">
                     <div style="height: 400px" class="card">
                         <img src="{{ $content->image_url }}" class="card-img-top" alt="...">
-                        <div class="card-body">
+                        <div class="card-body position-relative">
                             <h5 class="card-title">{{ $content->title }}</h5>
                             <div class="d-flex h-100 pb-4 flex-column justify-content-between">
                                 <p class="card-text mb-2">{!! $content->shortDesc !!}</p>
                                 <div>
-                                    <a href="{{ route('content_show', $content->slug) }}" class="btn btn-primary">Read
+                                    <a style="left: 15px;bottom:5px;" href="{{ route('content_show', $content->slug) }}"
+                                        class="btn btn-primary position-absolute">Read
                                         More ...</a>
                                 </div>
                             </div>
