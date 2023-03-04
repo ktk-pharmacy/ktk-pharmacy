@@ -1,11 +1,11 @@
 @include('frontend.Layouts.headers')
-
+<link rel="stylesheet" href="/assets/css/body-flex.css">
 <section class="upcoming-meetings" id="meetings">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2>Product List- {{ $sub_category->name }}</h2>
+                    <h2>Product List- {{ $sub_category->name ?? $brand->name }}</h2>
                 </div>
             </div>
 

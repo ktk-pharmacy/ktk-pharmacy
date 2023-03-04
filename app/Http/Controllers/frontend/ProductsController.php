@@ -62,7 +62,7 @@ class ProductsController extends Controller
                 ->first();
             // $category = SubCategory::with('products')->findOrFail($product->sub_category_id);
             $top_related_products = $product->limit(config('custom_value.related_product_limit'))->get()->except($product->id);
-            return view('frontend.product-details', compact('product','top_related_products'));
+            return view('frontend.product-details', compact('product', 'top_related_products'));
         } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong ProductsController.product_detail',
@@ -108,7 +108,6 @@ class ProductsController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'name_mm' => 'required',
             'category' => 'required',
             'description' => 'required',
             'availability' => 'required'
@@ -155,7 +154,6 @@ class ProductsController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'name_mm' => 'required',
             'category' => 'required',
             'description' => 'required',
             'availability' => 'required'
