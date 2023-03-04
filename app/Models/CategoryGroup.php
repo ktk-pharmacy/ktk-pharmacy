@@ -25,6 +25,7 @@ class CategoryGroup extends Model
      * @var array
      */
     protected $hidden = [
+        'status',
         'deleted_at',
         'created_at',
         'updated_at',
@@ -40,6 +41,11 @@ class CategoryGroup extends Model
     public function scopeActive($query)
     {
         return $query->where('status', true);
+    }
+
+    public function main_categories()
+    {
+        return $this->hasMany(MainCategory::class)->active();
     }
 
     // public function media()

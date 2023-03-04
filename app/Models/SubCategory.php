@@ -25,6 +25,8 @@ class SubCategory extends Model
      * @var array
      */
     protected $hidden = [
+        'slug',
+        'status',
         'deleted_at',
         'created_at',
         'updated_at',
