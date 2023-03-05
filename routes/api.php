@@ -29,11 +29,14 @@ Route::prefix('auth')
                     ->group(function () {
                         Route::post('login', 'login');
                         Route::post('register', 'register');
+                        Route::post('request-otp', 'requestOTP');
+                        Route::post('validation-otp', 'validationOTP');
 
                         Route::middleware('auth:sanctum')
                             ->group(function () {
                                 Route::post('logout', 'logout');
                                 Route::get('profile', 'getProfile');
+                                Route::post('profile', 'updateProfile');
                             });
                     });
             });

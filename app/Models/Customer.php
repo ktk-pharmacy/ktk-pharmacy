@@ -43,10 +43,10 @@ class Customer extends Authenticatable
         return $query->where('status', true);
     }
 
-    protected function imageUrl(): Attribute
+    protected function profileImage(): Attribute
     {
         return Attribute::make(
-            get: fn () => asset($this->image_url ?? "/assets/images/ktk_icon.jpg"),
+            get: fn ($value) => asset($value ?? "/assets/images/ktk_icon.jpg"),
         );
     }
 }

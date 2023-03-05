@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auth\V1;
 
 
 use App\Models\Otp;
+use App\Mail\RequestOTP;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -172,7 +173,7 @@ class AuthController extends Controller
 
             if ($request->for == 'forget-password') {
                 $customer = Customer::where('username', $request->username)->firstOrFail();
-                $data['access_token'] =  $customer->createToken('528TOKEN')->plainTextToken;
+                $data['access_token'] =  $customer->createToken('KTKTOKEN')->plainTextToken;
             }
 
 
@@ -185,7 +186,42 @@ class AuthController extends Controller
     public function getProfile(Request $request)
     {
         $customer = $request->user();
-
         return response()->success('Success', 200, $customer);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'birthday' => 'required',
+            'gender' => 'required',
+            'contact_phone_no' => 'required',
+            'billing_address' => 'required',
+            'shipping_address' => 'required',
+        ]);
+
+        try {
+            $requestData = $request->all();
+
+            if ($request->hasFile('profile_image')) {
+                $path = Customer::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";
+                if (!is_dir($path)) {
+                    mkdir($path, 0775, true);
+                    file_put_contents($path . "/index.html", "");
+                }
+
+                $fileName = uniqid().time().'.'.$request->profile_image->extension();
+                $request->profile_image->move(public_path($path), $fileName);
+                $requestData['profile_image'] = $path . $fileName;
+            }
+
+            $customer = $request->user();
+            $customer->update($requestData);
+
+            return response()->success('Success', 200, $customer);
+        } catch (\Throwable $th) {
+            return response()->error($th->getMessage(), 500);
+        }
     }
 }
