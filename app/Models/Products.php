@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -62,5 +63,36 @@ class Products extends Model
         return Attribute::make(
             get: fn () => session()->get('locale') == 'en' ? $this->name : $this->name_mm ?? $this->name,
         );
+    }
+
+    public function getIsPromotionAttribute()
+    {
+        return $this->price > $this->sale_price;
+    }
+
+    public function getDiscountToAttribute($value)
+    {
+        $date = new DateTime($value);
+        return $date->modify('-1 day')->format('d-m-Y');
+    }
+
+    public function hasDiscount()
+    {
+        return $this->discount_amount && $this->discount_from <= today() && $this->discount_to >= today()->format('d-m-Y');
+    }
+
+    public function getDiscountAttribute()
+    {
+        if ($this->hasDiscount()) {
+            if ($this->discount_type == "PERCENT") {
+                $discount = ($this->sale_price / 100) * $this->discount_amount;
+            } else {
+                $discount = $this->discount_amount;
+            }
+            $discount = $this->sale_price - $discount;
+
+            return $discount;
+        }
+        return null;
     }
 }

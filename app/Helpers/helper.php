@@ -56,3 +56,18 @@ function get_service_setting()
     $services = ServiceSetting::publish()->get();
     return $services;
 }
+
+function splitDateRange($date)
+{
+    $date_range = explode(" to ", $date);
+    $end_date = new DateTime(array_key_exists(1, $date_range) ? $date_range[1] : $date_range[0], new DateTimeZone('Asia/Yangon'));
+    $data['to'] = $end_date->modify('+1 day');
+    $data['from'] = new DateTime($date_range[0], new DateTimeZone('Asia/Yangon'));
+    return $data;
+}
+
+function calculateCouponAmount($totalCart, $coupon)
+{
+    $coupon_amount = $coupon->type == 'percent' ? $totalCart * ($coupon->amount/100) : $coupon->amount;
+    return $coupon_amount;
+}
