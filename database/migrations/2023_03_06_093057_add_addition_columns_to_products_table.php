@@ -33,7 +33,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            $table->dropColumn(['price','sale_price','discount_amount','discount_type','discount_from','discount_to','stock','is_new']);
         });
     }
 };

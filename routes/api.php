@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\V1\AuthController;
+use App\Http\Controllers\Api\V1\CartController;
 use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\ProductController;
 use Illuminate\Http\Request;
@@ -55,5 +56,11 @@ Route::prefix('v1')
             ->group(function () {
                 Route::get('categories', 'index');
                 Route::get('categories/{sub_category}/products', 'getProductsByCategory');
+            });
+
+        Route::controller(CartController::class)
+            ->group(function () {
+                Route::get('carts', 'index');
+                Route::post('carts/{product}', 'store');
             });
     });

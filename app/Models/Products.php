@@ -24,9 +24,19 @@ class Products extends Model
         'sub_category_id',
         'other_information',
         'status',
+        'product_code',
         'manufacturer',
         'distributed_by',
-        'deleted_at'
+        'deleted_at',
+        //
+        'price',
+        'sale_price',
+        'discount_amount',
+        'discount_type',
+        'discount_from',
+        'discount_to',
+        'stock',
+        'is_new'
     ];
 
     public const UPLOAD_PATH = 'upload/products';

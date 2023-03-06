@@ -21,11 +21,11 @@ class Cart extends Model
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class,'customer_id');
     }
 
     public function product()
     {
-        return $this->belongsTo(Product::class)->active();
+        return $this->belongsTo(Products::class, 'product_id');
     }
 }

@@ -20,7 +20,7 @@ function getAvaliableBadge($v)
 
 function getGroupCategories()
 {
-    $categrygroups = CategoryGroup::publish()->get();
+    $categrygroups = CategoryGroup::publish()->active()->get();
     // dd($categorygroups);
     return $categrygroups;
 }
@@ -28,7 +28,7 @@ function getGroupCategories()
 function getMenuCategories($groupid)
 {
 
-    $main_categories = MainCategory::with('group', 'children')->where('group_id', $groupid)->get();
+    $main_categories = MainCategory::with('group', 'children')->where('group_id', $groupid)->active()->get();
 
     // $categorygroups = CategoryGroup::publish()->get();
     dd($main_categories);
@@ -53,7 +53,7 @@ function getContentType()
 }
 function get_service_setting()
 {
-    $services = ServiceSetting::publish()->get();
+    $services = ServiceSetting::publish()->active()->get();
     return $services;
 }
 

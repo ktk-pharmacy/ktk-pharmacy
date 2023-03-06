@@ -185,7 +185,9 @@ class AuthController extends Controller
 
     public function getProfile(Request $request)
     {
-        $customer = $request->user();
+        $customer = $request->user()->loadCount(['orders' => function ($q) {
+            return $q->where('status', 'Completed')->whereNotNull('coupon_id');
+        }]);
         return response()->success('Success', 200, $customer);
     }
 

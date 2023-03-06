@@ -64,6 +64,18 @@
                         </div>
                         <div class="mb3 row">
                             <div class="mb-3 col-6">
+                                <label for="" class="form-label">Price</label>
+                                <input type="text" placeholder="Enter price" id="" name="price"
+                                    class="form-control" value="{{ old('price',$product->price) }}">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="" class="form-label">Sale Price</label>
+                                <input type="text" placeholder="Enter sale_price" id="" name="sale_price"
+                                    class="form-control" value="{{ old('sale_price',$product->sale_price) }}">
+                            </div>
+                        </div>
+                        <div class="mb3 row">
+                            <div class="mb-3 col-6">
                                 <label for="" class="form-label">Packaging</label>
                                 <input type="text" placeholder="Enter packaging" id="" name="packaging"
                                     class="form-control" value="{{ old('packaging', $product->packaging) }}">
@@ -106,12 +118,29 @@
                                     name="manufacturer" class="form-control"
                                     value="{{ old('manufacturer', $product->manufacturer) }}">
                             </div>
-                            <div class="col-6">
-                                <div class="form-group mb-3">
+                            <div class="col-6 d-flex">
+                                <div class="form-group mb-3 mr-5">
                                     <label for="product-status">Active</label> <br>
-                                    <input type="checkbox" name="status" class="switchery" id="product-status"
-                                        @checked($product->status) value="1" />
+                                    <input type="checkbox" name="status" class="switchery" id="product-status" @checked($product->status) value="1" />
                                 </div>
+                                <div class="form-group mb-3">
+                                    <label for="product-status">New</label> <br>
+                                    <input type="checkbox" name="is_new" class="switchery" id="product-status" @checked($product->is_new) value="1" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            {{-- <div class="checkbox checkbox-success checkbox-circle mb-2">
+                                <input id="category_group_status" type="checkbox" name="status" checked=""
+                                    value="1">
+                                <label for="category_group_status">
+                                    Active
+                                </label>
+                            </div> --}}
+                            <div class="mb-3 col-6">
+                                <label for="" class="form-label">Stock</label>
+                                <input type="text" placeholder="Enter stock" id=""
+                                    name="stock" class="form-control" value="{{ old('stock',$product->stock) }}">
                             </div>
                         </div>
 
