@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductsController as ProductFrontend;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\ServiceSettingController;
@@ -57,4 +58,9 @@ Route::controller(ContentController::class)
 Route::controller(ServiceSettingController::class)
     ->group(function () {
         Route::get('/service_setting_show/{service}', 'show')->name('service_setting_show');
+    });
+
+Route::controller(BrandController::class)
+    ->group(function () {
+        Route::get('/{slug}/products', 'brand_products')->name('brand_products');
     });

@@ -29,8 +29,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- endFontAwesome -->
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/engine1/style.css')}}" />
-	<script type="text/javascript" src="{{asset('assets/engine1/jquery.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/engine1/style.css') }}" />
+    <script type="text/javascript" src="{{ asset('assets/engine1/jquery.js') }}"></script>
 
     <style type="text/css">
         /* .img {
@@ -43,7 +43,7 @@
 -->
 </head>
 
-<body>
+<body style="">
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky background-header">
         <div class="container">

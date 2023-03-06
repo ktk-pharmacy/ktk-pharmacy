@@ -49,7 +49,8 @@
                     @foreach ($service_settings as $service)
                         <a href="javascript:void(0)" class="modal-open-btn" data-bs-toggle="modal"
                             data-bs-target="#exampleModal" data-url="{{ route('service_setting_show', $service->id) }}">
-                            <div style="height: 315px;" class="item py-3">
+                            <div style="height: 315px;background-image: url({{ $service->bg_url }});" class="item py-3"
+                                data-bs-bg="">
                                 <div class="icon">
                                     <img src="{{ $service->image_url }}" alt="">
                                 </div>
@@ -80,12 +81,14 @@
             <div class="col-lg-12">
                 <div class="owl-courses-item owl-carousel">
                     @foreach ($brands as $brand)
-                        <div class="item">
-                            <img width="270" height="170" src="{{ $brand->image_url }}" alt="Course One">
-                            <div class="down-content">
-                                <h4>{{ $brand->name }}</h4>
+                        <a href="{{ route('brand_products', $brand->slug) }}">
+                            <div class="item">
+                                <img width="270" height="170" src="{{ $brand->image_url }}" alt="Course One">
+                                <div class="down-content">
+                                    <h4>{{ $brand->name }}</h4>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             </div>

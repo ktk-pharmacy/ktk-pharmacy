@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Products;
 use App\Traits\GenerateSlug;
 use Illuminate\Http\Request;
 
@@ -19,22 +20,35 @@ class BrandController extends Controller
         //
     }
 
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function brand_list()
     {
-        try{
+        try {
             $brands = Brand::publish()->get();
-            return view('products.brand-list',compact('brands'));
-        }
-        catch(\Exception $ex){
+            return view('products.brand-list', compact('brands'));
+        } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong BrandController.brand_list',
                 'error' => $ex->getMessage()
-            ],400);
+            ], 400);
+        }
+    }
+
+    public function brand_products($slug)
+    {
+        try {
+            $brand = Brand::active()->where('slug', $slug)->first();
+            $products = Products::active()->where('brand_id', $brand->id)->paginate(9);
+            return view('frontend.product-list', compact('products', 'brand'));
+        } catch (\Exception $ex) {
+            return response()->json([
+                'message' => 'Something Went Wrong BrandController.brand_list',
+                'error' => $ex->getMessage()
+            ], 400);
         }
     }
 
@@ -57,18 +71,18 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required|max:100',
-            'image'=>'required'
+            'name' => 'required|max:100',
+            'image' => 'required'
         ]);
 
         $image = $this->fileUpload($request->image);
         Brand::create([
-            'name'=>$request->name,
-            'slug'=>$this->generateSlug($request->name,'brands'),
-            'status'=>$request->status ? true : false,
-            'image_url'=>$image
+            'name' => $request->name,
+            'slug' => $this->generateSlug($request->name, 'brands'),
+            'status' => $request->status ? true : false,
+            'image_url' => $image
         ]);
-        return redirect()->back()->with('success','Successfully Created!');
+        return redirect()->back()->with('success', 'Successfully Created!');
     }
 
     /**
@@ -90,7 +104,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('products.Modal.brandedit',compact('brand'));
+        return view('products.Modal.brandedit', compact('brand'));
     }
 
     /**
@@ -103,19 +117,19 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         $request->validate([
-            'name'=>'required|max:100'
+            'name' => 'required|max:100'
         ]);
         if ($request->image) {
             $image = $this->fileUpload($request->image);
         }
         if ($request->name != $brand->name) {
-            $slug = $this->generateSlug($request->name,'brands');
+            $slug = $this->generateSlug($request->name, 'brands');
         }
         $brand->update([
-            'name'=>$request->name,
-            'slug'=>$slug??$brand->slug,
-            'image'=>$image??$brand->image,
-            'status'=>$request->status ? true : false,
+            'name' => $request->name,
+            'slug' => $slug ?? $brand->slug,
+            'image' => $image ?? $brand->image,
+            'status' => $request->status ? true : false,
         ]);
         return redirect()->back()->with('success', 'Successfully updated!');
     }
@@ -136,9 +150,9 @@ class BrandController extends Controller
 
     private function fileUpload($image)
     {
-        $file_name = time().'.'.$image->extension();
+        $file_name = time() . '.' . $image->extension();
         $path = Brand::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";
-        $image->move(public_path($path),$file_name);
-        return $path.$file_name;
+        $image->move(public_path($path), $file_name);
+        return $path . $file_name;
     }
 }

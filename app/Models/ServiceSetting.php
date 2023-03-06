@@ -16,6 +16,7 @@ class ServiceSetting extends Model
         'title_mm',
         'image_url',
         'description',
+        'bg_url',
         'status',
         'deleted_at'
     ];
@@ -33,6 +34,12 @@ class ServiceSetting extends Model
     }
 
     protected function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => asset($value),
+        );
+    }
+    protected function bgUrl(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => asset($value),

@@ -69,7 +69,7 @@ class ServiceSettingController extends Controller
      */
     public function show(ServiceSetting $service)
     {
-        return view('frontend.share.modals.service-setting_modal',compact('service'));
+        return view('frontend.share.modals.service-setting_modal', compact('service'));
     }
 
     /**
@@ -122,11 +122,19 @@ class ServiceSettingController extends Controller
         $data['description'] = $request->description;
         $data['status'] = $request->status ? true : false;
         if ($request->hasFile('image')) {
-            $path = ServiceSetting::UPLOAD_PATH . date('Y') . '/' . date('m') . '/';
-            $file_name = uniqid() . time() . "." . $request->image->extension();
-            $request->image->move(public_path($path), $file_name);
-            $data['image_url'] = $path . $file_name;
+            $data['image_url'] = $this->fileUpload($request, 'image');
+        }
+        if ($request->hasFile('bg_url')) {
+            $data['bg_url'] = $this->fileUpload($request, 'bg_url');
         }
         return $data;
+    }
+
+    private function fileUpload($request, $key)
+    {
+        $path = ServiceSetting::UPLOAD_PATH . date('Y') . '/' . date('m') . '/';
+        $file_name = uniqid() . time() . "." . $request->file($key)->extension();
+        $request->file($key)->move(public_path($path), $file_name);
+        return $path . $file_name;
     }
 }

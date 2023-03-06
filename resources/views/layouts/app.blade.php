@@ -203,7 +203,7 @@
             $('.select2').select2();
             //Dropify js
             $('#image').dropify();
-
+            $('.dropify').dropify();
             //SummerNote js
             $('.summernote').summernote({
                 height: 200,

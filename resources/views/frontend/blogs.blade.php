@@ -1,4 +1,5 @@
 @include('frontend.Layouts.headers')
+<link rel="stylesheet" href="/assets/css/body-flex.css">
 <section class="meetings-page" id="meetings">
     <div class="container">
 
