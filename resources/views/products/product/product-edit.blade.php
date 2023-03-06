@@ -69,7 +69,7 @@
                                     class="form-control" value="{{ old('packaging', $product->packaging) }}">
                             </div>
                             <div class="mb-3 col-6">
-                                <label for="" class="form-label">MOU <span class="text-danger">*</span></label>
+                                <label for="" class="form-label">UOM <span class="text-danger">*</span></label>
                                 <input type="text" placeholder="Enter MOU" id="" name="MOU"
                                     class="form-control" value="{{ old('MOU', $product->MOU) }}">
                             </div>

@@ -6,6 +6,7 @@ use App\Models\Settings;
 use App\Models\SubCategory;
 use App\Models\ServiceSetting;
 use App\Models\ContentType;
+use App\Models\Products;
 
 function getStatusBadge($status)
 {
@@ -31,10 +32,11 @@ function getMenuCategories($groupid)
     $main_categories = MainCategory::with('group', 'children')->where('group_id', $groupid)->get();
 
     // $categorygroups = CategoryGroup::publish()->get();
-    dd($main_categories);
-    die();
+    // dd($main_categories);
+    // die();
     return $main_categories;
 }
+
 
 function site_settings()
 {
@@ -45,8 +47,23 @@ function site_settings()
     // die();
     return $data;
 }
+function getCategory(){
+    $categories = SubCategory::with('parent')->get();
+    return $categories;
+}
+function get_product_count(){
+  $product=  Products::with('brand','sub_category')->get();
+  return $product;
+}
 
-
+function get_product_instock(){
+    $in_stock_product=Products::where('availability',1)->get();
+    return $in_stock_product;
+}
+function get_product_outstock(){
+    $out_stock_product=Products::where('availability',0)->get();
+    return $out_stock_product;
+}
 function getContentType()
 {
     return ContentType::publish()->get();

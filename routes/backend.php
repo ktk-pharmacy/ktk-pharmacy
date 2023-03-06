@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Frontend\ProductsController as ProductBackend;
 use App\Http\Controllers\BrandController;
@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')
     ->group(function () {
+        Route::controller(DashboardController::class)
+            ->group(function(){
+                Route::get('/dashboard', 'index')->name('dashboard');
+            });
         Route::controller(ProductBackend::class)
             ->group(function () {
                 // Route::get('/product', 'index')->name('product');

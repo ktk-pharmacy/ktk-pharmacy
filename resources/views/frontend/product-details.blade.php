@@ -26,7 +26,7 @@
                                     @endif
                                 </p>
                                 <p>Packaging : {{ $product->packaging }} </p>
-                                <p>MOU : {{ $product->mou }} </p>
+                                <p>UOM : {{ $product->mou }} </p>
                                 <div class="row py-2">
                                     <div class="col-lg-4">
                                         <div class="hours">

@@ -42,7 +42,7 @@
                                         {{ count($content_type->blogs) }}
                                     </td>
                                     <td>
-                                        @if (!in_array($content_type->id, [1, 2]))
+
                                             <a href="javascript:void(0);" class="mx-2 edit-btn" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal" data-name="{{ $content_type->name }}"
                                                 data-name-mm="{{ $content_type->name_mm }}"
@@ -53,7 +53,7 @@
                                                 data-url="{{ route('content_type_destroy', $content_type->id) }}"
                                                 class="text-danger delete-btn"><i
                                                     class="fa-solid fa-square-xmark"></i></a>
-                                        @endif
+
                                         {{-- @can('user-edit')
                                             <a href="{{route('user_edit',$user->id)}}" class="mx-2"><i class="fa-regular fa-pen-to-square"></i></a>
                                         @endcan

@@ -362,16 +362,17 @@
                                 </div>
                             </div> <!-- end col-->
                         </div>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="text-center mt-3 mb-3">
-                                    <button type="submit" class="btn w-sm btn-success waves-effect waves-light">
-                                        Update
-                                    </button>
-                                </div>
-                            </div> <!-- end col -->
-                        </div>
+                        @can('edit')
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="text-center mt-3 mb-3">
+                                        <button type="submit" class="btn w-sm btn-success waves-effect waves-light">
+                                            Update
+                                        </button>
+                                    </div>
+                                </div> <!-- end col -->
+                            </div>
+                        @endcan
                     </form>
                 </div>
             </div>
