@@ -60,6 +60,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('logistic_list') }}">
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                <span class="menu-title">Logistic</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <span class="nav-link" href="#">
                 <span class="menu-title font-weight-bold">Content Management</span>
             </span>

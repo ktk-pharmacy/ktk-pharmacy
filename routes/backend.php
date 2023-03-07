@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryGroupController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\ContentTypeController;
+use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\ServiceSettingController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SliderController;
@@ -113,5 +114,15 @@ Route::middleware('auth')
                 Route::get('/slider_edit/{slider}', 'edit')->name('slider_edit');
                 Route::patch('/slider_edit/{slider}', 'update')->name('slider_update');
                 Route::delete('/slider_delete/{slider}', 'destroy')->name('slider_destroy');
+            });
+
+        Route::controller(LogisticController::class)
+            ->group(function () {
+                Route::get('/logistic_list', 'logistic_list')->name('logistic_list');
+                Route::get('/logistic_create', 'create')->name('logistic_create');
+                Route::post('/logistic_create', 'store')->name('logistic_store');
+                Route::get('/logistic_edit/{logistic}', 'edit')->name('logistic_edit');
+                Route::patch('/logistic_edit/{logistic}', 'update')->name('logistic_update');
+                Route::delete('/logistic_delete/{logistic}', 'destroy')->name('logistic_destroy');
             });
     });
