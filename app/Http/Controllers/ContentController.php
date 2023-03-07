@@ -60,7 +60,7 @@ class ContentController extends Controller
     {
         $content = Content::where('slug', $slug)->first();
         $rlated_contents = Content::where('content_type_id', $content->content_type_id)
-            ->where('id', '!=', $content->id)
+            ->except($content->id)
             ->active()
             ->inRandomOrder()
             ->limit(3)
