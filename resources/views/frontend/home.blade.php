@@ -151,7 +151,7 @@
 
 @include('frontend.Layouts.footer')
 <script>
-    $(document).ready(function() {
+    {{--  $(document).ready(function() {
         setTimeout(() => {
             $('#modal_call').click()
         }, 1500);
@@ -168,5 +168,5 @@
             });
         });
 
-    });
+    });  --}}
 </script>

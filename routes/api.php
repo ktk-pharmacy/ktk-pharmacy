@@ -57,6 +57,7 @@ Route::prefix('v1')
                 Route::get('categories', 'index');
                 Route::get('categories/{sub_category}/products', 'getProductsByCategory');
             });
+
         Route::controller(LocationController::class)
             ->group(function () {
                 Route::get('location', 'index');
@@ -67,7 +68,6 @@ Route::prefix('v1')
             ->group(function () {
                 Route::get('carts', 'index');
                 Route::post('carts/{product}', 'store');
-
             });
     });
 

@@ -345,8 +345,7 @@
                                         </div>
                                     </div><!-- end about us-->
 
-                                    <div class="tab-pane fade" id="setting-theme-tab" role="tabpanel"
-                                        aria-labelledby="setting-theme">
+                                    <div class="tab-pane fade" id="setting-theme-tab" role="tabpanel" aria-labelledby="setting-theme">
                                         <div class="form-group row mb-3">
                                             <div class="col-12">
                                                 <label for="pop_up" class="form-label">Pop-Up Image</label>
@@ -356,6 +355,7 @@
                                                     data-allowed-file-extensions='["png", "PNG", "jpg", "JPG", "jpeg", "JPEG"]'
                                                     class="form-control">
                                             </div>
+
                                         </div>
                                     </div>
 
