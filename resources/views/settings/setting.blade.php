@@ -357,6 +357,11 @@
                                                     class="form-control">
                                             </div>
                                         </div>
+                                        <div class="form-group mb-3">
+                                            <label for="product-status">Show Pop Up</label> <br>
+                                            <input type="checkbox" name="pop_up_status" class="switchery" id="product-status"
+                                            @checked(filter_var($site_settings['pop_up_status']['value'], FILTER_VALIDATE_BOOLEAN)) value="1" />
+                                        </div>
                                     </div>
 
                                 </div>

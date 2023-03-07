@@ -165,7 +165,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="count-area-content">
-                                    <div class="count-title">{{ site_settings()['default_dist_region'] }}</div>
+                                    <div class="count-title">{{ site_settings()['default_dist_region'] }} +</div>
                                     <div class="count-title">{{ __('root.distributed_region') }}</div>
                                 </div>
                             </div>
@@ -186,9 +186,13 @@
 @include('frontend.Layouts.footer')
 <script>
     $(document).ready(function() {
-        setTimeout(() => {
-            $('#modal_call').click()
-        }, 1500);
+        let pop_up_status = "{{ site_settings()['pop_up_status'] }}";
+
+        if (JSON.parse(pop_up_status)) {
+            setTimeout(() => {
+                $('#modal_call').click()
+            }, 1500);
+        }
 
         $('.modal-open-btn').click(function(e) {
             e.preventDefault();

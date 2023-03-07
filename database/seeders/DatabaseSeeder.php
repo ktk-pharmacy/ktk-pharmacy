@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(DefaultContentTypesSeeder::class);
         // $this->call(SettingPopUpImgSeeder::class);
         // $this->call(SliderSeeder::class);
-        $this->call(CreateLocationSeeder::class);
+        // $this->call(CreateLocationSeeder::class);
+        $this->call(PopUpDefaultStatusSeeder::class);
     }
 }

@@ -80,7 +80,7 @@ class SettingsController extends Controller
      */
     public function update(Request $request)
     {
-        $keys = $request->except('_token');
+        $keys = $request->except('_token','pop_up_status');
         if ($request->hasFile('pop_up')) {
             $keys['pop_up'] = $this->fileStorage($request, 'pop_up');
         }
@@ -98,6 +98,18 @@ class SettingsController extends Controller
                 $new_entry->value_mm = $value;
                 $new_entry->saveOrFail();
             }
+        }
+        $pop_up_status = Settings::where('key','pop_up_status')->first();
+        if (isset($request->pop_up_status)) {
+            $pop_up_status->update([
+                'value_mm' => 'true',
+                'value' => 'true',
+            ]);
+        } else {
+            $pop_up_status->update([
+                'value_mm' => 'false',
+                'value' => 'false',
+            ]);
         }
         return redirect()->back()->with('success', 'Successfully updated');
     }
