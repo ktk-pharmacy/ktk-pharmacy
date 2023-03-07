@@ -28,7 +28,7 @@
                         </div>
                         <div class="accordion-body">
                             <div class="content">
-                                <p>{{ site_settings()['mission'] }}</p>
+                                <p>{!! site_settings()['mission'] !!}</p>
                             </div>
                         </div>
                     </article>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="accordion-body">
                             <div class="content">
-                                <p>{{ site_settings()['vision'] }}</p>
+                                <p>{!! site_settings()['vision'] !!}</p>
                             </div>
                         </div>
                     </article>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="accordion-body">
                             <div class="content">
-                                <p>{{ site_settings()['core_value'] }}</p>
+                                <p>{!! site_settings()['core_value'] !!}</p>
                             </div>
                         </div>
                     </article>

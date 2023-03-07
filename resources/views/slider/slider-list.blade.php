@@ -5,11 +5,14 @@
             <div class="card-body tb-card">
                 <h4 class="card-title">Sliders</h4>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
-                    <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('slider_create') }}"
+                    @can('create')
+                        <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('slider_create') }}"
                         id="add-btn" class="btn btn-primary form-btn mb-2 float-right btn-icon-text"
                         @disabled(count($active_sldrs) == 4)>
                         <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
                     </button>
+                    @endcan
+
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -50,13 +53,18 @@
                                         {!! getStatusBadge($slider->status) !!}
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0)" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"
-                                            data-url="{{ route('slider_edit', $slider->id) }}" class="mx-2 form-btn"><i
-                                                class="fa-regular fa-pen-to-square"></i></a>
+                                        @can('edit')
+                                          <a href="javascript:void(0)" data-bs-toggle="modal"
+                                          data-bs-target="#exampleModal"
+                                          data-url="{{ route('slider_edit', $slider->id) }}" class="mx-2 form-btn"><i
+                                            class="fa-regular fa-pen-to-square"></i></a>
+                                        @endcan
+                                        @can('delete')
                                         <a href="javascript:void(0)"
-                                            data-url="{{ route('slider_destroy', $slider->id) }}"
-                                            class="text-danger delete-btn"><i class="fa-solid fa-square-xmark"></i></a>
+                                        data-url="{{ route('slider_destroy', $slider->id) }}"
+                                        class="text-danger delete-btn"><i class="fa-solid fa-square-xmark"></i></a>
+                                        @endcan
+
                                     </td>
                                 </tr>
                             @endforeach

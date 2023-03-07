@@ -17,6 +17,8 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        // dd($request);
+        // die();
         $rules = [
             'username' => 'required',
             'password' => 'required|string|min:6',
@@ -54,6 +56,8 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        // dd($request);
+        // die();
         $rules = [
             'name' => 'required',
             'password' => 'required|string|min:6',
@@ -136,12 +140,10 @@ class AuthController extends Controller
             //     //Send OTP by SMS
             //     $result = $this->sendBySMSPoh($request->username, $msg);
             //     $resultArr = json_decode($result, true);
-
             //     if (!$resultArr['status']) {
             //         return response()->success('Something went wrong while sending sms', 500, $resultArr);
             //     }
             // }
-
             $Otp = new Otp();
             $Otp->username = $request->username;
             $Otp->code = $data['code'];

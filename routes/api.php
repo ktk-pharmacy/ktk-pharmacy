@@ -3,9 +3,9 @@
 use App\Http\Controllers\Api\Auth\V1\AuthController;
 use App\Http\Controllers\Api\V1\CartController;
 use App\Http\Controllers\Api\V1\CategoryController;
-use App\Http\Controllers\Api\V1\LocationController;
 use App\Http\Controllers\Api\V1\LogisticController;
 use App\Http\Controllers\Api\V1\ProductController;
+use App\Http\Controllers\Api\V1\LocationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -53,7 +53,6 @@ Route::prefix('v1')
                 Route::get('products', 'index');
                 Route::get('products/{product}', 'show');
             });
-
         Route::controller(CategoryController::class)
             ->group(function () {
                 Route::get('categories', 'index');
@@ -64,8 +63,10 @@ Route::prefix('v1')
             ->group(function () {
                 Route::get('carts', 'index');
                 Route::post('carts/{product}', 'store');
+
             });
 
         Route::get('locations', [LocationController::class, 'index']);
         Route::get('logistics', [LogisticController::class, 'index']);
     });
+

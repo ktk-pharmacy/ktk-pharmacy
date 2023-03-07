@@ -35,12 +35,15 @@
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
                             <p class="mb-0 color-card-head">Total Products</p>
-                            <h2 class="text-white"> $8,753.<span class="h5">00</span>
+                            @php
+                                $product=get_product_count();
+                            @endphp
+                            <h2 class="text-white">{{$product ? $product->count(): 0}}</span>
                             </h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
                         </div>
-                        <h6 class="text-white">18.33% Since last month</h6>
+                        {{--  <h6 class="text-white">18.33% Since last month</h6>  --}}
                       </div>
                     </div>
                   </div>
@@ -50,12 +53,15 @@
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
                             <p class="mb-0 color-card-head">Total Category</p>
-                            <h2 class="text-white"> $5,300.<span class="h5">00</span>
+                            @php
+                                $categories=getCategory();
+                            @endphp
+                            <h2 class="text-white"> {{$categories->count()}}
                             </h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>
                         </div>
-                        <h6 class="text-white">13.21% Since last month</h6>
+                        {{--  <h6 class="text-white">13.21% Since last month</h6>  --}}
                       </div>
                     </div>
                   </div>
@@ -65,12 +71,15 @@
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
                             <p class="mb-0 color-card-head">Products In-Stock</p>
-                            <h2 class="text-white"> $1,753.<span class="h5">00</span>
+                            @php
+                              $in_stock_product=get_product_instock();
+                            @endphp
+                            <h2 class="text-white"> {{$in_stock_product->count()}}</span>
                             </h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
                         </div>
-                        <h6 class="text-white">67.98% Since last month</h6>
+                        {{--  <h6 class="text-white">67.98% Since last month</h6>  --}}
                       </div>
                     </div>
                   </div>
@@ -80,11 +89,14 @@
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
                             <p class="mb-0 color-card-head">Product Out-Stock</p>
-                            <h2 class="text-white">2368</h2>
+                            @php
+                              $out_stock_product=get_product_outstock();
+                            @endphp
+                            <h2 class="text-white">{{$out_stock_product->count()}}</h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
                         </div>
-                        <h6 class="text-white">20.32% Since last month</h6>
+                        {{--  <h6 class="text-white">20.32% Since last month</h6>  --}}
                       </div>
                     </div>
                   </div>

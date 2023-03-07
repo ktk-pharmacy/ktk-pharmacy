@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name', 'parent_id'
     ];
@@ -19,12 +19,15 @@ class Location extends Model
 
     public function region()
     {
+
         return $this->belongsTo(Location::class, 'parent_id', 'id');
+
     }
 
     public function townships()
     {
         return $this->hasMany(Location::class, 'parent_id', 'id');
+
     }
 
     public function logistic()

@@ -5,13 +5,16 @@
             <div class="card-body tb-card">
                 <h4 class="card-title">Category Group</h4>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
-                    <a href="{{ route('category_group_create') }}" class="btn btn-primary mb-2 float-left btn-icon-text">
-                        <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
-                    </a>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">
-                        <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import
-                    </button>
+                    @can('create')
+                        <a href="{{ route('category_group_create') }}" class="btn btn-primary mb-2 float-left btn-icon-text">
+                            <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
+                        </a>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            class="btn btn-danger mb-2 ml-2  float-left btn-icon-text">
+                            <i class="mdi mdi-file-upload btn-icon-prepend"></i>Import
+                        </button>
+                    @endcan
+
                     <!-- Button trigger modal -->
 
                     <!-- Modal -->
@@ -67,11 +70,15 @@
                                     </td>
 
                                     <td>
+                                        @can('edit')
                                         <a href="{{ route('category_group_edit', $category_group->id) }}"
                                             class="mx-2"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        @endcan
+                                        @can('delete')
                                         <a href="javascript:void(0)"
                                             data-url="{{ route('category_group_destroy', $category_group->id) }}"
                                             class="text-danger delete-btn"><i class="fa-solid fa-square-xmark"></i></a>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

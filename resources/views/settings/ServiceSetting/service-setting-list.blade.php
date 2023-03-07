@@ -5,10 +5,13 @@
             <div class="card-body tb-card">
                 <h4 class="card-title">Service Setting</h4>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
-                    <a href="{{ route('service_setting_create') }}"
+                    @can('create')
+                     <a href="{{ route('service_setting_create') }}"
                         class="btn btn-primary mb-2 float-right btn-icon-text">
                         <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
                     </a>
+                    @endcan
+
                     <!-- Modal -->
                 </div>
                 <div class="table-responsive">
@@ -37,11 +40,15 @@
                                         {!! getStatusBadge($service->status) !!}
                                     </td>
                                     <td>
-                                        <a href="{{ route('service_setting_edit', $service->id) }}" class="mx-2"><i
+                                        @can('edit')
+                                            <a href="{{ route('service_setting_edit', $service->id) }}" class="mx-2"><i
                                                 class="fa-regular fa-pen-to-square"></i></a>
-                                        <a href="javascript:void(0)"
+                                        @endcan
+                                        @can('delete')
+                                            <a href="javascript:void(0)"
                                             data-url="{{ route('service_setting_destroy', $service->id) }}"
                                             class="text-danger delete-btn"><i class="fa-solid fa-square-xmark"></i></a>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

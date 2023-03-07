@@ -15,8 +15,7 @@
                         <h2>{{ site_settings()['site_title'] }}</h2>
                         <p>{{ site_settings()['header_text'] }}</p>
                         <div class="main-button-red">
-                            <div class="scroll-to-section"><a href="{{ route('ContactUs') }}">Inquiry Us for more
-                                    detail!</a></div>
+                            <div class="scroll-to-section"><a href="{{ route('ContactUs') }}">Inquiry Us for more detail!</a></div>
                         </div>
                     </div>
                 </div>
@@ -62,37 +61,6 @@
                             </div>
                         </a>
                     @endforeach
-
-                    {{-- <div class="item">
-                        <div class="icon">
-                            <img src="/assets/images/service-icon-02.png" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Warehousing</h4>
-                            <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non
-                                vestibulum.</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="icon">
-                            <img src="/assets/images/service-icon-03.png" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Distribution</h4>
-                            <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non
-                                vestibulum.</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="icon">
-                            <img src="assets/images/service-icon-02.png" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Wholesales</h4>
-                            <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non
-                                vestibulum.</p>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -100,7 +68,6 @@
 </section>
 <section class="blank-space" height="700px">
     <div height="200px">
-        {{--  <h2>sdadas</h2>  --}}
     </div>
 </section>
 <section class="our-courses" id="courses">
@@ -128,7 +95,6 @@
         </div>
     </div>
 </section>
-
 <section class="our-facts">
     <div class="container">
         <div class="row">

@@ -5,10 +5,13 @@
             <div class="card-body tb-card">
                 <h4 class="card-title">Brand</h4>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
-                    <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('brand_create') }}"
+                    @can('create')
+                        <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('brand_create') }}"
                         id="add-btn" class="btn btn-primary mb-2 form-btn float-right btn-icon-text">
                         <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
-                    </button>
+                        </button>
+                    @endcan
+
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -49,13 +52,17 @@
                                         {!! getStatusBadge($brand->status) !!}
                                     </td>
                                     <td>
-                                        <button data-bs-toggle="modal" style="border: none;outline:none;"
+                                        @can('edit')
+                                            <button data-bs-toggle="modal" style="border: none;outline:none;"
                                             data-bs-target="#exampleModal"
                                             data-url="{{ route('brand_edit', $brand->id) }}"
                                             class="mx-2 text-primary form-btn"><i
                                                 class="fa-regular fa-pen-to-square"></i></button>
-                                        <a href="javascript:void(0)" data-url="{{ route('brand_destroy', $brand->id) }}"
+                                        @endcan
+                                        @can('delete')
+                                          <a href="javascript:void(0)" data-url="{{ route('brand_destroy', $brand->id) }}"
                                             class="text-danger delete-btn"><i class="fa-solid fa-square-xmark"></i></a>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
