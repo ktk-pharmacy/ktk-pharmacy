@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    // use HasFactory;
+    use HasFactory;
 
     protected $fillable = [
         'name', 'parent_id'
@@ -21,12 +19,15 @@ class Location extends Model
 
     public function region()
     {
-        return $this->belongsTo('App\Models\Location', 'parent_id', 'id');
+
+        return $this->belongsTo(Location::class, 'parent_id', 'id');
+
     }
 
     public function townships()
     {
-        return $this->hasMany('App\Models\Location', 'parent_id', 'id');
+        return $this->hasMany(Location::class, 'parent_id', 'id');
+
     }
 
     public function logistic()

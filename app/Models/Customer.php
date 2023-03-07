@@ -49,4 +49,19 @@ class Customer extends Authenticatable
             get: fn ($value) => asset($value ?? "/assets/images/ktk_icon.jpg"),
         );
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function completedOrders()
+    {
+        return $this->hasMany(Order::class)->status('Completed')->orderBy('id', 'DESC');
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

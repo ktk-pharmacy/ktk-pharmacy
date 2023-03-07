@@ -20,9 +20,9 @@ class HomeController extends Controller
     public function home()
     {
         try {
-            $brands = Brand::publish()->get();
+            $brands = Brand::publish()->active()->get();
             $service_settings = ServiceSetting::active()->publish()->get();
-            $categorygroup = CategoryGroup::publish()->get();
+            $categorygroup = CategoryGroup::publish()->active()->get();
             return view('frontend.home', compact('brands', 'categorygroup', 'service_settings'));
         } catch (\Exception $ex) {
             return response()->json([

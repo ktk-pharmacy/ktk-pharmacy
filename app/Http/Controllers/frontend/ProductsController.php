@@ -212,6 +212,10 @@ class ProductsController extends Controller
         $data['status'] = $request->status ? true : false;
         $data['product_details'] = $request->product_details;
         $data['other_information'] = $request->other_information;
+        $data['price'] = $request->price;
+        $data['sale_price'] = $request->sale_price;
+        $data['stock'] = $request->stock;
+        $data['is_new'] = $request->is_new ? true : false;
         if ($request->hasFile('image')) {
             $file_name = time() . '.' . $request->image->extension();
             $path = Products::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";

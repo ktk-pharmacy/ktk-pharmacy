@@ -64,7 +64,7 @@
                                                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                                                     aria-labelledby="v-pills-home-tab">
                                                     <div class="row">
-                                                        <div class="col-lg-8">
+                                                        <div class="col-lg-12">
                                                             <div class="meeting-item">
                                                                 <div class="down-content">
                                                                     {!! $product->product_details !!}
@@ -76,7 +76,7 @@
                                                 </div>
                                                 <div class="tab-pane fade" id="v-pills-otc" role="tabpanel"
                                                     aria-labelledby="v-pills-profile-tab">
-                                                    <div class="col-lg-8">
+                                                    <div class="col-lg-12">
                                                         <div class="meeting-item">
                                                             <div class="down-content">
                                                                 {!! $product->other_information !!}
