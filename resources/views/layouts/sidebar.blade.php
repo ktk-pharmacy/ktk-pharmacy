@@ -65,6 +65,19 @@
                 <span class="menu-title">Logistic</span>
             </a>
         </li>
+        <!-- order management-->
+        <li class="nav-item">
+            <span class="nav-link" href="#">
+                <span class="menu-title font-weight-bold">Order Management</span>
+            </span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('order_list') }}">
+                <i class="mdi mdi-order menu-icon"></i>
+                <span class="menu-title">Orders</span>
+            </a>
+        </li>
+        <!-- content management -->
         <li class="nav-item">
             <span class="nav-link" href="#">
                 <span class="menu-title font-weight-bold">Content Management</span>
@@ -82,6 +95,7 @@
                 <span class="menu-title">Content Type</span>
             </a>
         </li>
+
         <li class="nav-item">
             <span class="nav-link" href="#">
                 <span class="menu-title font-weight-bold">User management </span>

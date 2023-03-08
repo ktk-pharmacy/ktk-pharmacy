@@ -26,7 +26,7 @@ class OrderController extends Controller
         }
 
         $orders = $query->with('customer')->latest()->paginate(10);
-        return view('admin.orders.index', compact('orders'))->with('index', (request()->input('page', 1) - 1) * 10);
+        return view('orders.order-list', compact('orders'))->with('index', (request()->input('page', 1) - 1) * 10);
     }
 
     public function edit($id)
@@ -44,7 +44,7 @@ class OrderController extends Controller
             unset($order_status[0]);
         }
         $logistics = Logistic::with('township')->where('city_id',$order->delivery_information->city)->get();
-        return view('admin.orders.edit', compact('order', 'order_status','cities','logistics'));
+        return view('orders.edit', compact('order', 'order_status','cities','logistics'));
     }
 
     public function update(Request $request, $id)
@@ -96,7 +96,7 @@ class OrderController extends Controller
     {
         $order = Order::with('customer', 'delivery_information', 'products')->findOrFail($id);
 
-        return view('admin.orders.detail', compact('order'));
+        return view('orders.detail', compact('order'));
     }
 
     public function deliveryDetail($id){

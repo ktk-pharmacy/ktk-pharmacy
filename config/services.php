@@ -31,4 +31,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'sms' => [
+        'smspoh' => [
+            'endpoint' => env('SMSPOH_ENDPOINT', 'https://smspoh.com/api/v2/send'),
+            'token' => env('SMSPOH_TOKEN'),
+            'sender' => env('SMSPOH_SENDER', 'SMSPoh'),
+        ]
+    ]
 ];

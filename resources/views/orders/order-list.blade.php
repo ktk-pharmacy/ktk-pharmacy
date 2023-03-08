@@ -69,7 +69,7 @@
 
                              <td>
                                 <a
-                                   href="{{ route('admin.orders.edit', $order->id) }}"
+                                   href="{{ route('orders.edit', $order->id) }}"
                                    class="text-body font-weight-bold">
                                    #{{ $order->id }}
                                 </a>
@@ -90,8 +90,8 @@
                                 {!! statusBadge($order->status, 'ORDERSTATUS') !!}
                              </td>
                              <td>
-                                <a href="{{ route('admin.orders.detail', $order->id) }}" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                <a href="{{ route('admin.orders.edit', $order->id) }}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                <a href="{{ route('orders.detail', $order->id) }}" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                                <a href="{{ route('orders.edit', $order->id) }}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                              </td>
                           </tr>
                           @endforeach

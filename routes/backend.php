@@ -11,6 +11,7 @@ use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\ServiceSettingController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -125,4 +126,13 @@ Route::middleware('auth')
                 Route::patch('/logistic_edit/{logistic}', 'update')->name('logistic_update');
                 Route::delete('/logistic_delete/{logistic}', 'destroy')->name('logistic_destroy');
             });
+        Route::controller(OrderController::class)
+            ->group(function(){
+                Route::get('/order_list', 'index')->name('order_list');
+                Route::get('/order_edit', 'edit')->name('order_edit');
+                Route::patch('/order_update/{id}', 'update')->name('order_update');
+                Route::patch('/order_detail/{id}', 'detail')->name('order_detail');
+                Route::patch('/order_detail/{id}', 'deliveryDetail')->name('order_detail');
+            });
+
     });
