@@ -110,28 +110,19 @@
                             <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
                                <!-- Top Rated Product Widget -->
                                <div class="widget ltn__top-rated-product-widget">
-                                  <h4 class="ltn__widget-title ltn__widget-title-border">Top Rated Product</h4>
-                                  <ul>
+                                  <h4 class="ltn__widget-title ltn__widget-title-border mb-3">Top Rated Products</h4>
+                                  <ul class="rounded-2">
                                      @foreach ($top_related_products as $top_related_product)
-                                        <li>
+                                        <li class="mb-2">
                                            <div class="top-rated-product-item clearfix">
-                                              <div class="top-rated-product-img">
+                                              <div class="">
                                                  <a href="{{ route('product_detail', $top_related_product->slug) }}">
                                                     <img src="{{ $top_related_product->image_url }}" alt="#">
                                                  </a>
                                               </div>
-                                              <div class="top-rated-product-info">
-                                                 <div class="product-ratting d-none">
-                                                    <ul>
-                                                       <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                       <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                       <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                       <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                       <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    </ul>
-                                                 </div>
+                                              <div class="top-rated-product-info bg-white p-3 ">
                                                  <h6>
-                                                    <a href="{{ route('product_detail', $top_related_product->slug) }}">
+                                                    <a class="text-dark" href="{{ route('product_detail', $top_related_product->slug) }}">
                                                        {{ $top_related_product->name }}
                                                     </a>
                                                  </h6>
