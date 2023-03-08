@@ -151,7 +151,7 @@
 
 @include('frontend.Layouts.footer')
 <script>
-    {{--  $(document).ready(function() {
+    $(document).ready(function() {
         let pop_up_status = "{{ site_settings()['pop_up_status'] }}";
 
         if (JSON.parse(pop_up_status)) {
@@ -159,8 +159,6 @@
                 $('#modal_call').click()
             }, 1500);
         }
-
-
         $('.modal-open-btn').click(function(e) {
             e.preventDefault();
             var url = $(this).data('url')
@@ -173,5 +171,5 @@
             });
         });
 
-    });  --}}
+    });
 </script>

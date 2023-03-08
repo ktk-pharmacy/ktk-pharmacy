@@ -30,6 +30,7 @@ class CartController extends Controller
         $customer = $request->user();
 
         try {
+              var_dump($request->add_to_cart);
             if ($request->add_to_cart) {
                 $existCartProduct = Cart::where([
                     'customer_id' => $customer->id,

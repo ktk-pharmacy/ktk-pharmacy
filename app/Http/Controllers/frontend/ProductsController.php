@@ -214,7 +214,7 @@ class ProductsController extends Controller
         $data['other_information'] = $request->other_information;
         $data['price'] = $request->price;
         $data['sale_price'] = $request->sale_price;
-        $data['stock'] = $request->stock;
+        $data['stock'] = $request->stock; //quantity
         $data['is_new'] = $request->is_new ? true : false;
         if ($request->hasFile('image')) {
             $file_name = time() . '.' . $request->image->extension();
