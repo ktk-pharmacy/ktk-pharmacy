@@ -26,7 +26,7 @@
                         <div class="mb-3">
                             <label for="product_code" class="form-label">Product Code<span
                                     class="text-danger">*</span></label>
-                            <input type="text" placeholder="Enter Product Code Here" id="product_code" name="name_mm"
+                            <input type="text" placeholder="Enter Product Code Here" id="product_code" name="product_code"
                                 class="form-control" value="{{ old('product_code', $product->product_code) }}">
                         </div>
                         <div class="form-group mb-3">
