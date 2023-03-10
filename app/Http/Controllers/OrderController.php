@@ -44,12 +44,14 @@ class OrderController extends Controller
             unset($order_status[0]);
         }
         $logistics = Logistic::with('township')->where('city_id',$order->delivery_information->city)->get();
-        return view('orders.edit', compact('order', 'order_status','cities','logistics'));
+        return view('orders.order-edit', compact('order', 'order_status','cities','logistics'));
     }
 
     public function update(Request $request, $id)
     {
+
         $requestData = $request->only('delivery_charge', 'status', 'cancel_remark','delivery_ref_no','delivery_type');
+
 
         $order = Order::with('products.product')->findOrFail($id);
         $delivery_info = DeliveryInformation::findOrFail($order->delivery_information_id);
@@ -89,14 +91,14 @@ class OrderController extends Controller
             'shipping_address'=>$request->shipping_address,
             'order_note'=>$request->order_note
         ]);
-        return redirect()->route('admin.orders.index')->with('success', 'Successfully updated.');
+        return redirect()->route('orders.order-list')->with('success', 'Successfully updated.');
     }
 
     public function detail($id)
     {
         $order = Order::with('customer', 'delivery_information', 'products')->findOrFail($id);
 
-        return view('orders.detail', compact('order'));
+        return view('orders.order-detail', compact('order'));
     }
 
     public function deliveryDetail($id){
