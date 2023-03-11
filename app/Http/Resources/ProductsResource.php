@@ -19,7 +19,8 @@ class ProductsResource extends JsonResource
             'name' => $this->name,
             'name_mm' => $this->name_mm,
             'image_url' => $this->image_url,
-            'mou' => $this->MOU,
+            'uom' => $this->UOM,
+            "sale_price" => $this->sale_price,
             'packaging' => $this->packaging,
             'availability' => $this->availability ? 'Instock' : 'Outstock'
         ];

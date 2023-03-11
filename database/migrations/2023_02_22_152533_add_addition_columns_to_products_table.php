@@ -19,8 +19,8 @@ return new class extends Migration
             $table->longText('description')->after('slug');
             $table->longText('product_details')->nullable()->after('description');
             $table->string('image_url')->default('assets/images/meeting-01.jpg')->after('product_details');
-            $table->string('MOU')->nullable()->comment('measure of unit')->after('image_url');
-            $table->string('packaging')->nullable()->after('MOU');
+            $table->string('UOM')->nullable()->comment('unit of measurement')->after('image_url');
+            $table->string('packaging')->nullable()->after('UOM');
             $table->boolean('availability')->after('packaging');
             $table->unsignedBigInteger('brand_id')->nullable()->after('availability');
             $table->unsignedBigInteger('sub_category_id')->nullable()->after('brand_id');

@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Models\DeliveryCharge;
 use App\Models\Location;
 use App\Models\Logistic;
-use App\Mails\OrderStatus;
+use App\Mail\OrderStatus;
 use App\Traits\SendSMSTrait;
 use Illuminate\Http\Request;
 use App\Models\DeliveryInformation;
@@ -39,18 +39,18 @@ class OrderController extends Controller
             Order::DELIVER,
             Order::CANCELED
         ];
-        $cities = Location::where('parent_id',null)->get();
+        $cities = Location::where('parent_id', null)->get();
         if ($order->status != "PENDING") {
             unset($order_status[0]);
         }
-        $logistics = Logistic::with('township')->where('city_id',$order->delivery_information->city)->get();
-        return view('orders.order-edit', compact('order', 'order_status','cities','logistics'));
+        $logistics = Logistic::with('township')->where('city_id', $order->delivery_information->city)->get();
+        return view('orders.order-edit', compact('order', 'order_status', 'cities', 'logistics'));
     }
 
     public function update(Request $request, $id)
     {
 
-        $requestData = $request->only('delivery_charge', 'status', 'cancel_remark','delivery_ref_no','delivery_type');
+        $requestData = $request->only('delivery_charge', 'status', 'cancel_remark', 'delivery_ref_no', 'delivery_type');
 
 
         $order = Order::with('products.product')->findOrFail($id);
@@ -64,11 +64,12 @@ class OrderController extends Controller
                     Mail::to($order->customer->username)->send(new OrderStatus('Canceled'));
                 }
                 if ($requestData['status'] == Order::COMPLETED) {
-                    $order_product->product->increment('sold_count', $qty);
-                    // if (filter_var($order->customer->username, FILTER_VALIDATE_EMAIL)) {
-                    //     //Send OTP by Mail
-                    //     Mail::to($order->customer->username)->send(new OrderStatus('Confirm'));
-                    // } else {
+                    // $order_product->product->increment('sold_count', $qty);
+                    if (filter_var($order->customer->username, FILTER_VALIDATE_EMAIL)) {
+                        //Send OTP by Mail
+                        Mail::to($order->customer->username)->send(new OrderStatus('Confirm'));
+                    }
+                    //else {
                     //     $msg = "Your Order is Confirm. Please wait for Deliver.";
                     //     //Send OTP by SMS
                     //     $result = $this->sendBySMSPoh($order->customer->username, $msg);
@@ -85,13 +86,13 @@ class OrderController extends Controller
         $order->update($requestData);
 
         $delivery_info->update([
-            'city'=>$request->city?? $delivery_info->city,
-            'township'=>$request->township?? $delivery_info->township,
-            'billing_address'=>$request->billing_address,
-            'shipping_address'=>$request->shipping_address,
-            'order_note'=>$request->order_note
+            'city' => $request->city ?? $delivery_info->city,
+            'township' => $request->township ?? $delivery_info->township,
+            'billing_address' => $request->billing_address,
+            'shipping_address' => $request->shipping_address,
+            'order_note' => $request->order_note
         ]);
-        return redirect()->route('orders.order-list')->with('success', 'Successfully updated.');
+        return redirect()->route('order_list')->with('success', 'Successfully updated.');
     }
 
     public function detail($id)
@@ -101,20 +102,23 @@ class OrderController extends Controller
         return view('orders.order-detail', compact('order'));
     }
 
-    public function deliveryDetail($id){
+    public function deliveryDetail($id)
+    {
         $data = [];
         $premiumDeliveryCharges = DeliveryCharge::with('logistic')->onlyPremium()->valid()->get();
         $premiumTownships = [];
         foreach ($premiumDeliveryCharges as $premiumDeliveryCharge) {
-            array_push($premiumTownships,$premiumDeliveryCharge->logistic->township_id);
+            array_push($premiumTownships, $premiumDeliveryCharge->logistic->township_id);
         }
-        $logistic = Logistic::with('deliveryCharges')->where('id',$id)->first();
-        $data[0]=$premiumTownships;
-        $data[1]=$logistic;
-        return response()->json($data,200);
+        $logistic = Logistic::with('deliveryCharges')->where('id', $id)->first();
+        $data[0] = $premiumTownships;
+        $data[1] = $logistic;
+        return response()->json($data, 200);
     }
-    public function getTownshipView($id){
-        $logistics = Logistic::with('township')->where('city_id',$id)->get();
-        return view('admin.orders.township-select', compact('logistics'));
+    public function getTownshipView($id)
+    {
+
+        $logistics = Logistic::with('township')->where('city_id', $id)->get();
+        return view('orders.township-select', compact('logistics'));
     }
 }

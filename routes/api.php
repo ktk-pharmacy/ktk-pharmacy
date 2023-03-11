@@ -8,7 +8,6 @@ use App\Http\Controllers\Api\V1\ProductController;
 use App\Http\Controllers\Api\V1\LocationController;
 use App\Http\Controllers\Api\V1\CheckOutController;
 use App\Http\Controllers\Api\V1\OrderController;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -72,16 +71,14 @@ Route::prefix('v1')
         Route::get('logistics', [LogisticController::class, 'index']);
 
         Route::controller(CheckOutController::class)
-            ->group(function() {
-                Route::post('checkout','checkout');
+            ->group(function () {
+                Route::post('checkout', 'checkout');
                 Route::post('coupons/{name}/check', 'validateCoupon');
             });
 
         Route::controller(OrderController::class)
-            ->group(function() {
-                Route::post('order','index');
-                Route::post('order/{id}','show');
+            ->group(function () {
+                Route::post('order', 'index');
+                Route::post('order/{id}', 'show');
             });
-
     });
-

@@ -152,12 +152,16 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Products $product)
     {
+        // var_dump($request->product_code);
+        // die();
         $request->validate([
             'name' => 'required',
+            'product_code' => 'required',
             'category' => 'required',
             'description' => 'required',
             'availability' => 'required'
         ]);
+
         $data = $this->helperProduct($request);
         if ($product->name != $request->name ?? $data['name']) {
             $data['slug'] = $this->generateSlug($data['name'] ?? $request->name, 'products');
@@ -205,7 +209,7 @@ class ProductsController extends Controller
         $data['brand_id'] = $request->brand_id;
         $data['description'] = $request->description;
         $data['packaging'] = $request->packaging;
-        $data['MOU'] = $request->MOU;
+        $data['UOM'] = $request->UOM;
         $data['availability'] = $request->availability == 1 ? true : false;
         $data['distributed_by'] = $request->distributed_by;
         $data['manufacturer'] = $request->manufacturer;

@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Frontend\ProductsController as ProductBackend;
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')
     ->group(function () {
         Route::controller(DashboardController::class)
-            ->group(function(){
+            ->group(function () {
                 Route::get('/dashboard', 'index')->name('dashboard');
             });
         Route::controller(ProductBackend::class)
@@ -127,14 +128,13 @@ Route::middleware('auth')
                 Route::delete('/logistic_delete/{logistic}', 'destroy')->name('logistic_destroy');
             });
         Route::controller(OrderController::class)
-            ->group(function(){
+            ->group(function () {
                 Route::get('/order_list', 'index')->name('order_list');
                 Route::get('orders/{id}/edit', 'edit')->name('orders.edit');
                 Route::patch('orders/{id}/edit', 'update')->name('orders.update');
                 Route::get('orders/{id}/detail', 'detail')->name('orders.detail');
                 Route::get('township/{id}', 'getTownshipView')->name('orders.township');
-                Route::get('delivery/{id}','deliveryDetail')->name('orders.delivery.detail');
+                Route::get('delivery/{id}', 'deliveryDetail')->name('orders.delivery.detail');
                 Route::get('/order_export', 'export')->name('order_export');
             });
-
     });

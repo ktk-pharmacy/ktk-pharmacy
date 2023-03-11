@@ -19,7 +19,7 @@ class CartController extends Controller
         return response()->success('Success!', 200, $carts);
     }
 
-    public function store(Request $request,Products $product)
+    public function store(Request $request, Products $product)
     {
 
         $request->validate([
@@ -30,7 +30,7 @@ class CartController extends Controller
         $customer = $request->user();
 
         try {
-              var_dump($request->add_to_cart);
+            //   var_dump($request->add_to_cart);
             if ($request->add_to_cart) {
                 $existCartProduct = Cart::where([
                     'customer_id' => $customer->id,
@@ -45,7 +45,6 @@ class CartController extends Controller
                         'quantity' => $request->quantity
                     ]);
                 }
-
             } else {
                 $cartProduct = Cart::where([
                     'customer_id' => $customer->id,

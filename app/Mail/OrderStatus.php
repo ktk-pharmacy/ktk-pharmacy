@@ -32,6 +32,6 @@ class OrderStatus extends Mailable
     {
         $orderStatus = $this->orderStatus;
         return $this->subject("Order $this->orderStatus")
-                    ->view('emails.order-status', compact('orderStatus'));
+            ->view('emails.order-status', compact('orderStatus'));
     }
 }

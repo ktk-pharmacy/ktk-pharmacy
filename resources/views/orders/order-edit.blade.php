@@ -124,7 +124,8 @@
             <div class="card">
 
                 <div class="card-body">
-                    <form action="{{ route('orders.update', $order->id) }}" method="POST" id="Form" class="">
+                    <form action="{{ route('orders.update', $order->id) }}" method="POST" id="Form"
+                        class="">
                         @method('patch')
                         @csrf
                         <button style="float: right;" class="btn float-end btn-sm btn-info waves-effect" id="edit-btn"
@@ -158,7 +159,7 @@
                                         disabled>
                                         @foreach ($logistics as $logistic)
                                             <option value="{{ $logistic->township->id }}"
-                                                data-get-delivery-charge-url="{{ route('admin.orders.delivery.detail', $logistic->id) }}"
+                                                data-get-delivery-charge-url="{{ route('orders.delivery.detail', $logistic->id) }}"
                                                 @selected($order->delivery_information->township == $logistic->township->id)>
                                                 {{ $logistic->township->name }}</option>
                                         @endforeach
@@ -211,28 +212,27 @@
                 <div class="card-body">
                     <h4 class="header-title mb-3">Update Status</h4>
 
-                    <form >
-                    @canany(['order-edit', 'order-delete'])
-                        <div class="form-group">
-                            <label for="delivery_charge" class="col-form-label">Delivery Charge</label>
-                            <input form="Form" type="text" id="delivery_charge" class="form-control" name="delivery_charge"
-                                value="{{ $order->delivery_charge }}"
+                    <form>
+                        @canany(['order-edit', 'order-delete', 'edit', 'delete'])
+                            <div class="form-group">
+                                <label for="delivery_charge" class="col-form-label">Delivery Charge</label>
+                                <input form="Form" type="text" id="delivery_charge" class="form-control"
+                                    name="delivery_charge" value="{{ $order->delivery_charge }}"
+                                    {{ $order->status == 'Completed' || $order->status == 'Canceled' ? 'readonly' : '' }}>
+                            </div>
 
-                                {{ $order->status == 'Completed' || $order->status == 'Canceled' ? 'readonly' : '' }}>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="order_status" class="col-form-label">Status</label>
-                            <select form="Form" id="order_status" class="form-control" name="status"
-                                {{ $order->status == 'Deliver' || $order->status == 'Canceled' ? 'disabled' : '' }}
-                                {{auth()->user()->can('order-edit')?'':'disabled' }}>
-                                @foreach ($order_status as $status)
-                                    <option value="{{ $status }}" @selected($order->status == $status)>
-                                        {{ $status }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <label for="order_status" class="col-form-label">Status</label>
+                                <select form="Form" id="order_status" class="form-control" name="status"
+                                    {{ $order->status == 'Deliver' || $order->status == 'Canceled' ? 'disabled' : '' }}
+                                    {{ auth()->user()->canany(['order-edit', 'edit'])? '': 'disabled' }}>
+                                    @foreach ($order_status as $status)
+                                        <option value="{{ $status }}" @selected($order->status == $status)>
+                                            {{ $status }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         @endcanany
                         <div class="form-group mb-3" id="deli_ref_no" style="display:none">
                             <label for="">Delivery Reference Number</label>
@@ -261,14 +261,9 @@
 
     </div>
     <!-- end row -->
-
-</x-app-layout>
-
-@push('scripts')
-
-    {{--  @section('scripts')  --}}
+    @push('script')
         <script>
-
+            // alert("ad");
             var status = "{{ $order->status }}";
             var cancel_remark_hide = function() {
                 $('#cancel_remark').hide();
@@ -303,13 +298,12 @@
             });
 
             $(document).on('click', '#edit-btn', () => {
-                alert("dadf");
+                // alert("adfadsf");
                 $toRemoveDisabled = ['.dynamic_select', '.dynamic_radio'];
                 $('.dynamic_input').removeAttr('readonly');
                 $toRemoveDisabled.forEach(element => {
                     $(element).removeAttr('disabled');
                 });
-                // $('.update-btn').show();
             })
             $extra_gross_weight_charge = '{{ $extraGrossWeightCharge }}';
 
@@ -383,5 +377,6 @@
 
             });
             townshipOnchangeFunc();
-</script>
-@endpush
+        </script>
+    @endpush
+</x-app-layout>

@@ -17,7 +17,7 @@ class Products extends Model
         'description',
         'product_details',
         'image_url',
-        'MOU',
+        'UOM',
         'packaging',
         'availability',
         'brand_id',

@@ -25,8 +25,8 @@
                         <div class="mb-3">
                             <label for="product_code" class="form-label">Product Code<span
                                     class="text-danger">*</span></label>
-                            <input type="text" placeholder="Enter Product Code Here" id="product_code" name="product_code"
-                                class="form-control" value="{{ old('product_code') }}">
+                            <input type="text" placeholder="Enter Product Code Here" id="product_code"
+                                name="product_code" class="form-control" value="{{ old('product_code') }}">
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-label d-block" for="product-category">Categories <span
@@ -79,9 +79,9 @@
                                     class="form-control" value="{{ old('packaging') }}">
                             </div>
                             <div class="mb-3 col-6">
-                                <label for="" class="form-label">MOU </label>
-                                <input type="text" placeholder="Enter MOU" id="" name="MOU"
-                                    class="form-control" value="{{ old('MOU') }}">
+                                <label for="" class="form-label">UOM </label>
+                                <input type="text" placeholder="Enter UOM" id="" name="UOM"
+                                    class="form-control" value="{{ old('UOM') }}">
                             </div>
                         </div>
                         <div class="mb3 row">
@@ -122,7 +122,8 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="product-status">New</label> <br>
-                                    <input type="checkbox" name="is_new" class="switchery" id="product-status" value="1" />
+                                    <input type="checkbox" name="is_new" class="switchery" id="product-status"
+                                        value="1" />
                                 </div>
                             </div>
                         </div>
@@ -137,8 +138,8 @@
                             </div> --}}
                             <div class="mb-3 col-6">
                                 <label for="" class="form-label">Stock</label>
-                                <input type="text" placeholder="Enter stock" id=""
-                                    name="stock" class="form-control" value="{{ old('stock') }}">
+                                <input type="text" placeholder="Enter stock" id="" name="stock"
+                                    class="form-control" value="{{ old('stock') }}">
                             </div>
                         </div>
 
