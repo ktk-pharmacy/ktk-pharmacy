@@ -215,7 +215,7 @@ class AuthController extends Controller
                     file_put_contents($path . "/index.html", "");
                 }
 
-                $fileName = uniqid().time().'.'.$request->profile_image->extension();
+                $fileName = uniqid() . time() . '.' . $request->profile_image->extension();
                 $request->profile_image->move(public_path($path), $fileName);
                 $requestData['profile_image'] = $path . $fileName;
             }

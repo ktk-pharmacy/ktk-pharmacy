@@ -32,7 +32,7 @@ class ProductsImport implements ToModel, WithHeadingRow
             'slug' => $this->generateSlug($row['name'], 'products'),
             'description' => $row['description'],
             'product_details' => $row['product_details'] ?? Null,
-            'MOU' => $row['MOU'] ?? Null,
+            'UOM' => $row['UOM'] ?? Null,
             'packaging' => $row['packaging'] ?? Null,
             'brand_id' => $row['brand_id'] ?? Null,
             'sub_category_id' => $row['sub_category_id'],

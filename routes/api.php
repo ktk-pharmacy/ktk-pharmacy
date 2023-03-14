@@ -8,7 +8,7 @@ use App\Http\Controllers\Api\V1\ProductController;
 use App\Http\Controllers\Api\V1\LocationController;
 use App\Http\Controllers\Api\V1\CheckOutController;
 use App\Http\Controllers\Api\V1\OrderController;
-
+use App\Http\Controllers\Api\V2\CategoryController as V2CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,8 +49,26 @@ Route::prefix('auth')
     });
 
 Route::prefix('v1')
-    ->middleware('auth:sanctum')
     ->group(function () {
+        Route::middleware('auth:sanctum')
+            ->group(function(){
+                Route::controller(CartController::class)
+                    ->group(function () {
+                        Route::get('carts', 'index');
+                        Route::post('carts/{product}', 'store');
+                    });
+                Route::controller(CheckOutController::class)
+                    ->group(function () {
+                        Route::post('checkout', 'checkout');
+                        Route::post('coupons/{name}/check', 'validateCoupon');
+                    });
+
+                Route::controller(OrderController::class)
+                    ->group(function () {
+                        Route::post('order', 'index');
+                        Route::post('order/{id}', 'show');
+                    });
+            });
         Route::controller(ProductController::class)
             ->group(function () {
                 Route::get('products', 'index');
@@ -62,26 +80,11 @@ Route::prefix('v1')
                 Route::get('categories/{sub_category}/products', 'getProductsByCategory');
             });
 
-        Route::controller(CartController::class)
-            ->group(function () {
-                Route::get('carts', 'index');
-                Route::post('carts/{product}', 'store');
-            });
-
         Route::get('locations', [LocationController::class, 'index']);
         Route::get('logistics', [LogisticController::class, 'index']);
-
-        Route::controller(CheckOutController::class)
-            ->group(function() {
-                Route::post('checkout','checkout');
-                Route::post('coupons/{name}/check', 'validateCoupon');
-            });
-
-        Route::controller(OrderController::class)
-            ->group(function() {
-                Route::post('order','index');
-                Route::post('order/{id}','show');
-            });
-
     });
 
+Route::prefix('v2')
+    ->group(function () {
+        Route::get('categories',[V2CategoryController::class, 'index']);
+    });

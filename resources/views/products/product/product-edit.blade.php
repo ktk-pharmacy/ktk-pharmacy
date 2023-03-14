@@ -26,8 +26,9 @@
                         <div class="mb-3">
                             <label for="product_code" class="form-label">Product Code<span
                                     class="text-danger">*</span></label>
-                            <input type="text" placeholder="Enter Product Code Here" id="product_code" name="product_code"
-                                class="form-control" value="{{ old('product_code', $product->product_code) }}">
+                            <input type="text" placeholder="Enter Product Code Here" id="product_code"
+                                name="product_code" class="form-control"
+                                value="{{ old('product_code', $product->product_code) }}">
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-label d-block" for="product-category">Categories <span
@@ -66,12 +67,12 @@
                             <div class="mb-3 col-6">
                                 <label for="" class="form-label">Price</label>
                                 <input type="text" placeholder="Enter price" id="" name="price"
-                                    class="form-control" value="{{ old('price',$product->price) }}">
+                                    class="form-control" value="{{ old('price', $product->price) }}">
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="" class="form-label">Sale Price</label>
                                 <input type="text" placeholder="Enter sale_price" id="" name="sale_price"
-                                    class="form-control" value="{{ old('sale_price',$product->sale_price) }}">
+                                    class="form-control" value="{{ old('sale_price', $product->sale_price) }}">
                             </div>
                         </div>
                         <div class="mb3 row">
@@ -82,8 +83,8 @@
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="" class="form-label">UOM <span class="text-danger">*</span></label>
-                                <input type="text" placeholder="Enter MOU" id="" name="MOU"
-                                    class="form-control" value="{{ old('MOU', $product->MOU) }}">
+                                <input type="text" placeholder="Enter UOM" id="" name="UOM"
+                                    class="form-control" value="{{ old('UOM', $product->UOM) }}">
                             </div>
                         </div>
                         <div class="mb3 row">
@@ -121,11 +122,13 @@
                             <div class="col-6 d-flex">
                                 <div class="form-group mb-3 mr-5">
                                     <label for="product-status">Active</label> <br>
-                                    <input type="checkbox" name="status" class="switchery" id="product-status" @checked($product->status) value="1" />
+                                    <input type="checkbox" name="status" class="switchery" id="product-status"
+                                        @checked($product->status) value="1" />
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="product-status">New</label> <br>
-                                    <input type="checkbox" name="is_new" class="switchery" id="product-status" @checked($product->is_new) value="1" />
+                                    <input type="checkbox" name="is_new" class="switchery" id="product-status"
+                                        @checked($product->is_new) value="1" />
                                 </div>
                             </div>
                         </div>
@@ -139,8 +142,8 @@
                             </div> --}}
                             <div class="mb-3 col-6">
                                 <label for="" class="form-label">Stock</label>
-                                <input type="text" placeholder="Enter stock" id=""
-                                    name="stock" class="form-control" value="{{ old('stock',$product->stock) }}">
+                                <input type="text" placeholder="Enter stock" id="" name="stock"
+                                    class="form-control" value="{{ old('stock', $product->stock) }}">
                             </div>
                         </div>
 

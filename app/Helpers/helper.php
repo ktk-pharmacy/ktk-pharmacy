@@ -47,21 +47,25 @@ function site_settings()
     // die();
     return $data;
 }
-function getCategory(){
+function getCategory()
+{
     $categories = SubCategory::with('parent')->get();
     return $categories;
 }
-function get_product_count(){
-  $product=  Products::with('brand','sub_category')->get();
-  return $product;
+function get_product_count()
+{
+    $product =  Products::with('brand', 'sub_category')->get();
+    return $product;
 }
 
-function get_product_instock(){
-    $in_stock_product=Products::where('availability',1)->get();
+function get_product_instock()
+{
+    $in_stock_product = Products::where('availability', 1)->get();
     return $in_stock_product;
 }
-function get_product_outstock(){
-    $out_stock_product=Products::where('availability',0)->get();
+function get_product_outstock()
+{
+    $out_stock_product = Products::where('availability', 0)->get();
     return $out_stock_product;
 }
 function getContentType()
@@ -85,6 +89,25 @@ function splitDateRange($date)
 
 function calculateCouponAmount($totalCart, $coupon)
 {
-    $coupon_amount = $coupon->type == 'percent' ? $totalCart * ($coupon->amount/100) : $coupon->amount;
+    $coupon_amount = $coupon->type == 'percent' ? $totalCart * ($coupon->amount / 100) : $coupon->amount;
     return $coupon_amount;
+}
+
+
+function ordersFilter($query, $request)
+{
+    if ($request->search) {
+        $keyword = $request->search;
+        $query = $query->whereHas('customer', function ($q) use ($keyword) {
+            $q->where('name', 'like', "%$keyword%");
+        })->orWhere('id', $keyword);
+    }
+    if ($request->filter) {
+        $date = splitDateRange($request->filter);
+        $query = $query->whereBetween('created_at', [$date['from'], $date['to']]);
+    }
+    if ($request->status) {
+        $query = $query->where('status', $request->status);
+    }
+    return $query;
 }

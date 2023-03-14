@@ -243,6 +243,8 @@
             //end
         });
     </script>
+
+    @stack('script')
 </body>
 
 </html>
