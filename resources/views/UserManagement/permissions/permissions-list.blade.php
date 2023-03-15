@@ -3,7 +3,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body tb-card">
-                <h4 class="card-title">User List</h4>
+                <h4 class="card-title">Permission List</h4>
                 <div class="col-lg-2 mb-7 right py-4 flex ml-auto">
                     @can('permission-create')
                         <a type="button" class="btn btn-primary btn-icon-text bg-green"
