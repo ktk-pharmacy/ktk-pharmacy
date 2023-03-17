@@ -38,11 +38,13 @@ Route::prefix('auth')
                         Route::post('request-otp', 'requestOTP');
                         Route::post('validation-otp', 'validationOTP');
 
+
                         Route::middleware('auth:sanctum')
                             ->group(function () {
                                 Route::post('logout', 'logout');
                                 Route::get('profile', 'getProfile');
                                 Route::post('profile', 'updateProfile');
+                                Route::post('change-password', 'changePassword');
                             });
                     });
             });
@@ -51,7 +53,7 @@ Route::prefix('auth')
 Route::prefix('v1')
     ->group(function () {
         Route::middleware('auth:sanctum')
-            ->group(function(){
+            ->group(function () {
                 Route::controller(CartController::class)
                     ->group(function () {
                         Route::get('carts', 'index');
@@ -86,5 +88,5 @@ Route::prefix('v1')
 
 Route::prefix('v2')
     ->group(function () {
-        Route::get('categories',[V2CategoryController::class, 'index']);
+        Route::get('categories', [V2CategoryController::class, 'index']);
     });
