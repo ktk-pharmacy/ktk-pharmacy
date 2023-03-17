@@ -22,6 +22,7 @@ class ProductsResource extends JsonResource
             'uom' => $this->UOM,
             "sale_price" => $this->sale_price,
             'packaging' => $this->packaging,
+            'is_new' => $this->is_new,
             'availability' => $this->availability ? 'Instock' : 'Outstock'
         ];
     }

@@ -13,5 +13,4 @@ class CategoryController extends Controller
         $categories = SubCategory::active()->get();
         return response()->success('Success!', 200, $categories);
     }
-
 }
