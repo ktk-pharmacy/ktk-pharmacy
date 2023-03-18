@@ -102,7 +102,8 @@ class AuthController extends Controller
         ]);
 
         $customer = $request->user();
-
+        // var_dump($request->user());
+        // die();
         if (asset($customer)) {
             $customer->update([
                 'password' => Hash::make($request->new_password)

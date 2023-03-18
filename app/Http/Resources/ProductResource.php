@@ -24,7 +24,7 @@ class ProductResource extends JsonResource
             "main_category_name" => $this->sub_category?->parent?->name,
             "sub_category_name" => $this->sub_category?->name,
             "brand_name" => $this->brand?->name,
-            "sale_price" => $this->sale_price,
+            "sale_price" => number_format($this->sale_price),
             "discount_price" => $this->discount,
             "stock" => $this->stock,
             'image_url' => $this->image_url,
@@ -35,7 +35,10 @@ class ProductResource extends JsonResource
             'manufacturer' => $this->manufacturer,
             'distributed_by' => $this->distributed_by,
             'product_details' => $this->product_details,
-            'other_information' => $this->other_information
+            'other_information' => $this->other_information,
+            "sold_count" => $this->sold_count,
+            "discount_from" => $this->discount_from,
+            "discount_to" => $this->discount_to
         ];
     }
 }

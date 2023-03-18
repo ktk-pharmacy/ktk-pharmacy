@@ -14,7 +14,7 @@ class ContentController extends Controller
     {
         try {
             $content_type = ContentType::where('slug', $slug)->first();
-            $contents = Content::typeIn($content_type->id)->active()->paginate(3);
+            $contents = Content::typeIn($content_type->id)->active()->paginate(6);
             return view('frontend.blogs', compact('contents'));
         } catch (\Exception $ex) {
             return response()->json([
@@ -60,7 +60,7 @@ class ContentController extends Controller
     {
         $content = Content::where('slug', $slug)->first();
         $rlated_contents = Content::where('content_type_id', $content->content_type_id)
-            ->except($content->id)
+            ->where('id','!=',$content->id)
             ->active()
             ->inRandomOrder()
             ->limit(3)

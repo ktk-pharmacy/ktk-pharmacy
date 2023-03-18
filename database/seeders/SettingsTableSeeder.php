@@ -18,7 +18,7 @@ class SettingsTableSeeder extends Seeder
         [
             'key'                       =>  'site_title',
             'key_mm'                    =>  'site_title_mm',
-            'value'                     =>  'WELCOME TO KTK PHARMACY CO., LTD.',
+            'value'                     =>  'WELCOME TO KTK PHARMACY',
             'value_mm'                  =>  'KTK Pharmacy မှကြိုဆိုပါ တယ်',
         ],
         [
@@ -78,7 +78,7 @@ class SettingsTableSeeder extends Seeder
         ],
         [
             'key'                       =>  'footer_copyright_text',
-            'value'                     =>  'COPYRIGHT © 2023 KTK PHARMACY CO., LTD. ALL RIGHTS RESERVED.',
+            'value'                     =>  'COPYRIGHT © 2023 KTK PHARMACY ALL RIGHTS RESERVED.',
         ],
         [
             'key'                       =>  'social_facebook',

@@ -20,7 +20,6 @@ class ProductController extends Controller
         $products = Products::active()->get();
         return response()->success('Success!', 200, ProductsResource::collection($products));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -31,7 +30,6 @@ class ProductController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -42,7 +40,6 @@ class ProductController extends Controller
     {
         return response()->success('Success!', 200, new ProductResource($product));
     }
-
     /**
      * Update the specified resource in storage.
      *

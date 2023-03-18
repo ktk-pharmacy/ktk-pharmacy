@@ -128,7 +128,7 @@
                               <td>{{ ++$key }}</td>
                               <td>
                                  <img
-                                    src="{{ $order_product->product->feature_image }}"
+                                    src="{{ $order_product->product->image_url }}"
                                     alt="" width="50" class="img-fluid img-thumbnail">
                                  <b>{{ $order_product->product->name }}</b>
                               </td>
