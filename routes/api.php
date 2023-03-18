@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\V1\LocationController;
 use App\Http\Controllers\Api\V1\CheckOutController;
 use App\Http\Controllers\Api\V1\OrderController;
 use App\Http\Controllers\Api\V2\CategoryController as V2CategoryController;
+use App\Http\Controllers\Api\V1\MobileAdvertisementController as MobileAds;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -84,6 +85,12 @@ Route::prefix('v1')
 
         Route::get('locations', [LocationController::class, 'index']);
         Route::get('logistics', [LogisticController::class, 'index']);
+
+        Route::controller(MobileAds::class)
+            ->group(function () {
+
+                Route::get('mobileads', 'index');
+            });
     });
 
 Route::prefix('v2')

@@ -21,9 +21,11 @@ class ProductsResource extends JsonResource
             'image_url' => $this->image_url,
             'uom' => $this->UOM,
             "sale_price" => $this->sale_price,
+            "discount_price" => $this->discount,
             'packaging' => $this->packaging,
             'is_new' => $this->is_new,
-            'availability' => $this->availability ? 'Instock' : 'Outstock'
+            'availability' => $this->availability ? 'Instock' : 'Outstock',
+            "sold_count" => $this->sold_count
         ];
     }
 }
