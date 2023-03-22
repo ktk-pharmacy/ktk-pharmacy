@@ -209,7 +209,9 @@ class ProductsController extends Controller
         $data['brand_id'] = $request->brand_id;
         $data['description'] = $request->description;
         $data['packaging'] = $request->packaging;
-        $data['UOM'] = $request->UOM;
+        $data['MOU'] = $request->MOU;
+        $data['discount_amount'] = $request->discount_amount;
+        $data['discount_type'] = $request->discount_type;
         $data['availability'] = $request->availability == 1 ? true : false;
         $data['distributed_by'] = $request->distributed_by;
         $data['manufacturer'] = $request->manufacturer;
@@ -220,6 +222,13 @@ class ProductsController extends Controller
         $data['sale_price'] = $request->sale_price;
         $data['stock'] = $request->stock; //quantity
         $data['is_new'] = $request->is_new ? true : false;
+
+        if ($request->discount_amount) {
+            $date = splitDateRange($request->discount_period);
+            $data['discount_from'] = $date['from'];
+            $data['discount_to'] = $date['to'];
+        }
+
         if ($request->hasFile('image')) {
             $file_name = time() . '.' . $request->image->extension();
             $path = Products::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";

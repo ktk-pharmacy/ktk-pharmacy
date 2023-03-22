@@ -45,6 +45,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- endSwitchery -->
 
+    <!-- flat picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 
     <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
     <style>
@@ -151,6 +154,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- endSwitchery -->
 
+    <!-- FlatPicker -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <!-- Custom js for this page -->
     <script src="/assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
@@ -239,6 +245,11 @@
                         $('#image').dropify();
                     }
                 });
+            });
+
+            $("#range-datepicker").flatpickr({
+                mode: "range",
+                dateFormat: "Y-m-d",
             });
             //end
         });

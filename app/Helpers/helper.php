@@ -93,6 +93,16 @@ function calculateCouponAmount($totalCart, $coupon)
     return $coupon_amount;
 }
 
+function getDiscount($sale_price, $discount_amount, $discount_type)
+{
+    if ($discount_type == "PERCENT") {
+        $discount = ($sale_price / 100) * $discount_amount;
+    } else {
+        $discount = $discount_amount;
+    }
+
+    return $discount;
+}
 
 function ordersFilter($query, $request)
 {

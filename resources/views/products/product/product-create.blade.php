@@ -143,6 +143,33 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-6">
+                               <div class="form-group mb-3">
+                                  <label for="discount-amount">Discount Amount</label>
+                                  <input type="number" name="discount_amount" class="form-control" id="discount-amount"
+                                     placeholder="Enter amount">
+                               </div>
+                            </div>
+                            <div class="col-md-6">
+                               <div class="form-group mb-3">
+                                  <label for="discount-type">Discount Type</label>
+                                  <select class="form-control" name="discount_type" id="discount-type">
+                                     <option value=>--Select Type--</option>
+                                     <option value="PERCENT">Percent(%)</option>
+                                     <option value="FIX">Fix</option>
+                                  </select>
+                               </div>
+                            </div>
+                            <div class="col-md-12">
+                               <div class="form-group mb-3">
+                                  <label>Discount Period</label>
+                                  <input type="text" name="discount_period" id="range-datepicker" class="form-control"
+                                     placeholder="2018-10-03 to 2018-10-10">
+                               </div>
+                            </div>
+                         </div>
+
                     </form>
                 </div>
             </div>

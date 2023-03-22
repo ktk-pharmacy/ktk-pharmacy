@@ -83,8 +83,8 @@
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="" class="form-label">UOM <span class="text-danger">*</span></label>
-                                <input type="text" placeholder="Enter UOM" id="" name="UOM"
-                                    class="form-control" value="{{ old('UOM', $product->UOM) }}">
+                                <input type="text" placeholder="Enter UOM" id="" name="MOU"
+                                    class="form-control" value="{{ old('UOM', $product->MOU) }}">
                             </div>
                         </div>
                         <div class="mb3 row">
@@ -146,6 +146,31 @@
                                     class="form-control" value="{{ old('stock', $product->stock) }}">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                               <div class="form-group mb-3">
+                                  <label for="discount-amount">Discount Amount</label>
+                                  <input type="number" name="discount_amount" class="form-control" value="{{ $product->discount_amount }}" id="discount-amount" placeholder="Enter amount">
+                               </div>
+                            </div>
+                            <div class="col-md-6">
+                               <div class="form-group mb-3">
+                                  <label for="discount-type">Discount Type</label>
+                                  <select class="form-control" name="discount_type" id="discount-type">
+                                     <option value=>--Select Type--</option>
+                                     <option value="PERCENT" @selected($product->discount_type == 'PERCENT')>Percent(%)</option>
+                                     <option value="FIX" @selected($product->discount_type == 'FIX')>Fix</option>
+                                  </select>
+                               </div>
+                            </div>
+                            <div class="col-md-12">
+                               <div class="form-group mb-3">
+                                  <label>Discount Period</label>
+                                  <input type="text" name="discount_period" id="range-datepicker" class="form-control"
+                                     placeholder="2022-10-01 to 2022-10-10" value="{{ $product->discount_from .' to '. $product->discount_to }}">
+                               </div>
+                            </div>
+                         </div>
 
                     </form>
                 </div>
