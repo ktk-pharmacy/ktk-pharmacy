@@ -209,7 +209,10 @@
 </x-app-layout>
 <script>
     $(document).ready(function() {
-
+        $("#range-datepicker").flatpickr({
+                mode: "range",
+                dateFormat: "Y-m-d",
+            });
 
     });
 </script>

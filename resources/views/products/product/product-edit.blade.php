@@ -4,7 +4,9 @@
             <div class="card-body">
                 <h4 class="card-title">Create Product</h4>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
-
+                    @php
+                        $promotion = $product->hasDiscount()
+                    @endphp
                 </div>
                 <div class="table-responsive">
                     <!-- table table-striped -->
@@ -166,8 +168,8 @@
                             <div class="col-md-12">
                                <div class="form-group mb-3">
                                   <label>Discount Period</label>
-                                  <input type="text" name="discount_period" id="range-datepicker" class="form-control"
-                                     placeholder="2022-10-01 to 2022-10-10" value="{{ $product->discount_from .' to '. $product->discount_to }}">
+                                  <input type="text" name="discount_period" id="range-datepicker"
+                                  placeholder="2018-10-03 to 2018-10-10" class="form-control" >
                                </div>
                             </div>
                          </div>
@@ -210,3 +212,23 @@
         <button type="submit" form="product_form" class="btn btn-primary">Save</button>
     </div>
 </x-app-layout>
+<script>
+    $(document).ready(function() {
+        const promotion = "{{ $promotion }}";
+        let arr;
+        if (promotion) {
+
+            arr = ["{{ $product->discount_from }}","{{ $product->discount_to }}"];
+            console.log(arr);
+        }else{
+            arr = [];
+            console.log(promotion);
+        }
+        $("#range-datepicker").flatpickr({
+                mode: "range",
+                dateFormat: "Y-m-d",
+                defaultDate: arr
+            });
+
+    });
+</script>

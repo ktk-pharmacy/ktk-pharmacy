@@ -247,10 +247,6 @@
                 });
             });
 
-            $("#range-datepicker").flatpickr({
-                mode: "range",
-                dateFormat: "Y-m-d",
-            });
             //end
         });
     </script>
