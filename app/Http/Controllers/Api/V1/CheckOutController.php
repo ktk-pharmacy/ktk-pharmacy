@@ -28,6 +28,7 @@ class CheckOutController extends Controller
             'gender' => 'required',
             'birthday' => 'required',
             'billing_address' => 'required',
+            'payment_method' => 'required'
         ]);
 
         $customer_id = $request->user()->id;
