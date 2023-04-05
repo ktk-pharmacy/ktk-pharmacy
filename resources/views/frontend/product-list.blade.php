@@ -1,6 +1,6 @@
 @include('frontend.Layouts.headers')
 <link rel="stylesheet" href="/assets/css/body-flex.css">
-<section class="upcoming-meetings" id="meetings">
+<section class="meetings-page" id="meetings">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

@@ -27,8 +27,9 @@ class ProductsImport implements ToModel, WithHeadingRow
     {
         return new Products([
             'name' => $row['name'],
-            'name' => $row['name_mm'] ?? Null,
+            'name_mm' => $row['name_mm'] ?? Null,
             'product_code' => $row['product_code'],
+            'image_url' => "assets/images/ktk_icon.jpg",
             'slug' => $this->generateSlug($row['name'], 'products'),
             'description' => $row['description']??$row['name'],
             'product_details' => $row['product_details'] ?? Null,

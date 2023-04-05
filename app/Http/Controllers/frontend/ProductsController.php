@@ -234,6 +234,8 @@ class ProductsController extends Controller
             $path = Products::UPLOAD_PATH . "/" . date("Y") . "/" . date("m") . "/";
             $data['image_url'] = $path . $file_name;
             $request->image->move(public_path($path), $file_name);
+        } else {
+            $data['image_url'] = "assets/images/ktk_icon.jpg";
         }
         return $data;
     }
