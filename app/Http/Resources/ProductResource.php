@@ -35,8 +35,10 @@ class ProductResource extends JsonResource
             'availability' => $this->availability ? 'Instock' : 'Outstock',
             'manufacturer' => $this->manufacturer,
             'distributed_by' => $this->distributed_by,
-            'product_details' => strip_tags($this->product_details),
-            'other_information' => strip_tags($this->other_information),
+            // 'product_details' => strip_tags($this->product_details),
+            'product_details' => $this->product_details,
+            // 'other_information' => strip_tags($this->other_information),
+            'other_information' => $this->other_information,
             "sold_count" => $this->sold_count,
             "discount_from" => $this->discount_from,
             "discount_to" => $this->discount_to
