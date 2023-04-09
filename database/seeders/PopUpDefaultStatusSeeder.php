@@ -17,8 +17,8 @@ class PopUpDefaultStatusSeeder extends Seeder
     {
         $status = [
             'key'                       =>  'pop_up_status',
-            'value'                     =>  'true',
-            'value_mm'                  =>  'true',
+            'value'                     =>  'false',
+            'value_mm'                  =>  'false',
         ];
 
         Settings::create($status);
