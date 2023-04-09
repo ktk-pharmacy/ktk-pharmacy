@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\Frontend\ProductsController as ProductBackend;
+use App\Http\Controllers\frontend\ProductsController as ProductBackend;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryGroupController;
 use App\Http\Controllers\CategoryController;
