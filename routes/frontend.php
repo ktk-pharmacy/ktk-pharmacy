@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\ProductsController as ProductFrontend;
+use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\frontend\ProductsController as ProductFrontend;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandController;
