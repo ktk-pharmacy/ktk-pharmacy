@@ -53,7 +53,7 @@ class CategoryController extends Controller
                 'products.manufacturer',
                 'products.packaging',
                 DB::raw('CASE WHEN availability = 1 then "Instock" ELSE "Outstock" END as availability'),
-                'products.uom as uom',
+                'products.mou as uom',
                 'products.distributed_by',
                 'products.manufacturer',
                 'products.distributed_by',

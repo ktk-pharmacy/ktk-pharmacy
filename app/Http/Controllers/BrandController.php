@@ -128,7 +128,7 @@ class BrandController extends Controller
         $brand->update([
             'name' => $request->name,
             'slug' => $slug ?? $brand->slug,
-            'image' => $image ?? $brand->image,
+            'image_url' => $image ?? $brand->image,
             'status' => $request->status ? true : false,
         ]);
         return redirect()->back()->with('success', 'Successfully updated!');
