@@ -51,7 +51,7 @@ class ContentController extends Controller
             'image' => 'required'
         ]);
         $data = $this->helperContent($request);
-        $data['slug'] = $this->generateSlug($request->name, 'contents');
+        $data['slug'] = $this->generateSlug($request->title, 'contents');
         Content::create($data);
         return to_route('content_list')->with('success', 'Successfully created!');
     }

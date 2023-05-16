@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12 mb-3">
                         <div class="meeting-single-item">
                             <div class="thumb">
                                 <a href="#"><img src="{{ $product->image_url }}" alt=""></a>
@@ -104,17 +104,17 @@
                         </div>
                     </div>
                     <!--Top Related-->
-                    <div class="col-lg-4 ml-4">
+                    <div class="col-lg-12 ml-4">
                         {{--  <div><h2>Top Related Product</h2></div>  --}}
                         <div class="col-lg-12 mr-5">
                             <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
                                <!-- Top Rated Product Widget -->
                                <div class="widget ltn__top-rated-product-widget">
                                   <h4 class="ltn__widget-title ltn__widget-title-border mb-3">Top Rated Products</h4>
-                                  <ul class="rounded-2">
+                                  <div class="rounded-2 row">
                                      @foreach ($top_related_products as $top_related_product)
-                                        <li class="mb-2">
-                                           <div class="top-rated-product-item clearfix">
+
+                                           <div class="top-rated-product-item col-md-4 clearfix">
                                               <div class="">
                                                  <a href="{{ route('product_detail', $top_related_product->slug) }}">
                                                     <img src="{{ $top_related_product->image_url }}" alt="#">
@@ -128,9 +128,9 @@
                                                  </h6>
                                               </div>
                                            </div>
-                                        </li>
+
                                      @endforeach
-                                  </ul>
+                                  </div>
                                </div>
                                <!-- Banner Widget -->
                                {{-- <div class="widget ltn__banner-widget">
