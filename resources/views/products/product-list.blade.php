@@ -48,21 +48,21 @@
                 </div>
                 <div class="table-responsive">
                     <!-- table table-striped -->
-                    <table class="table w-full text-xl border-green" id="table">
+                    <table class="table  w-full text-xl border-green" id="datatable">
                         <thead>
                             <tr>
                                 <th>Product</th>
                                 <th>Name</th>
-                                <th>Name MM</th>
                                 <th>Availability</th>
                                 <th>Category</th>
+                                <th>Category MM</th>
                                 <th>Distributed By</th>
                                 <th>Status</th>
                                 <th class="justify-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $product)
+                            {{-- @foreach ($products as $product)
                                 <tr>
                                     <td>
                                         <img src="{{ $product->image_url }}" alt="">
@@ -75,10 +75,10 @@
                                         {!! getAvaliableBadge($product->availability) !!}
                                     </td>
                                     <td>
-                                        {{ $product->sub_category->name }}
+                                        {{ $product->sub_category->name??'Test' }}
                                     </td>
                                     <td>
-                                        {{ $product->sub_category->name_mm }}
+                                        {{ $product->sub_category->name_mm??'Myanmar' }}
                                     </td>
                                     <td>{{ $product->distributed_by }}</td>
                                     <td>
@@ -97,7 +97,7 @@
 
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -105,3 +105,122 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    async function datatableFun() {
+        await new Promise((resolve, reject) => {
+            $('#datatable').DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                ajax: '/product/ssd',
+                columns: [{
+                        data: 'product',
+                        name: 'product'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'availability',
+                        name: 'availability'
+                    },
+                    {
+                        data: 'category',
+                        name: 'category'
+                    },
+                    {
+                        data: 'category_mm',
+                        name: 'category mm'
+                    },
+                    {
+                        data: 'distributed_by',
+                        name: 'distributed by'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        class: 'text-center'
+                    },
+                    {
+                        data: 'updated_at',
+                        name: 'updated_at'
+                    }
+                ],
+                order: [
+                    [8, 'desc']
+                ],
+                columnDefs: [{
+                    target: 8,
+                    visible: false
+                }],
+                initComplete: function() {
+                    resolve();
+                },
+                error: function() {
+                    reject('An error occurred while initializing the DataTable.');
+                }
+            });
+        });
+    }
+
+    function deleteAction() {
+        $('.delete-button').click(async function(e) {
+            var tr = $(this).parents('tr');
+            var url = $(this).data('url');
+            e.preventDefault();
+
+            try {
+                await Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Data has been deleted.',
+                            'success'
+                        );
+                        try {
+                            $.ajax({
+                                type: "DELETE",
+                                url: url,
+                            });
+                            tr.hide();
+                        } catch (error) {
+                            Toast.fire({
+                                icon: 'error',
+                                title: error
+                            })
+                        }
+                    }
+                })
+            } catch (error) {
+                Toast.fire({
+                    icon: 'error',
+                    title: error
+                });
+            }
+        });
+    }
+
+    async function init() {
+        try {
+            await datatableFun();
+            deleteAction();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    init();
+</script>

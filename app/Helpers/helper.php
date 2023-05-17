@@ -121,3 +121,8 @@ function ordersFilter($query, $request)
     }
     return $query;
 }
+
+function productActionBtns($product_id)
+{
+    return '<a href="'. route('product_edit', $product_id) .'" class="mx-2"><i class="fa-regular fa-pen-to-square"></i></a>'.'<a href="javascript:void(0)" data-url="'. route('product_destroy', $product_id) .'" class="text-danger delete-button"><i class="fa-solid fa-square-xmark"></i></a>';
+}

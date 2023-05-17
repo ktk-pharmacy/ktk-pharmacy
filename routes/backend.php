@@ -33,6 +33,7 @@ Route::middleware('auth')
                 Route::delete('/product_delete/{product}', 'destroy')->name('product_destroy');
                 Route::get('/product_export', 'export')->name('product_export');
                 Route::post('/product_import', 'import')->name('product_import');
+                Route::get('/product/ssd', 'ssd')->name('product_server_side_data');
             });
 
         Route::controller(CategoryGroupController::class)

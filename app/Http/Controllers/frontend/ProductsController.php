@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Carbon\Carbon;
 use App\Models\Brand;
 use App\Models\Products;
+use App\Models\SubCategory;
 use App\Models\MainCategory;
 use App\Traits\GenerateSlug;
 use Illuminate\Http\Request;
 use App\Exports\ProductsExport;
-use App\Http\Controllers\Controller;
 use App\Imports\ProductsImport;
-use App\Models\SubCategory;
+use Yajra\DataTables\DataTables;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductsController extends Controller
@@ -75,14 +77,45 @@ class ProductsController extends Controller
     public function product_list()
     {
         try {
-            $products = Products::publish()->with('brand', 'sub_category')->latest()->get();
-            return view('products.product-list', compact('products'));
+            // $products = Products::publish()->with('brand', 'sub_category')->latest()->get();
+            return view('products.product-list');
         } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong ProductsController.product_list',
                 'error' => $ex->getMessage()
             ], 400);
         }
+    }
+
+    public function ssd(Request $request)
+    {
+
+        $products = Products::publish()->with('brand', 'sub_category');
+        return DataTables::of($products)
+            ->addColumn('category',function($e){
+               return $e->sub_category->name??"-";
+            })
+            ->addColumn('category_mm',function($e){
+                return $e->sub_category->name_mm??"-";
+             })
+            ->addColumn('action',function($e){
+                return productActionBtns($e->id);
+            })
+            ->editColumn('availability',function($e){
+                return getAvaliableBadge($e->availability);
+            })
+            ->editColumn('status',function($e){
+                return getStatusBadge($e->status);
+            })
+            ->editColumn('product',function($e){
+                return '<img src="' . $e->image_url.'" alt="">';
+            })
+            ->editColumn('updated_at',function($e){
+                return Carbon::parse($e->updated_at)->format('Y-m-d H:i A');
+            })
+            ->rawColumns(['availability','action','status','product'])
+            ->make(true);
+
     }
 
 
