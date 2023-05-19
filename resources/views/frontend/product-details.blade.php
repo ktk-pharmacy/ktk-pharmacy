@@ -114,7 +114,7 @@
                                   <div class="rounded-2 row">
                                      @foreach ($top_related_products as $top_related_product)
 
-                                           <div class="top-rated-product-item col-md-4 clearfix">
+                                           <div class="top-rated-product-item col-md-2 clearfix">
                                               <div class="">
                                                  <a href="{{ route('product_detail', $top_related_product->slug) }}">
                                                     <img src="{{ $top_related_product->image_url }}" alt="#">

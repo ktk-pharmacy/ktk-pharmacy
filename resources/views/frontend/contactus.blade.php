@@ -63,7 +63,8 @@
             <div class="col-lg-7 align-self-center">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form id="contact" action="" method="post">
+                        <form id="contact" action="{{ route('contactForm') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <h2>Let''s get in touch</h2>

@@ -31,7 +31,7 @@
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/engine1/style.css') }}" />
     <script type="text/javascript" src="{{ asset('assets/engine1/jquery.js') }}"></script>
-
+    <script type="text/javascript" src="{{ asset('assets/js/contact.js') }}"></script>
     <style type="text/css">
         /* .img {
             content: url("/path/here/to/image.png");
