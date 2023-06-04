@@ -16,6 +16,8 @@ Route::controller(HomeController::class)
         Route::get('/home', 'home')->name('HOME');
         Route::get('/about', 'aboutus')->name('AboutUs');
         Route::get('/contact', 'contactus')->name('ContactUs');
+        Route::post('/contactForm', 'contactForm')->name('contactForm');
+
     });
 
 // Route::post('language/{locale}', 'LanguageController')->name('change');

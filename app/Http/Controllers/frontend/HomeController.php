@@ -8,8 +8,9 @@ use App\Models\home;
 use App\Models\Brand;
 use App\Models\CategoryGroup;
 use App\Models\ServiceSetting;
+use App\Mail\ContactForm;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 class HomeController extends Controller
 {
     /**
@@ -55,5 +56,20 @@ class HomeController extends Controller
                 'error' => $ex->getMessage()
             ], 400);
         }
+    }
+
+    public function contactForm(Request $request)
+    {
+        try {
+            Mail::to(config('mail.mailers.smtp.username'))->send(new ContactForm($request->all()));
+
+            return redirect()->back()->with('success', 'Successfully send!');
+        } catch (\Exception $ex) {
+            return response()->json([
+                'message' => 'Something Went Wrong HomeController.contactform',
+                'error' => $ex->getMessage()
+            ], 400);
+        }
+
     }
 }
