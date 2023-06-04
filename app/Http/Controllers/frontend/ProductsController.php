@@ -92,6 +92,16 @@ class ProductsController extends Controller
 
         $products = Products::publish()->with('brand', 'sub_category');
         return DataTables::of($products)
+            ->filterColumn('category',function($q,$key){
+                $q->whereHas('sub_category', function($q) use($key){
+                    $q->where('name','like', "%$key%");
+                });
+            })
+            ->filterColumn('category_mm',function($q,$key){
+                $q->whereHas('sub_category', function($q) use($key){
+                    $q->where('name_mm','like', "%$key%");
+                });
+            })
             ->addColumn('category',function($e){
                return $e->sub_category->name??"-";
             })
@@ -107,13 +117,13 @@ class ProductsController extends Controller
             ->editColumn('status',function($e){
                 return getStatusBadge($e->status);
             })
-            ->editColumn('product',function($e){
+            ->editColumn('image_url',function($e){
                 return '<img src="' . $e->image_url.'" alt="">';
             })
             ->editColumn('updated_at',function($e){
                 return Carbon::parse($e->updated_at)->format('Y-m-d H:i A');
             })
-            ->rawColumns(['availability','action','status','product'])
+            ->rawColumns(['availability','action','status','image_url'])
             ->make(true);
 
     }

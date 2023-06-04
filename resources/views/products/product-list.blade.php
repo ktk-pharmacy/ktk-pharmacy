@@ -51,12 +51,12 @@
                     <table class="table  w-full text-xl border-green" id="datatable">
                         <thead>
                             <tr>
-                                <th>Product</th>
+                                <th></th>
                                 <th>Name</th>
                                 <th>Availability</th>
                                 <th>Category</th>
-                                <th>Category MM</th>
-                                <th>Distributed By</th>
+                                <th>Category_MM</th>
+                                <th>Distributed_By</th>
                                 <th>Status</th>
                                 <th class="justify-center">Action</th>
                             </tr>
@@ -113,9 +113,10 @@
                 processing: true,
                 serverSide: true,
                 ajax: '/product/ssd',
-                columns: [{
-                        data: 'product',
-                        name: 'product'
+                columns: [
+                    {
+                        data: 'image_url',
+                        name: ''
                     },
                     {
                         data: 'name',
@@ -131,11 +132,11 @@
                     },
                     {
                         data: 'category_mm',
-                        name: 'category mm'
+                        name: 'category_mm'
                     },
                     {
                         data: 'distributed_by',
-                        name: 'distributed by'
+                        name: 'distributed_by'
                     },
                     {
                         data: 'status',
