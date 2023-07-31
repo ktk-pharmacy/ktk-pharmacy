@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         // $this->call(PermissionSeeder::class);
-        // $this->call(SuperAdminSeeder::class);
+         $this->call(SuperAdminSeeder::class);
         // $this->call(SettingsTableSeeder::class);
         // $this->call(DefaultContentTypesSeeder::class);
         // $this->call(SettingPopUpImgSeeder::class);
         // $this->call(SliderSeeder::class);
         // $this->call(CreateLocationSeeder::class);
-        $this->call(PopUpDefaultStatusSeeder::class);
+        //$this->call(PopUpDefaultStatusSeeder::class);
     }
 }

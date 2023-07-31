@@ -11,7 +11,7 @@ return [
     'products' => 'Products',
     'home' => 'Home',
     'news_blog' => 'News & Blogs',
-    'contact_us' => 'Contant Us',
+    'contact_us' => 'Contact Us',
     'about_us' => 'About Us',
     'search_here' => 'Search here...',
     'language' => 'Language',
