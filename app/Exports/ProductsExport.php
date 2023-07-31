@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class ProductsExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize, WithEvents, WithStyles
+class ProductsExport implements FromCollection, WithHeadings, WithMapping
 {
     function __construct(protected $products)
     {
@@ -36,7 +36,6 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping, Shoul
             'Product Detail',
             'Other Information',
             'Deleted_at',
-            ' Image '
         ];
     }
 
@@ -53,8 +52,8 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping, Shoul
             $item->name,
             $item->name_mm,
             $item->product_code,
-            $item->brand->name,
-            $item->sub_category->name,
+            $item->brand->name??"-",
+            $item->sub_category->name??"-",
             $item->description,
             $item->packaging,
             $item->UOM,
@@ -65,57 +64,11 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping, Shoul
             strip_tags(preg_replace("/&#?[a-z0-9]+;/i", "", $item->product_details)),
             strip_tags(preg_replace("/&#?[a-z0-9]+;/i", "", $item->other_information)),
             $item->deleted_at ? $deleted_at : "",
-            // strip_tags(preg_replace("/&#?[a-z0-9]+;/i","",$item->other_information)),
-            "",
         ];
     }
 
     public function collection()
     {
         return $this->products;
-    }
-
-    public function setImage($workSheet)
-    {
-        $this->collection()->each(function ($product, $index) use ($workSheet) {
-            $orgPath = explode('/', $product['image_url']);
-            $delPath = array_splice($orgPath, 3, 5);
-            $realPath = implode('/', $delPath);
-
-            $drawing = new Drawing();
-            $drawing->setName($product->name);
-            $drawing->setDescription($product->name);
-            $drawing->setPath(public_path($realPath));
-            $drawing->setWidth(80);
-            $drawing->setHeight(80);
-            $index += 2;
-            $drawing->setCoordinates("P$index");
-            $drawing->setWorksheet($workSheet);
-        });
-    }
-
-    public function registerEvents(): array
-    {
-        return [
-            AfterSheet::class => function (AfterSheet $event) {
-                $event->sheet->getDefaultRowDimension()->setRowHeight(60);
-                $workSheet = $event->sheet->getDelegate();
-                $this->setImage($workSheet);
-            },
-        ];
-    }
-    public function styles(Worksheet $sheet)
-    {
-        $count = count($this->products);
-        $sheet->getStyle('A1:P1')->getFont()->setBold(true);
-        $sheet->getStyle('A1:P1')->applyFromArray([
-            'borders' => [
-                'allBorders' => [
-                    'borderStyle' => Border::BORDER_THIN,
-                    'color' => ['argb' => '000'],
-                ],
-            ],
-
-        ]);
     }
 }
