@@ -26,7 +26,9 @@
         </li>
 
         <li class="{{ in_array($paginator->currentPage(), [1, 2, 3]) || $paginator->lastPage() <= 5 ? 'd-none' : '' }}">
-            <i class="fa-solid fa-ellipsis"></i>
+            <a href="javascript:void(0)">
+                <i class="fa-solid fa-ellipsis"></i>
+            </a>
         </li>
 
         @if (isset($link_limit))
@@ -63,7 +65,9 @@
 
         <li
             class="{{ in_array($paginator->currentPage(), [$paginator->lastPage(), $paginator->lastPage() - 1, $paginator->lastPage() - 2]) || $paginator->lastPage() <= 5 ? 'd-none' : '' }}">
-            <i class="fa-solid fa-ellipsis"></i>
+            <a href="javascript:void(0)">
+                <i class="fa-solid fa-ellipsis"></i>
+            </a>
         </li>
 
 

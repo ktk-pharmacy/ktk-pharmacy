@@ -5,7 +5,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2>Product List- {{ $sub_category->name ?? $brand->name }}</h2>
+                    <h2>Product List-
+                        @if (isset($sub_category))
+                            {{ $sub_category->name }}
+                        @else
+                            {{ $brand->name ?? 'all Brand' }}
+                        @endif
                 </div>
             </div>
 
@@ -14,7 +19,7 @@
                 <div class="col-12">
                     <div class="row">
                         @foreach ($products as $prod)
-                            <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="col-md-6 col-lg-3 mb-3">
                                 <div class="meeting-item">
                                     <div class="thumb">
                                         <a href="{{ url('product_detail', $prod->slug) }}"><img class="logoimage"

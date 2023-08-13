@@ -42,7 +42,11 @@ class BrandController extends Controller
     {
         try {
             $brand = Brand::active()->where('slug', $slug)->first();
-            $products = Products::active()->where('brand_id', $brand->id)->paginate(9);
+            if ($slug == 'all') {
+                $products = Products::active()->paginate(12);
+            } else {
+                $products = Products::active()->where('brand_id', $brand->id)->paginate(12);
+            }
             return view('frontend.product-list', compact('products', 'brand'));
         } catch (\Exception $ex) {
             return response()->json([

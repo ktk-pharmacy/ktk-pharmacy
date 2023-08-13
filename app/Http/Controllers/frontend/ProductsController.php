@@ -44,7 +44,7 @@ class ProductsController extends Controller
             $products = Products::publish()
                 ->with('brand', 'sub_category')
                 ->where('sub_category_id', $sub_category->id)
-                ->paginate(9);
+                ->paginate(12);
             $sub_ctgs = SubCategory::all();
             return view('frontend.product-list', compact('products', 'sub_category', 'sub_ctgs'));
         } catch (\Exception $ex) {
