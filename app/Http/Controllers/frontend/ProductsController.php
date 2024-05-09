@@ -153,9 +153,9 @@ class ProductsController extends Controller
             'name' => 'required',
             'category' => 'required',
             'description' => 'required',
-            'availability' => 'required'
+            'availability' => 'nullable',
         ]);
-        $data = $this->helperProduct($request);
+        $data = $this->helperProduct($request,'store');
         $data['slug'] = $this->generateSlug($data['name'] ?? $request->name, 'products');
 
         Products::create($data);
@@ -199,13 +199,13 @@ class ProductsController extends Controller
         // die();
         $request->validate([
             'name' => 'required',
-            'product_code' => 'required',
+            'product_code' => 'nullable',
             'category' => 'required',
             'description' => 'required',
-            'availability' => 'required'
+            'availability' => 'nullable'
         ]);
 
-        $data = $this->helperProduct($request);
+        $data = $this->helperProduct($request,'edit');
         if ($product->name != $request->name ?? $data['name']) {
             $data['slug'] = $this->generateSlug($data['name'] ?? $request->name, 'products');
         }
@@ -243,33 +243,33 @@ class ProductsController extends Controller
         return redirect()->back()->with('success', 'Successfully imported!');
     }
 
-    private function helperProduct($request)
+    private function helperProduct($request,$type)
     {
-        $data['name'] = $request->name;
-        $data['name_mm'] = $request->name_mm;
-        $data['product_code'] = $request->product_code;
-        $data['sub_category_id'] = $request->category;
-        $data['brand_id'] = $request->brand_id;
-        $data['description'] = $request->description;
-        $data['packaging'] = $request->packaging;
-        $data['MOU'] = $request->MOU;
-        $data['discount_amount'] = $request->discount_amount;
-        $data['discount_type'] = $request->discount_type;
-        $data['availability'] = $request->availability == 1 ? true : false;
-        $data['distributed_by'] = $request->distributed_by;
-        $data['manufacturer'] = $request->manufacturer;
-        $data['status'] = $request->status ? true : false;
-        $data['product_details'] = $request->product_details;
+        $data['name']              = $request->name;
+        $data['name_mm']           = $request->name_mm;
+        $data['product_code']      = $request->product_code??'--';
+        $data['sub_category_id']   = $request->category;
+        $data['brand_id']          = $request->brand_id;
+        $data['description']       = $request->description;
+        $data['packaging']         = $request->packaging;
+        $data['MOU']               = $request->MOU;
+        $data['discount_amount']   = $request->discount_amount;
+        $data['discount_type']     = $request->discount_type;
+        $data['availability']      = $request->availability == 1 ? true : false;
+        $data['distributed_by']    = $request->distributed_by;
+        $data['manufacturer']      = $request->manufacturer;
+        $data['status']            = $request->status ? true : false;
+        $data['product_details']   = $request->product_details;
         $data['other_information'] = $request->other_information;
-        $data['price'] = $request->price;
-        $data['sale_price'] = $request->sale_price;
-        $data['stock'] = $request->stock; //quantity
-        $data['is_new'] = $request->is_new ? true : false;
+        $data['price']             = $request->price;
+        $data['sale_price']        = $request->sale_price;
+        $data['stock']             = $request->stock; //quantity
+        $data['is_new']            = $request->is_new ? true : false;
 
         if ($request->discount_amount) {
             $date = splitDateRange($request->discount_period);
             $data['discount_from'] = $date['from'];
-            $data['discount_to'] = $date['to'];
+            $data['discount_to']   = $date['to'];
         }
 
         if ($request->hasFile('image')) {
@@ -278,7 +278,9 @@ class ProductsController extends Controller
             $data['image_url'] = $path . $file_name;
             $request->image->move(public_path($path), $file_name);
         } else {
-            $data['image_url'] = "assets/images/ktk_icon.jpg";
+            if($type === 'create'){
+                $data['image_url'] = "assets/images/ktk_icon.jpg";
+            }
         }
         return $data;
     }

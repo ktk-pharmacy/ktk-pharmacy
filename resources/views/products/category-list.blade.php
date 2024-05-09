@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>{{ ++$index }}</td>
                                     <td>
-                                        <b>{{ $main_category->name . ' (' . $main_category->group->name . ')' }}</b>
+                                        <b>{{ $main_category?->name . ' (' . $main_category?->group?->name . ')' }}</b>
                                     </td>
                                     <td>
                                         <b>{{ $main_category->name_mm}}</b>

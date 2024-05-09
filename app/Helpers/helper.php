@@ -124,5 +124,48 @@ function ordersFilter($query, $request)
 
 function productActionBtns($product_id)
 {
-    return '<a href="'. route('product_edit', $product_id) .'" class="mx-2"><i class="fa-regular fa-pen-to-square"></i></a>'.'<a href="javascript:void(0)" data-url="'. route('product_destroy', $product_id) .'" class="text-danger delete-button"><i class="fa-solid fa-square-xmark"></i></a>';
+    return '<a href="'. route('product_edit', $product_id) .'" class="mx-2"><i class="fa-regular fa-pen-to-square"></i></a>'.'<a href="javascript:void(0)" data-url="'. route('product_destroy', $product_id) .'" class="text-danger delete-button-'.$product_id.'"><i class="fa-solid fa-square-xmark"></i></a>'.'<script>$(`.delete-button-'.$product_id.'`).click(async function(e) {
+        var tr  = $(this).parents(`tr`);
+        var url = $(this).data(`url`);
+        e.preventDefault();
+
+        try {
+            await Swal.fire({
+                title: `Are you sure?`,
+                text: `You wont be able to revert this!`,
+                icon: `warning`,
+                showCancelButton: true,
+                confirmButtonColor: `#3085d6`,
+                cancelButtonColor: `#d33`,
+                confirmButtonText: `Yes, delete it!`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        `Deleted!`,
+                        `Data has been deleted.`,
+                        `success`
+                    );
+                    try {
+                        $.ajax({
+                            type: "DELETE",
+                            url: url,
+                            success: function(){
+                                $(`#datatable`).DataTable().ajax.reload();
+                            }
+                        });
+                    } catch (error) {
+                        Toast.fire({
+                            icon: `error`,
+                            title: error
+                        })
+                    }
+                }
+            })
+        } catch (error) {
+            Toast.fire({
+                icon: `error`,
+                title: error
+            });
+        }
+    });</script>';
 }

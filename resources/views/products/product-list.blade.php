@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body tb-card">
@@ -106,122 +105,60 @@
     </div>
 </x-app-layout>
 <script>
-    async function datatableFun() {
-        await new Promise((resolve, reject) => {
-            $('#datatable').DataTable({
-                responsive: true,
-                processing: true,
-                serverSide: true,
-                ajax: '/product/ssd',
-                columns: [
-                    {
-                        data: 'image_url',
-                        name: ''
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'availability',
-                        name: 'availability'
-                    },
-                    {
-                        data: 'category',
-                        name: 'category'
-                    },
-                    {
-                        data: 'category_mm',
-                        name: 'category_mm'
-                    },
-                    {
-                        data: 'distributed_by',
-                        name: 'distributed_by'
-                    },
-                    {
-                        data: 'status',
-                        name: 'status'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        class: 'text-center'
-                    },
-                    {
-                        data: 'updated_at',
-                        name: 'updated_at'
-                    }
-                ],
-                order: [
-                    [8, 'desc']
-                ],
-                columnDefs: [{
-                    target: 8,
-                    visible: false
-                }],
-                initComplete: function() {
-                    resolve();
-                },
-                error: function() {
-                    reject('An error occurred while initializing the DataTable.');
-                }
-            });
-        });
-    }
-
-    function deleteAction() {
-        $('.delete-button').click(async function(e) {
-            var tr = $(this).parents('tr');
-            var url = $(this).data('url');
-            e.preventDefault();
-
-            try {
-                await Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire(
-                            'Deleted!',
-                            'Data has been deleted.',
-                            'success'
-                        );
-                        try {
-                            $.ajax({
-                                type: "DELETE",
-                                url: url,
-                            });
-                            tr.hide();
-                        } catch (error) {
-                            Toast.fire({
-                                icon: 'error',
-                                title: error
-                            })
-                        }
-                    }
-                })
-            } catch (error) {
-                Toast.fire({
-                    icon: 'error',
-                    title: error
-                });
+    $('#datatable').DataTable({
+        responsive: true,
+        processing: true,
+        serverSide: true,
+        ajax: '/product/ssd',
+        columns: [{
+                data: 'image_url',
+                name: ''
+            },
+            {
+                data: 'name',
+                name: 'name'
+            },
+            {
+                data: 'availability',
+                name: 'availability'
+            },
+            {
+                data: 'category',
+                name: 'category'
+            },
+            {
+                data: 'category_mm',
+                name: 'category_mm'
+            },
+            {
+                data: 'distributed_by',
+                name: 'distributed_by'
+            },
+            {
+                data: 'status',
+                name: 'status'
+            },
+            {
+                data: 'action',
+                name: 'action',
+                class: 'text-center'
+            },
+            {
+                data: 'updated_at',
+                name: 'updated_at'
             }
-        });
-    }
-
-    async function init() {
-        try {
-            await datatableFun();
-            deleteAction();
-        } catch (error) {
-            console.error(error);
+        ],
+        order: [
+            [8, 'desc']
+        ],
+        columnDefs: [{
+            target: 8,
+            visible: false
+        }],
+        initComplete: function() {
+        },
+        error: function() {
+            reject('An error occurred while initializing the DataTable.');
         }
-    }
-
-    init();
+    });
 </script>
