@@ -24,7 +24,7 @@
                                     <option value="{{ $category->id }}">
                                         {{ $category->name }}
                                         @if ($type == 'sub-category')
-                                            ({{ $category->group->name }})
+                                            ({{ $category?->group?->name }})
                                         @endif
                                     </option>
                                 @endforeach

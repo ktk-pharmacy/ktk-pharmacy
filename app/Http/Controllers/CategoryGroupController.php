@@ -21,7 +21,7 @@ class CategoryGroupController extends Controller
     public function index()
     {
         try{
-            
+
             $category_group = CategoryGroup::publish()->get();
             return view('frontend.categories');
         }
@@ -133,6 +133,11 @@ class CategoryGroupController extends Controller
      */
     public function destroy(CategoryGroup $category)
     {
+        if($category->main_categories->count() > 0){
+            return response()->json([
+                'message' => 'Category Group has main categories. Can not delete.'
+            ], 422);
+        }
         $category->update([
             'status' => false,
             'deleted_at' => now()

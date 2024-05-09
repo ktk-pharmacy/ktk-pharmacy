@@ -28,7 +28,7 @@
                                         </option>
                                     @else
                                         <option value="{{ $category1->id }}" @selected($category->main_category_id == $category1->id)>
-                                            {{ $category1->name }}({{ $category1->group->name }})
+                                            {{ $category1?->name }}({{ $category1?->group?->name }})
                                         </option>
                                     @endif
                                 @endforeach

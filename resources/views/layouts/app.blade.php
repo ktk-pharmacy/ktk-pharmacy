@@ -185,17 +185,27 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire(
-                            'Deleted!',
-                            'Data has been deleted.',
-                            'success'
-                        );
                         try {
                             $.ajax({
                                 type: "DELETE",
                                 url: url,
+                                success: function(response) {
+                                    tr.hide();
+                                    $(`#datatable`).DataTable().ajax.reload();
+                                    Swal.fire(
+                                        'Deleted!',
+                                        'Data has been deleted.',
+                                        'success'
+                                    );
+                                },
+                                error: function(err) {
+                                    Toast.fire({
+                                        icon: 'error',
+                                        title: err.responseJSON.message
+                                    })
+
+                                }
                             });
-                            tr.hide();
                         } catch (error) {
                             Toast.fire({
                                 icon: 'error',
