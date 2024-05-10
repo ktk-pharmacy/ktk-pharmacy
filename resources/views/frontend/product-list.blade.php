@@ -1,6 +1,6 @@
 @include('frontend.Layouts.headers')
 <link rel="stylesheet" href="/assets/css/body-flex.css">
-<section class="meetings-page" id="meetings">
+<section style="background: #fff;" class="meetings-page" id="meetings">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -15,18 +15,19 @@
             </div>
 
             <div class="row">
-
                 <div class="col-12">
                     <div class="row">
                         @foreach ($products as $prod)
                             <div class="col-md-6 col-lg-3 mb-3">
                                 <div class="meeting-item">
                                     <div class="thumb">
-                                        <a href="{{ url('product_detail', $prod->slug) }}"><img class="logoimage"
-                                                width="416" height="284" src="{{ $prod->image_url }}"
-                                                alt=""></a>
+                                        <a href="{{ url('product_detail', $prod->slug) }}">
+                                            <img style="width: 100%;" class="logoimage border-top border-end border-start"
+                                            src="{{ $prod->image_url }}"
+                                            alt="{{ $prod->name }}">
+                                        </a>
                                     </div>
-                                    <div class="down-content">
+                                    <div class="down-content border-bottom border-end border-start">
                                         <a href="{{ url('product_detail', $prod->slug) }}">
                                             <h4 class="justify-center">{{ $prod->name }}</h4>
                                         </a>
@@ -34,7 +35,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div class="col-lg-12">
+                        <div style="margin-bottom: 20px" class="col-lg-12">
                             <div class="pagination">
                                 @include('frontend.share.paginate', [
                                     'paginator' => $products,

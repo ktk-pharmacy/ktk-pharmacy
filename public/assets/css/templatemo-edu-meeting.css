@@ -927,7 +927,7 @@ upcoming meetings
 */
 
 section.upcoming-meetings {
-  background-image: url(../images/meetings-bg.jpg);
+
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1151,17 +1151,12 @@ courses
 */
 
 section.our-courses {
-  background-image: url(../images/meetings-bg.jpg);
-  background-position: center center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
   padding-top: 140px;
   padding-bottom: 130px;
 }
 
 section.blank-space {
-  background-image: url(../images/meetings-bg.jpg);
+
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1179,7 +1174,6 @@ section.blank-space {
   font-size: 18px;
   color: #1f272b;
   text-align: center;
-  border-bottom: 1px solid #eee;
 }
 
 .our-courses .item .down-content .info {
@@ -1379,7 +1373,7 @@ contact us
 */
 
 section.contact-us {
-  background-image: url(../images/meetings-bg.jpg);
+
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1486,11 +1480,7 @@ section.contact-us .right-info ul li span {
 }
 
 section.footer {
-  background-image: url(../images/meetings-bg.jpg);
-  background-position: center center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
+    background: #1e1e1e;
   /* padding: 140px 0px 0px 0px; */
 }
 
@@ -1516,6 +1506,9 @@ section.footer {
 heading page
 ---------------------------------------------
 */
+.services {
+    padding-top:30px ;
+}
 
 section.heading-page {
   background-image: url(../images/heading-bg.jpg);
@@ -1554,11 +1547,6 @@ upcoming meetings page
 */
 
 section.meetings-page {
-  background-image: url(../images/meetings-page-bg.jpg);
-  background-position: center center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
   padding-top: 140px;
   padding-bottom: 0px;
 }
@@ -1724,7 +1712,6 @@ section.meetings-page .pagination ul li a:hover {
 .meeting-single-item .down-content .share {
   margin-top: 40px;
   padding-top: 40px;
-  border-top: 1px solid #eee;
 }
 
 .meeting-single-item .down-content .share h5 {
