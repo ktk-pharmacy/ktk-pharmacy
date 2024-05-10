@@ -93,7 +93,7 @@
                 </div>
             </div>
             <h5 class=" text-end">
-                <a href="{{ route('brand_products', 'all') }}" class=" text-white d-inline-block py-2 px-1 border-bottom border-white">More</a>
+                <a style="text-decoration: underline !important;" href="{{ route('brand_products', 'all') }}" class="text-black d-inline-block py-2 px-1">More...</a>
             </h5>
         </div>
     </div>
