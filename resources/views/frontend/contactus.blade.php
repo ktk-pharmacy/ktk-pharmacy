@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div style="margin-top: 20px;" class="row">
             <div class="col-lg-5">
                 <div class="right-info">
                     <ul>

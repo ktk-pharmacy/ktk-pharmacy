@@ -1,16 +1,17 @@
 @include('frontend.Layouts.headers')
 <link rel="stylesheet" href="/assets/css/body-flex.css">
-<section style="background: #fff;" class="meetings-page" id="meetings">
+<section style="background: #fff; min-height: 80vh;" class="meetings-page" id="meetings">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2>Product List-
+            <div class="col-lg-12 ">
+                <div class="section-heading ">
+                    <h2 class="text-black">Product List-
                         @if (isset($sub_category))
                             {{ $sub_category->name }}
                         @else
                             {{ $brand->name ?? 'all Brand' }}
                         @endif
+                    </h2>
                 </div>
             </div>
 
@@ -22,9 +23,9 @@
                                 <div class="meeting-item">
                                     <div class="thumb">
                                         <a href="{{ url('product_detail', $prod->slug) }}">
-                                            <img style="width: 100%;" class="logoimage border-top border-end border-start"
-                                            src="{{ $prod->image_url }}"
-                                            alt="{{ $prod->name }}">
+                                            <img style="width: 100%;"
+                                                class="logoimage border-top border-end border-start"
+                                                src="{{ $prod->image_url }}" alt="{{ $prod->name }}">
                                         </a>
                                     </div>
                                     <div class="down-content border-bottom border-end border-start">

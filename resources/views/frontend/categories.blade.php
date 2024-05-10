@@ -56,13 +56,14 @@
                             role="tabpanel" aria-labelledby="v-pills-{{ $mcat->slug }}-tab">
                             <div class="row">
                                 @foreach ($mcat->children as $subcat)
-                                    <div class=" mb-4 {{ count($mcat->children) == 1 ? 'col-md-8' : 'col-lg-4' }}">
+                                    <div class=" mb-4 {{ count($mcat->children) == 1 ? 'col-md-8' : 'col-lg-3' }}">
                                         <div class="meeting-item">
                                             <div class="thumb">
                                                 <div class="price">
                                                 </div>
-                                                <a href="{{ url('products', $subcat->id) }}"><img width="416"
-                                                        height="284" src="{{ $subcat->image_url }}"
+                                                <a href="{{ url('products', $subcat->id) }}"><img width="200"
+                                                    class="logoimage border-top border-end border-start"
+                                                     src="{{ $subcat->image_url }}"
                                                         alt="Allergy & Immune Care"></a>
                                             </div>
                                             <div class="down-content">

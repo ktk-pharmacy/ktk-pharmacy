@@ -1,6 +1,6 @@
 @include('frontend.Layouts.headers')
 <link rel="stylesheet" href="/assets/css/body-flex.css">
-<section style="background: #fff;" class="meetings-page" id="meetings">
+<section style="background: #fff; min-height: 80vh;" class="meetings-page" id="meetings">
     <div class="container">
 
         <div class="row">

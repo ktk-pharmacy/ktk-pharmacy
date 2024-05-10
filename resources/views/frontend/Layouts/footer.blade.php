@@ -1,6 +1,6 @@
 <footer style="margin-top: auto;">
     <!-- Sub Header -->
-    <div class="sub-header">
+    <div style="background-color: #CC191D" class="sub-header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-sm-8">

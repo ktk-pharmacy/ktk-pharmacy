@@ -7,8 +7,10 @@
                 <div class="row">
                     <div class="col-lg-12 mb-3">
                         <div class="meeting-single-item">
-                            <div style="min-height: 25vh; padding: 20px" class="d-flex border border-danger justify-content-center align-items-center">
-                                <img style="width:300px" class="" src="{{ $product->image_url }}" alt="">
+                            <div style="min-height: 25vh;" class="d-flex justify-content-center align-items-center">
+                                <div class="border border-danger">
+                                    <img style="width:400px" class="" src="{{ $product->image_url }}" alt="">
+                                </div>
                             </div>
 
                             <div class="down-content">

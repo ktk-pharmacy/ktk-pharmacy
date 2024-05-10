@@ -83,7 +83,7 @@
                     @foreach ($brands as $brand)
                         <a href="{{ route('brand_products', $brand->slug) }}">
                             <div class="item border">
-                                <img width="270" height="170" src="{{ $brand->image_url }}" alt="Course One">
+                                <img width="230" height="230" src="{{ $brand->image_url }}" alt="Course One">
                                 <div class="down-content">
                                     <h4>{{ $brand->name }}</h4>
                                 </div>
