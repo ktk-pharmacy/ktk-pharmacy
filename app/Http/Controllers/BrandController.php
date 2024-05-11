@@ -146,6 +146,12 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
+        if($brand->products->count() > 0){
+            return response()->json([
+                'message' => 'This brand has products. Can not delete.'
+            ], 422);
+        }
+
         $brand->update([
             'status' => false,
             'deleted_at' => now()

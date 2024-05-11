@@ -42,10 +42,19 @@
                                             <p>{{ $product->manufacturer }} </p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 mb-4">
                                         <div class="book now">
                                             <h5>Distribute By</h5>
-                                            <p>{{ $product->distributed_by }} </p>
+                                            {{-- @dd($product->brand) --}}
+                                            @if ($product->brand && !$product->brand->deleted_at)
+                                                <p>
+                                                    <a style="text-decoration: underline !important" class="text-dark" href="{{ route('brand_products', $product->brand->slug) }}">
+                                                        {{ $product->distributed_by }}
+                                                    </a>
+                                                </p>
+                                            @else
+                                                <p>{{ $product->distributed_by }} </p>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-12 border mt-10 py-4 mb-10 px-4 pb-10">
