@@ -61,7 +61,8 @@
                                             <div class="thumb">
                                                 <div class="price">
                                                 </div>
-                                                <a href="{{ url('products', $subcat->id) }}"><img width="200"
+                                                <a href="{{ url('products', $subcat->id) }}"><img width="100%"
+                                                    height="200"
                                                     class="logoimage border-top border-end border-start"
                                                      src="{{ $subcat->image_url }}"
                                                         alt="Allergy & Immune Care"></a>

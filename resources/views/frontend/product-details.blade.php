@@ -8,7 +8,7 @@
                     <div class="col-lg-12 mb-3">
                         <div class="meeting-single-item">
                             <div style="min-height: 25vh;" class="d-flex justify-content-center align-items-center">
-                                <div class="border border-danger">
+                                <div class="">
                                     <img style="width:400px" class="" src="{{ $product->image_url }}" alt="">
                                 </div>
                             </div>
