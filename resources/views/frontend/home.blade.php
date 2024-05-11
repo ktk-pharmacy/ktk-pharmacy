@@ -143,9 +143,15 @@
                 </div>
             </div>
             <div class="col-lg-6 align-self-center">
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=HndV87XpkWg" target="_blank"><img
-                            src="assets/images/play-icon.png" alt=""></a>
+                <div style="background: transparent !important;" class="video">
+                    {{-- <a href="https://www.youtube.com/watch?v=HndV87XpkWg" target="_blank"><img
+                            src="assets/images/play-icon.png" alt=""></a> --}}
+                     <video
+                     style="width: 100%; border-radius: 10px"
+                     controls>
+                        <source
+                        src="{{asset('assets/images/db-2.mp4')}}" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
