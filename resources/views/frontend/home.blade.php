@@ -93,7 +93,7 @@
                 </div>
             </div>
             <h5 class=" text-end">
-                <a style="text-decoration: underline !important;" href="{{ route('brand_products', 'all') }}" class="text-black d-inline-block py-2 px-1">More...</a>
+                <a style="text-decoration: underline !important;" href="{{ route('brand_products', 'all') }}" class="text-black d-inline-block py-2 px-1">More Brands...</a>
             </h5>
         </div>
     </div>
@@ -148,7 +148,7 @@
                             src="assets/images/play-icon.png" alt=""></a> --}}
                      <video
                      style="width: 100%; border-radius: 10px"
-                     controls>
+                     autoplay muted loop>
                         <source
                         src="{{asset('assets/images/db-2.mp4')}}" type="video/mp4">
                     </video>
