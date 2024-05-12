@@ -1151,8 +1151,8 @@ courses
 */
 
 section.our-courses {
-  padding-top: 140px;
-  padding-bottom: 130px;
+  padding-top: 100px;
+  padding-bottom: 10px;
 }
 
 section.blank-space {
@@ -1308,7 +1308,7 @@ section.our-facts {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 140px 0px 125px 0px;
+  padding: 80px 0px 125px 0px;
 }
 
 section.our-facts h2 {
