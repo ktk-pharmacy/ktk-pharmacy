@@ -75,7 +75,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading partner">
-                    <h2 class="text-black">{{ __('root.partners') }}</h2>
+                    <h2
+                    style="
+                    margin-top: 185px !important;
+                    margin-bottom: 0px !important;
+                    " class="text-black">{{ __('root.partners') }}</h2>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -83,7 +87,7 @@
                     @foreach ($brands as $brand)
                         <a href="{{ route('brand_products', $brand->slug) }}">
                             <div class="item border">
-                                <img width="230" height="230" src="{{ $brand->image_url }}" alt="Course One">
+                                <img width="230" src="{{ $brand->image_url }}" alt="Course One">
                                 <div class="down-content">
                                     <h4>{{ $brand->name }}</h4>
                                 </div>
