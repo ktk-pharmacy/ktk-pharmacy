@@ -83,7 +83,7 @@
                     @foreach ($brands as $brand)
                         <a href="{{ route('brand_products', $brand->slug) }}">
                             <div class="item border">
-                                <img width="230" height="" src="{{ $brand->image_url }}" alt="Course One">
+                                <img width="230" height="230" src="{{ $brand->image_url }}" alt="Course One">
                                 <div class="down-content">
                                     <h4>{{ $brand->name }}</h4>
                                 </div>
@@ -143,10 +143,8 @@
                 </div>
             </div>
             <div class="col-lg-6 align-self-center">
-                <div style="background: transparent !important;" class="video">
-                    {{-- <a href="https://www.youtube.com/watch?v=HndV87XpkWg" target="_blank"><img
-                            src="assets/images/play-icon.png" alt=""></a> --}}
-                     <video
+                <div class="video">
+                    <video
                      style="width: 100%; border-radius: 10px"
                      autoplay muted loop>
                         <source

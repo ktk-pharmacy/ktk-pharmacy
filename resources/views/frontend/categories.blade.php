@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2>Product Categories</h2>
+                    <h2 class="text-black">Product Categories</h2>
                 </div>
             </div>
 

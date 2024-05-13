@@ -43,7 +43,7 @@
 -->
 </head>
 
-<body style="">
+<body style="overflow-x: hidden">
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky background-header">
         <div class="container">

@@ -36,4 +36,9 @@ class Brand extends Model
             get: fn ($value) => asset($value),
         );
     }
+
+    public function products()
+    {
+        return $this->hasMany(Products::class);
+    }
 }
