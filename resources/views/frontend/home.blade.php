@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading partner">
-                    <h2>{{ __('root.partners') }}</h2>
+                    <h2 class="text-black">{{ __('root.partners') }}</h2>
                 </div>
             </div>
             <div class="col-lg-12">
