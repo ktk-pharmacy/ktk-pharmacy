@@ -38,10 +38,14 @@ class ProductsController extends Controller
     //     }
     // }
     /**Product List*/
-    public function products(SubCategory $sub_category)
+    public function products(SubCategory $sub_category, Request $request)
     {
         try {
             $products = Products::publish()
+                ->when(
+                    $request->search,
+                    fn($query) => $query->where('name', 'like', "%{$request->search}%")
+                )
                 ->with('brand', 'sub_category')
                 ->where('sub_category_id', $sub_category->id)
                 ->paginate(12);

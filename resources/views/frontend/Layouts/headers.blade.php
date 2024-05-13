@@ -46,10 +46,10 @@
 <body style="overflow-x: hidden">
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky background-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 h-100">
+                    <nav class="main-nav h-100 d-flex justify-content-between">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ url('/') }}" class="logo">
                             <!-- {{ asset('assets/images/ktk_icon_3tp.png') }} -->
@@ -57,6 +57,15 @@
                             <!-- <img width="50" height="100" alt=""> -->
                         </a>
                         <!-- ***** Logo End ***** -->
+
+                        <form class="d-flex align-items-center justify-items-center" action="" method="get">
+                            <div class="input-group">
+                                <input class="form-control border border-danger" type="text" name="search" id="search" placeholder="Search">
+                                <button class="btn-sm btn-danger">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        </form>
                         <!-- ***** Menu Start ***** -->
                         @php
                             $categorygroup = getGroupCategories();
