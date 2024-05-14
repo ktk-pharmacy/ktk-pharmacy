@@ -38,15 +38,22 @@ class BrandController extends Controller
         }
     }
 
-    public function brand_products($slug)
+    public function brand_products(Request $request, $slug)
     {
         try {
             $brand = Brand::active()->where('slug', $slug)->first();
-            if ($slug == 'all') {
-                $products = Products::active()->paginate(12);
-            } else {
-                $products = Products::active()->where('brand_id', $brand->id)->paginate(12);
+
+            $query = Products::query()
+                ->when(
+                    $request->search,
+                    fn($query) => $query->where('name', 'like', "%{$request->search}%")
+                );
+
+            if ($slug !== 'all') {
+                $query = $query->where('brand_id', $brand->id);
             }
+            $products = $query->active()->paginate(12);
+
             return view('frontend.product-list', compact('products', 'brand'));
         } catch (\Exception $ex) {
             return response()->json([

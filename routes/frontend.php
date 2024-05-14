@@ -11,6 +11,7 @@ use App\Http\Controllers\ServiceSettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)
+    ->middleware('pd-search')
     ->group(function () {
         Route::get('/', 'home')->name('HOME');
         Route::get('/home', 'home')->name('HOME');

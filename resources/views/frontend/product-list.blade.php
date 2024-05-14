@@ -40,7 +40,7 @@
                             <div class="pagination">
                                 @include('frontend.share.paginate', [
                                     'paginator' => $products,
-                                    $products->links(),
+                                    $products->appends(request()->query())->links(),
                                     'link_limit' => 4,
                                 ])
                             </div>
