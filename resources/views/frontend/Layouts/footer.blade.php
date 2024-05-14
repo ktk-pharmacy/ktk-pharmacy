@@ -36,7 +36,16 @@
 
                     <p>
                         <b>PHONE :</b>
-                        <a class="text-white" href="tel:+{{ site_settings()['default_phone_number'] }}">
+                        <a
+                        class="text-white"
+                        href="tel:+959 960 907 555"
+                        >
+                            +959 960 907 555
+                        </a>,
+                        <a
+                        class="text-white"
+                        href="tel:{{ site_settings()['default_phone_number'] }}"
+                        >
                             {{ site_settings()['default_phone_number'] }}
                         </a>
                     </p>
