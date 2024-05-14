@@ -22,6 +22,10 @@
             </div>
         </div>
     </div>
+
+    <div class="service-text w-75 pb-4 border-secondary border-bottom">
+        <h3 class="text-white">{{ __('root.services') }}</h3>
+    </div>
 </section>
 <button id="modal_call" data-bs-toggle="modal" data-bs-target="#exampleModal" class="d-none">Modal</button>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -40,16 +44,28 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>{{ __('root.services') }}</h2>
-                    </div>
-                </div>
-                <div class="owl-service-item owl-carousel col-12">
+                {{-- <div class="owl-service-item owl-carousel col-12">
                     @foreach ($service_settings as $service)
                         <a href="javascript:void(0)" class="modal-open-btn" data-bs-toggle="modal"
                             data-bs-target="#exampleModal" data-url="{{ route('service_setting_show', $service->id) }}">
                             <div style="height: 315px;background-image: url({{ $service->bg_url }});" class="item py-3"
+                                data-bs-bg="">
+                                <div class="icon">
+                                    <img src="{{ $service->image_url }}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>{{ $service->titleFilter }}</h4>
+                                    <p>{{ $service->shortDesc }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                </div> --}}
+                <div class="row h-100">
+                    @foreach ($service_settings as $service)
+                        <a href="javascript:void(0)" class="modal-open-btn mb-4 col-4" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" data-url="{{ route('service_setting_show', $service->id) }}">
+                            <div style="height: 300px;background-image: url({{ $service->bg_url }});" class="item py-3"
                                 data-bs-bg="">
                                 <div class="icon">
                                     <img src="{{ $service->image_url }}" alt="">
@@ -66,20 +82,14 @@
         </div>
     </div>
 </section>
-<section class="blank-space" height="700px">
-    <div height="200px">
-    </div>
-</section>
+
 <section class="our-courses" id="courses">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="section-heading partner">
+                <div class="section-heading mt-0 partner">
                     <h2
-                    style="
-                    margin-top: 185px !important;
-                    margin-bottom: 0px !important;
-                    " class="text-black">{{ __('root.partners') }}</h2>
+                     class="text-black">{{ __('root.partners') }}</h2>
                 </div>
             </div>
             <div class="col-lg-12">

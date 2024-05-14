@@ -67,7 +67,7 @@
                                                      src="{{ $subcat->image_url }}"
                                                         alt="Allergy & Immune Care"></a>
                                             </div>
-                                            <div class="down-content">
+                                            <div class="down-content border-bottom border-end border-start">
                                                 <a href="{{ url('products', $subcat->id) }}">
                                                     <h4 class="justify-center">{{ $subcat->nameFilter }}</h4>
                                                 </a>
