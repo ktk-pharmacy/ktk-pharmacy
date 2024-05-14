@@ -60,7 +60,7 @@
 
                         <form class="d-flex align-items-center justify-items-center" action="" method="get">
                             <div class="input-group">
-                                <input class="form-control border border-danger" type="text" name="search" id="search" placeholder="Search">
+                                <input class="form-control border border-danger" type="text" name="search" id="search" placeholder="Product Search">
                                 <button class="btn-sm btn-danger">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </button>

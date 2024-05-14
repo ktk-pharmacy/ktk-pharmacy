@@ -36,34 +36,45 @@ Route::get('/language/{locale}', function ($locale) {
 
 
 Route::controller(BlogController::class)
+    ->middleware('pd-search')
     ->group(function () {
         Route::get('/blogs', 'index')->name('blogs');
     });
 
 Route::controller(ProductFrontend::class)
     ->group(function () {
-        Route::get('/products/{sub_category}', 'products')->name('products');
-        Route::get('/product_detail/{slug}', 'product_detail')->name('product_detail');
+        Route::get('/products/{sub_category}', 'products')
+            ->name('products');
+        Route::get('/product_detail/{slug}', 'product_detail')
+            ->name('product_detail')
+            ->middleware('pd-search');
     });
 
 Route::controller(CategoryController::class)
+    ->middleware('pd-search')
     ->group(function () {
-        Route::get('/categories/{slug}', 'index')->name('categories');
+        Route::get('/categories/{slug}', 'index')
+            ->name('categories');
     });
 
 
 Route::controller(ContentController::class)
+    ->middleware('pd-search')
     ->group(function () {
-        Route::get('/contents/{slug}', 'index')->name('contents');
-        Route::get('/contents/show/{slug}', 'show')->name('content_show');
+        Route::get('/contents/{slug}', 'index')
+            ->name('contents');
+        Route::get('/contents/show/{slug}', 'show')
+            ->name('content_show');
     });
 
 Route::controller(ServiceSettingController::class)
     ->group(function () {
-        Route::get('/service_setting_show/{service}', 'show')->name('service_setting_show');
+        Route::get('/service_setting_show/{service}', 'show')
+            ->name('service_setting_show');
     });
 
 Route::controller(BrandController::class)
     ->group(function () {
-        Route::get('/{slug}/products', 'brand_products')->name('brand_products');
+        Route::get('/{slug}/products', 'brand_products')
+            ->name('brand_products');
     });
