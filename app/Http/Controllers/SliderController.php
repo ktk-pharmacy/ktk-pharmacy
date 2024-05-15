@@ -93,6 +93,11 @@ class SliderController extends Controller
     public function update(Request $request, Slider $slider)
     {
         $data = $this->helperSlider($request);
+        if($request->status) {
+            $active_sldrs = Slider::active()->where('id', '!=', $slider->id)->get();
+            $data['status'] = count($active_sldrs) == 4 ? false : true;
+        }
+
         $slider->update($data);
         return to_route('slider_list')->with('success', 'Successfully updated!');
     }
@@ -115,8 +120,6 @@ class SliderController extends Controller
     {
         $data['url'] = $request->url;
         $data['status'] = $request->status ? true : false;
-        $active_sldrs = Slider::active()->get();
-        $data['status'] = count($active_sldrs) == 4 ? false : true;
         if ($request->hasFile('image')) {
             $path = Slider::UPLOAD_PATH . date('Y') . '/' . date('m') . '/';
             $file_name = uniqid() . time() . "." . $request->image->extension();

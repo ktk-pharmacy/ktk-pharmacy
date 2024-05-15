@@ -4,9 +4,10 @@
         <div class="card">
             <div class="card-body tb-card">
                 <h4 class="card-title">Sliders</h4>
+                <button style="display: none" data-bs-toggle="modal" id="modal-hidden-btn" data-bs-target="#exampleModal" class="">md-btn</button>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
                     @can('create')
-                        <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('slider_create') }}"
+                        <button data-url="{{ route('slider_create') }}"
                         id="add-btn" class="btn btn-primary form-btn mb-2 float-right btn-icon-text"
                         @disabled(count($active_sldrs) == 4)>
                         <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
@@ -54,8 +55,7 @@
                                     </td>
                                     <td>
                                         @can('edit')
-                                          <a href="javascript:void(0)" data-bs-toggle="modal"
-                                          data-bs-target="#exampleModal"
+                                          <a href="javascript:void(0)"
                                           data-url="{{ route('slider_edit', $slider->id) }}" class="mx-2 form-btn"><i
                                             class="fa-regular fa-pen-to-square"></i></a>
                                         @endcan
