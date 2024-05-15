@@ -255,6 +255,7 @@
                     success: function(view) {
                         $('.modal-content').html(view);
                         $('#image').dropify();
+                        $('#modal-hidden-btn').click();
                     }
                 });
             });

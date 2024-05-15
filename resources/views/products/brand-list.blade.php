@@ -5,8 +5,9 @@
             <div class="card-body tb-card">
                 <h4 class="card-title">Brand</h4>
                 <div class="col-lg-6 mb-7 right py-4 flex ml-auto">
+                    <button style="display: none" data-bs-toggle="modal" id="modal-hidden-btn" data-bs-target="#exampleModal" class="">md-btn</button>
                     @can('create')
-                        <button data-bs-toggle="modal" data-bs-target="#exampleModal" data-url="{{ route('brand_create') }}"
+                        <button data-url="{{ route('brand_create') }}"
                         id="add-btn" class="btn btn-primary mb-2 form-btn float-right btn-icon-text">
                         <i class="mdi mdi-file-check btn-icon-prepend"></i> Add New
                         </button>
@@ -53,8 +54,7 @@
                                     </td>
                                     <td>
                                         @can('edit')
-                                            <button data-bs-toggle="modal" style="border: none;outline:none;"
-                                            data-bs-target="#exampleModal"
+                                            <button style="border: none;outline:none;"
                                             data-url="{{ route('brand_edit', $brand->id) }}"
                                             class="mx-2 text-primary form-btn"><i
                                                 class="fa-regular fa-pen-to-square"></i></button>
