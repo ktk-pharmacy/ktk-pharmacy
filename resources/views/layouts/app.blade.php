@@ -169,6 +169,24 @@
             }
         });
         $(document).ready(function() {
+            const formBtnEvent = () => {
+
+                $('.form-btn').off();
+                $('.form-btn').click(function(e) {
+                    e.preventDefault();
+                    var url = $(this).data('url');
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        success: function(view) {
+                            $('.modal-content').html(view);
+                            $('#image').dropify();
+                            $('#modal-hidden-btn').click();
+                        }
+                    });
+                });
+            }
+
             //all delete method
             $('.delete-btn').click(function(e) {
                 var tr = $(this).parents('tr');
@@ -216,7 +234,20 @@
                 })
             });
             //jQuery Datatable
-            $('#table').DataTable();
+            var table = new DataTable('#table');
+
+            table.on('page', function () {
+                setTimeout(() => {
+                    formBtnEvent();
+                }, 100);
+            });
+
+            table.on('length.dt', function () {
+                setTimeout(() => {
+                    formBtnEvent();
+                }, 100);
+            });
+
             //Select 2
             $('.select2').select2();
             //Dropify js
@@ -246,19 +277,7 @@
                 });
             });
 
-            $('.form-btn').click(function(e) {
-                e.preventDefault();
-                var url = $(this).data('url');
-                $.ajax({
-                    type: "GET",
-                    url: url,
-                    success: function(view) {
-                        $('.modal-content').html(view);
-                        $('#image').dropify();
-                        $('#modal-hidden-btn').click();
-                    }
-                });
-            });
+            formBtnEvent();
 
             //end
         });

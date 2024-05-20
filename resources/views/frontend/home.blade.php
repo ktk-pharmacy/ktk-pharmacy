@@ -63,35 +63,38 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                {{-- <div class="owl-service-item owl-carousel col-12">
-                    @foreach ($service_settings as $service)
-                        <a href="javascript:void(0)" class="modal-open-btn" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" data-url="{{ route('service_setting_show', $service->id) }}">
-                            <div style="height: 315px;background-image: url({{ $service->bg_url }});" class="item py-3"
-                                data-bs-bg="">
-                                <div class="icon">
-                                    <img src="{{ $service->image_url }}" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4>{{ $service->titleFilter }}</h4>
-                                    <p>{{ $service->shortDesc }}</p>
-                                </div>
-                            </div>
-                        </a>
-                    @endforeach
-                </div> --}}
                 <div class="row h-100">
+                    <button
+                      style="display: none;"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      id="model-hide-btn"
+                    >
+                        md-btn
+                    </button>
                     @foreach ($service_settings as $service)
-                        <a href="javascript:void(0)" class="modal-open-btn mb-4 col-4" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" data-url="{{ route('service_setting_show', $service->id) }}">
+                        <a
+                          href="javascript:void(0)"
+                          class="modal-open-btn mb-4 col-4"
+                          data-url="{{ route('service_setting_show', $service->id) }}"
+                        >
                             <div style="height: 300px;background-image: url({{ $service->bg_url }});" class="item py-3"
                                 data-bs-bg="">
                                 <div class="icon">
                                     <img src="{{ $service->image_url }}" alt="">
                                 </div>
                                 <div class="down-content">
-                                    <h4>{{ $service->titleFilter }}</h4>
-                                    <p>{{ $service->shortDesc }}</p>
+                                    <h4
+                                      class="text-black"
+                                    >
+                                      {{ $service->titleFilter }}
+                                    </h4>
+
+                                    <p
+                                      class="text-black"
+                                    >
+                                      {{ $service->shortDesc }}
+                                    </p>
                                 </div>
                             </div>
                         </a>
@@ -207,6 +210,7 @@
                 url: url,
                 success: function(view) {
                     $('#modal_container').html(view);
+                    $('#model-hide-btn').click();
                 }
             });
         });
