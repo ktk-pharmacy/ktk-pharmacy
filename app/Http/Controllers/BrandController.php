@@ -130,8 +130,11 @@ class BrandController extends Controller
         $request->validate([
             'name' => 'required|max:100'
         ]);
+
         if ($request->image) {
             $image = $this->fileUpload($request->image);
+        }else {
+            $image = $brand->image_url;
         }
         if ($request->name != $brand->name) {
             $slug = $this->generateSlug($request->name, 'brands');
@@ -139,7 +142,7 @@ class BrandController extends Controller
         $brand->update([
             'name' => $request->name,
             'slug' => $slug ?? $brand->slug,
-            'image_url' => $image ?? $brand->image_url,
+            'image_url' => $image,
             'status' => $request->status ? true : false,
         ]);
         return redirect()->back()->with('success', 'Successfully updated!');

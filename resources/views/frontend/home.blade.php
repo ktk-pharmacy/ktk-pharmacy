@@ -2,11 +2,11 @@
 
 <!-- ***** Main Banner Area Start ***** -->
 <section class="section main-banner" id="top" data-section="section1">
-    <video autoplay muted loop id="bg-video">
+    {{-- <video autoplay muted loop id="bg-video">
         <source src="assets/images/doctor-26732.mp4" type="video/mp4" />
-    </video>
+    </video> --}}
 
-    <div class="video-overlay header-text">
+    <div style="z-index: 1;" class="video-overlay header-text">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -23,7 +23,26 @@
         </div>
     </div>
 
-    <div class="service-text w-75 pb-4 border-secondary border-bottom">
+    <div style="height: 68vh;" id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner h-100">
+            @foreach (App\Models\HeroSlider::all() as $index => $slider)
+              <div
+              style="
+                background: url({{ asset($slider->image) }});
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 100%;
+              "
+              class="carousel-item {{ $index == 0 ? 'active' : '' }}"
+              >
+                {{-- <img src="{{ $slider->image }}" class="d-block w-100" alt="..."> --}}
+              </div>
+            @endforeach
+        </div>
+    </div>
+
+    <div style="z-index: 1;" class="service-text w-75 pb-4 border-secondary border-bottom">
         <h3 class="text-white">{{ __('root.services') }}</h3>
     </div>
 </section>

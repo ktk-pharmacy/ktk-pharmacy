@@ -126,6 +126,13 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('hero_slider_list') }}">
+                <i class="mdi mdi-settings menu-icon"></i>
+                <span class="menu-title">Hero Slider</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('slider_list') }}">
                 <i class="mdi mdi-settings menu-icon"></i>
                 <span class="menu-title">Slider</span>

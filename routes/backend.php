@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryGroupController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\ContentTypeController;
+use App\Http\Controllers\HeroSliderController;
 use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\ServiceSettingController;
 use App\Http\Controllers\SettingsController;
@@ -117,6 +118,16 @@ Route::middleware('auth')
                 Route::get('/slider_edit/{slider}', 'edit')->name('slider_edit');
                 Route::patch('/slider_edit/{slider}', 'update')->name('slider_update');
                 Route::delete('/slider_delete/{slider}', 'destroy')->name('slider_destroy');
+            });
+
+        Route::controller(HeroSliderController::class)
+            ->group(function () {
+                Route::get('/hero_slider_list', 'slider_list')->name('hero_slider_list');
+                Route::get('/hero_slider_create', 'create')->name('hero_slider_create');
+                Route::post('/hero_slider_create', 'store')->name('hero_slider_store');
+                Route::get('/hero_slider_edit/{slider}', 'edit')->name('hero_slider_edit');
+                Route::patch('/hero_slider_edit/{slider}', 'update')->name('hero_slider_update');
+                Route::delete('/hero_slider_delete/{slider}', 'destroy')->name('hero_slider_destroy');
             });
 
         Route::controller(LogisticController::class)
