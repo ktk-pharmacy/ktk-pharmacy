@@ -36,16 +36,10 @@
 
                     <p>
                         <b>PHONE :</b>
-                        <a
-                        class="text-white"
-                        href="tel:+959 960 907 555"
-                        >
+                        <a class="text-white" href="tel:+959 960 907 555">
                             +959 960 907 555
                         </a>,
-                        <a
-                        class="text-white"
-                        href="tel:{{ site_settings()['default_phone_number'] }}"
-                        >
+                        <a class="text-white" href="tel:{{ site_settings()['default_phone_number'] }}">
                             {{ site_settings()['default_phone_number'] }}
                         </a>
                     </p>
@@ -57,22 +51,26 @@
                         <ul class="d-flex gap-2">
                             <li>
                                 <a href="{{ site_settings()['social_facebook'] }}">
-                                    <img style="width:40px !important" src="{{asset('assets/images/fb.png')}}" alt="">
+                                    <img style="width:40px !important" src="{{ asset('assets/images/fb.png') }}"
+                                        alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ site_settings()['social_twitter'] }}">
-                                    <img style="width:40px !important" src="{{asset('assets/images/twitter.png')}}" alt="">
+                                    <img style="width:40px !important" src="{{ asset('assets/images/twitter.png') }}"
+                                        alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ site_settings()['social_instagram'] }}">
-                                    <img style="width:35px !important" src="{{asset('assets/images/insta.png')}}" alt="">
+                                    <img style="width:35px !important" src="{{ asset('assets/images/insta.png') }}"
+                                        alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ site_settings()['social_linkedin'] }}">
-                                    <img style="width:35px !important" src="{{asset('assets/images/link.png')}}" alt="">
+                                    <img style="width:35px !important" src="{{ asset('assets/images/link.png') }}"
+                                        alt="">
                                 </a>
                             </li>
                         </ul>
@@ -101,6 +99,13 @@
 
 
 <script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/zoom/jquery.zoom.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#ex1').zoom();
+    });
+</script>
 </body>
 
 </html>

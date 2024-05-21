@@ -8,8 +8,8 @@
                     <div class="col-lg-12 mb-3">
                         <div class="meeting-single-item">
                             <div style="min-height: 25vh;" class="d-flex justify-content-center align-items-center">
-                                <div class="">
-                                    <img style="width:400px" class="" src="{{ $product->image_url }}" alt="">
+                                <div style="cursor:zoom-in;" id="ex1" class="">
+                                    <img style="width:400px;" src="{{ $product->image_url }}" alt="">
                                 </div>
                             </div>
 
@@ -48,7 +48,8 @@
                                             {{-- @dd($product->brand) --}}
                                             @if ($product->brand && !$product->brand->deleted_at)
                                                 <p>
-                                                    <a style="text-decoration: underline !important" class="text-dark" href="{{ route('brand_products', $product->brand->slug) }}">
+                                                    <a style="text-decoration: underline !important" class="text-dark"
+                                                        href="{{ route('brand_products', $product->brand->slug) }}">
                                                         {{ $product->distributed_by }}
                                                     </a>
                                                 </p>
@@ -60,11 +61,11 @@
                                     <div class="col-lg-12 border mt-10 py-4 mb-10 px-4 pb-10">
                                         <div class="nav flex-row nav-pills me-3 bg-red" id="v-pills-tab" role="tablist"
                                             aria-orientation="horizontal">
-                                            <button class="nav-link  button active" id="v-pills-home-tab"
+                                            <button class="nav-link button active" id="v-pills-home-tab"
                                                 data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button"
                                                 role="tab" aria-controls="v-pills-home" aria-selected="true">Product
                                                 Detail</button>
-                                            <button class="nav-link  button" id="v-pills-otc-tab" data-bs-toggle="pill"
+                                            <button class="nav-link button" id="v-pills-otc-tab" data-bs-toggle="pill"
                                                 data-bs-target="#v-pills-otc" type="button" role="tab"
                                                 aria-controls="v-pills-otc" aria-selected="false">Other
                                                 Information</button>
@@ -99,18 +100,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-lg-12">
-                                    <div class="share">
-                                        <h5>Share:</h5>
-                                        <ul>
-                                            <li><a href="#">Facebook</a>,</li>
-                                            <li><a href="#">Twitter</a>,</li>
-                                            <li><a href="#">Linkedin</a>,</li>
-                                            <li><a href="#">Intagram</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -119,36 +108,37 @@
                         {{--  <div><h2>Top Related Product</h2></div>  --}}
                         <div class="col-lg-12 mr-5">
                             <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
-                               <!-- Top Rated Product Widget -->
-                               <div class="widget ltn__top-rated-product-widget">
-                                  <h4 class="ltn__widget-title ltn__widget-title-border mb-3">Top Rated Products</h4>
-                                  <div class="rounded-2 row">
-                                     @foreach ($top_related_products as $top_related_product)
-
-                                           <div class="top-rated-product-item col-md-2 clearfix">
-                                              <div class="">
-                                                 <a href="{{ route('product_detail', $top_related_product->slug) }}">
-                                                    <img src="{{ $top_related_product->image_url }}" alt="#">
-                                                 </a>
-                                              </div>
-                                              <div class="top-rated-product-info bg-white p-3 ">
-                                                 <p>
-                                                    <a class="text-dark" href="{{ route('product_detail', $top_related_product->slug) }}">
-                                                       {{ $top_related_product->name }}
+                                <!-- Top Rated Product Widget -->
+                                <div class="widget ltn__top-rated-product-widget">
+                                    <h4 class="ltn__widget-title ltn__widget-title-border mb-3">Top Rated Products</h4>
+                                    <div class="rounded-2 row">
+                                        @foreach ($top_related_products as $top_related_product)
+                                            <div class="top-rated-product-item col-md-2 clearfix">
+                                                <div class="">
+                                                    <a
+                                                        href="{{ route('product_detail', $top_related_product->slug) }}">
+                                                        <img src="{{ $top_related_product->image_url }}"
+                                                            alt="#">
                                                     </a>
-                                                 </p>
-                                              </div>
-                                           </div>
-
-                                     @endforeach
-                                  </div>
-                               </div>
-                               <!-- Banner Widget -->
-                               {{-- <div class="widget ltn__banner-widget">
+                                                </div>
+                                                <div class="top-rated-product-info bg-white p-3 ">
+                                                    <p>
+                                                        <a class="text-dark"
+                                                            href="{{ route('product_detail', $top_related_product->slug) }}">
+                                                            {{ $top_related_product->name }}
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <!-- Banner Widget -->
+                                {{-- <div class="widget ltn__banner-widget">
                                   <a href="shop.html"><img src="img/banner/2.jpg" alt="#"></a>
                                </div> --}}
                             </aside>
-                         </div>
+                        </div>
                     </div>
                 </div>
 
