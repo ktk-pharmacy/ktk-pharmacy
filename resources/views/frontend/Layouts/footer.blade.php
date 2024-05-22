@@ -99,13 +99,26 @@
 
 
 <script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/zoom/jquery.zoom.js') }}"></script>
+{{-- <script src="{{ asset('assets/zoom/jquery.zoom.js') }}"></script> --}}
+<script src="{{ asset('assets/ex-zoom/jquery.exzoom.js') }}"></script>
 
 <script>
     $(document).ready(function() {
-        $('#ex1').zoom();
+        // $('#ex1').zoom();
+
+        $("#exzoom").exzoom({
+            "navWidth": 60,
+            "navHeight": 60,
+            "navItemNum": 5,
+            "navItemMargin": 7,
+            "navBorder": 1,
+            // autoplay
+            "autoPlay": false,
+        });
     });
 </script>
+
+
 </body>
 
 </html>

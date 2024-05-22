@@ -37,6 +37,7 @@
             content: url("/path/here/to/image.png");
         } */
     </style>
+    <link rel="stylesheet" href="{{ asset('assets/ex-zoom/jquery.exzoom.css') }}">
     <!--
 
 

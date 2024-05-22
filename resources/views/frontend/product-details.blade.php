@@ -8,8 +8,16 @@
                     <div class="col-lg-12 mb-3">
                         <div class="meeting-single-item">
                             <div style="min-height: 25vh;" class="d-flex justify-content-center align-items-center">
-                                <div style="cursor:zoom-in;" id="ex1" class="">
+                                {{-- <div style="cursor:zoom-in;" id="ex1" class="">
                                     <img style="width:400px;" src="{{ $product->image_url }}" alt="">
+                                </div> --}}
+
+                                <div class="exzoom" id="exzoom">
+                                    <div class="exzoom_img_box">
+                                        <ul class='exzoom_img_ul'>
+                                            <li><img style="width:400px;" src="{{ $product->image_url }}" /></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
 
