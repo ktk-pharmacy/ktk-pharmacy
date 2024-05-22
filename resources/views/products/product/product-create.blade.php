@@ -90,8 +90,8 @@
                                         class="text-danger">*</span></label>
                                 <select name="availability" class="form-control" id="">
                                     <option value="">Select Availability</option>
-                                    <option value="1">Avaliable</option>
-                                    <option value="0">Unavaliable</option>
+                                    <option value="1">In Stock</option>
+                                    <option value="0">Out Of Stock</option>
                                 </select>
                             </div>
                             <div class="mb-3 col-6">

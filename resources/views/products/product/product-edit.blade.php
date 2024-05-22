@@ -95,8 +95,8 @@
                                         class="text-danger">*</span></label>
                                 <select name="availability" class="form-control" id="">
                                     <option value="">Select Availability</option>
-                                    <option value="1" @selected($product->availability)>Avaliable</option>
-                                    <option value="0" @selected(!$product->availability)>Unavaliable</option>
+                                    <option value="1" @selected($product->availability)>In Stock</option>
+                                    <option value="0" @selected(!$product->availability)>Out Of Stock</option>
                                 </select>
                             </div>
                             <div class="mb-3 col-6">

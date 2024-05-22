@@ -78,10 +78,35 @@
                             <li><a href="{{ url('about') }}">{{ __('header.about_us') }}</a></li>
                             <li class="has-sub">
                                 <a href="javascript:void(0)">{{ __('header.products') }}</a>
-                                <ul class="sub-menu">
+                                <ul style="overflow:visible" class="sub-menu">
                                     @foreach ($categorygroup as $catg)
-                                        <li><a
-                                                href="{{ url('categories/' . $catg->slug) }}">{{ $catg->nameFilter }}</a>
+                                        <li class="ctg-hover">
+                                            <a href="{{ url('categories/' . $catg->slug) }}">{{ $catg->nameFilter }}</a>
+                                            <div
+                                              class="hidden-ctegory"
+                                            >
+                                                <div style="height: 10px;position:sticky; background-color: #020202" class=""></div>
+                                                <div class="d-flex gap-3 w-100 p-3">
+                                                    @foreach ($catg->main_categories as $mcat)
+                                                    <div class="d-flex flex-column">
+                                                        <b>
+                                                            <small style="text-decoration:underline">
+                                                                {{ $mcat->nameFilter }}
+                                                            </small>
+                                                        </b>
+
+                                                        @foreach ($mcat->sub_categories as $scat)
+                                                            <a
+                                                            href="{{ url('products', $scat->id) }}"
+                                                            >
+                                                                {{ $scat->nameFilter }}
+                                                            </a>
+                                                        @endforeach
+                                                    </div>
+                                                    @endforeach
+                                                </div>
+
+                                            </div>
                                         </li>
                                     @endforeach
                                 </ul>

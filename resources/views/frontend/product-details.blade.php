@@ -22,9 +22,9 @@
                                 </p>
                                 <p>Availability :
                                     @if ($product->availability == 1)
-                                        <span> In Stock </span>
+                                        <span class="p-1 bg-success text-white"> In Stock </span>
                                     @else
-                                        <span> Out Of Stock </span>
+                                        <span class="p-1 bg-danger text-white"> Out Of Stock </span>
                                     @endif
                                 </p>
                                 <p>Packaging : {{ $product->packaging }} </p>
