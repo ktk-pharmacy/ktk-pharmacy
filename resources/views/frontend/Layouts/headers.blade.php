@@ -79,31 +79,33 @@
                             <li><a href="{{ url('about') }}">{{ __('header.about_us') }}</a></li>
                             <li class="has-sub">
                                 <a href="javascript:void(0)">{{ __('header.products') }}</a>
-                                <ul style="overflow:visible" class="sub-menu">
+                                <ul style="overflow:visible !important;" class="sub-menu">
                                     @foreach ($categorygroup as $catg)
-                                        <li class="ctg-hover">
+                                        <li class="ctg-hover position-relative">
                                             <a href="{{ url('categories/' . $catg->slug) }}">{{ $catg->nameFilter }}</a>
                                             <div
                                               class="hidden-ctegory"
                                             >
-                                                <div style="height: 10px;position:sticky; background-color: #020202" class=""></div>
-                                                <div class="d-flex gap-3 w-100 p-3">
+                                                <div class="d-flex flex-column">
                                                     @foreach ($catg->main_categories as $mcat)
-                                                    <div class="d-flex flex-column">
-                                                        <b>
-                                                            <small style="text-decoration:underline">
-                                                                {{ $mcat->nameFilter }}
-                                                            </small>
-                                                        </b>
+                                                    <div class="main-ctg">
+                                                        <a href="javascript:void(0)">
+                                                            {{ $mcat->nameFilter }}
+                                                        </a>
 
-                                                        @foreach ($mcat->sub_categories as $scat)
-                                                            <a
-                                                            href="{{ url('products', $scat->id) }}"
-                                                            >
-                                                                {{ $scat->nameFilter }}
-                                                            </a>
-                                                        @endforeach
+                                                        <div class="inner-hidden">
+                                                            <div class="d-flex flex-column">
+                                                                @foreach ($mcat->sub_categories as $scat)
+                                                                    <a
+                                                                    href="{{ url('products', $scat->id) }}"
+                                                                    >
+                                                                        {{ $scat->nameFilter }}
+                                                                    </a>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
                                                     </div>
+
                                                     @endforeach
                                                 </div>
 

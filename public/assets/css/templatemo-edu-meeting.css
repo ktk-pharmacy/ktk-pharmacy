@@ -1901,13 +1901,26 @@ responsive
     display: none;
     position:absolute;
     top:0;
-    width: 700px;
-    left: -700px;
+    width: 170px;
+    left: -170px;
     background: #f7f7f7;
-    max-height: 90vh;
+}
+
+div.inner-hidden {
+    display: none;
+    position:absolute;
+    top:0;
+    width: 200px;
+    left: -200px;
+    background: #f7f7f7;
+    max-height: 80vh;
     overflow: auto;
 }
 
 li.ctg-hover:hover > div.hidden-ctegory {
+    display: block;
+}
+
+div.main-ctg:hover > div.inner-hidden {
     display: block;
 }
