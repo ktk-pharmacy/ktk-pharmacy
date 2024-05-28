@@ -13,5 +13,6 @@ return [
     'facts_or_co.lt' => 'A Few Facts About Our Company',
     'staffs' => 'Staffs',
     'distributed_region' => 'Distributed region',
-    'current partners' => 'Cooperated Company'
+    'current partners' => 'Cooperated Company',
+    'featured products' => 'Featured Products'
 ];

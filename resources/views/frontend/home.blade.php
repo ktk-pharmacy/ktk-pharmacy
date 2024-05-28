@@ -129,11 +129,49 @@
                 </div>
             </div>
             <h5 class=" text-end">
-                <a style="text-decoration: underline !important;" href="{{ route('brand_products', 'all') }}" class="text-black d-inline-block py-2 px-1">More Brands...</a>
+                <a style="text-decoration: underline !important;" href="{{ route('brand_products', 'all') }}" class="text-black d-inline-block py-2 px-1">All Products...</a>
             </h5>
         </div>
     </div>
 </section>
+
+<section class="our-courses mb-5" id="courses">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading mt-0 partner">
+                    <h2
+                     class="text-black">{{ __('root.featured products') }}</h2>
+                </div>
+            </div>
+            <div class="">
+
+                <div id="featured-products" class="row">
+                    @foreach ($featureProducts as $prod)
+                        <div class="mx-2">
+                            <div class="meeting-item">
+                                <div class="thumb">
+                                    <a href="{{ url('product_detail', $prod->slug) }}">
+                                        <img style="width: 100%;"
+                                            class="logoimage border-top border-end border-start"
+                                            src="{{ $prod->image_url }}" alt="{{ $prod->name }}">
+                                    </a>
+                                </div>
+                                <div class="down-content border-bottom border-end border-start">
+                                    <a href="{{ url('product_detail', $prod->slug) }}">
+                                        <h4 class="justify-center">{{ $prod->name }}</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="our-facts">
     <div class="container">
         <div class="row">

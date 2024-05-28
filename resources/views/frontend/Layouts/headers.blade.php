@@ -33,11 +33,26 @@
     <script type="text/javascript" src="{{ asset('assets/engine1/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/contact.js') }}"></script>
     <style type="text/css">
-        /* .img {
-            content: url("/path/here/to/image.png");
-        } */
+        button.slick-arrow {
+            width: 50px;
+            position: absolute;
+            top: 50%;
+            font-size: 40px;
+            border: none;
+            background-color: #fff;
+        }
+
+        button.slick-next {
+            right: -6%;
+        }
+
+        button.slick-prev {
+            left: -6%;
+        }
+
     </style>
-    <link rel="stylesheet" href="{{ asset('assets/ex-zoom/jquery.exzoom.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <!--
 
 

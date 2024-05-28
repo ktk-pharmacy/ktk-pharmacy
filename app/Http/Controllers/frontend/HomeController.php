@@ -9,6 +9,7 @@ use App\Models\Brand;
 use App\Models\CategoryGroup;
 use App\Models\ServiceSetting;
 use App\Mail\ContactForm;
+use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 class HomeController extends Controller
@@ -24,7 +25,8 @@ class HomeController extends Controller
             $brands = Brand::publish()->active()->get();
             $service_settings = ServiceSetting::active()->publish()->get();
             $categorygroup = CategoryGroup::publish()->active()->get();
-            return view('frontend.home', compact('brands', 'categorygroup', 'service_settings'));
+            $featureProducts = Products::orderBy('id', 'desc')->take(12)->get();
+            return view('frontend.home', compact('brands', 'categorygroup', 'service_settings', 'featureProducts'));
         } catch (\Exception $ex) {
             return response()->json([
                 'message' => 'Something Went Wrong HomeController.index',

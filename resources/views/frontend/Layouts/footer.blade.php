@@ -99,22 +99,21 @@
 
 
 <script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
-{{-- <script src="{{ asset('assets/zoom/jquery.zoom.js') }}"></script> --}}
-<script src="{{ asset('assets/ex-zoom/jquery.exzoom.js') }}"></script>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 <script>
     $(document).ready(function() {
-        // $('#ex1').zoom();
+        $('#featured-products').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 4,
+            // arrows: false,
+        })
 
-        $("#exzoom").exzoom({
-            "navWidth": 60,
-            "navHeight": 60,
-            "navItemNum": 5,
-            "navItemMargin": 7,
-            "navBorder": 1,
-            // autoplay
-            "autoPlay": false,
-        });
+        $('button.slick-next').html('>');
+
+        $('button.slick-prev').html('<');
     });
 </script>
 
