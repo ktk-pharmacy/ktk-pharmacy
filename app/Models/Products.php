@@ -36,7 +36,8 @@ class Products extends Model
         'discount_from',
         'discount_to',
         'stock',
-        'is_new'
+        'is_new',
+        'featured'
     ];
 
     public const UPLOAD_PATH = 'upload/products';

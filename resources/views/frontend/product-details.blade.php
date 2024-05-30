@@ -129,28 +129,29 @@
                             <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
                                 <!-- Top Rated Product Widget -->
                                 <div class="widget ltn__top-rated-product-widget">
-                                    <h4 class="ltn__widget-title ltn__widget-title-border mb-3">Top Rated Products</h4>
-                                    <div class="rounded-2 row">
-                                        @foreach ($top_related_products as $top_related_product)
-                                            <div class="top-rated-product-item col-md-2 clearfix">
-                                                <div class="">
-                                                    <a
-                                                        href="{{ route('product_detail', $top_related_product->slug) }}">
-                                                        <img src="{{ $top_related_product->image_url }}"
-                                                            alt="#">
-                                                    </a>
-                                                </div>
-                                                <div class="top-rated-product-info bg-white p-3 ">
-                                                    <p>
-                                                        <a class="text-dark"
-                                                            href="{{ route('product_detail', $top_related_product->slug) }}">
-                                                            {{ $top_related_product->name }}
+                                    <h4 class="ltn__widget-title text-black ltn__widget-title-border mb-3">Related Products</h4>
+
+                                    <div id="related-products" class="row mb-5">
+                                        @foreach ($top_related_products as $prod)
+                                            <div class="mx-2">
+                                                <div class="meeting-item">
+                                                    <div class="thumb">
+                                                        <a href="{{ url('product_detail', $prod->slug) }}">
+                                                            <img style="width: 100%;"
+                                                                class="logoimage border-top border-end border-start"
+                                                                src="{{ $prod->image_url }}" alt="{{ $prod->name }}">
                                                         </a>
-                                                    </p>
+                                                    </div>
+                                                    <div class="down-content border-bottom border-end border-start">
+                                                        <a href="{{ url('product_detail', $prod->slug) }}">
+                                                            <h4 class="justify-center h5">{{ $prod->name }}</h4>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
                                     </div>
+
                                 </div>
                                 <!-- Banner Widget -->
                                 {{-- <div class="widget ltn__banner-widget">

@@ -69,7 +69,6 @@ class ProductsController extends Controller
             // $category = SubCategory::with('products')->findOrFail($product->sub_category_id);
             $top_related_products = $product
                                         ->whereSubCategoryId($product->sub_category_id)
-                                        ->limit(config('custom_value.related_product_limit'))
                                         ->active()
                                         ->get()
                                         ->except($product->id);
@@ -204,8 +203,6 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Products $product)
     {
-        // var_dump($request->product_code);
-        // die();
         $request->validate([
             'name' => 'required',
             'product_code' => 'nullable',
@@ -274,6 +271,7 @@ class ProductsController extends Controller
         $data['sale_price']        = $request->sale_price;
         $data['stock']             = $request->stock; //quantity
         $data['is_new']            = $request->is_new ? true : false;
+        $data['featured']          = $request->featured ? true : false;
 
         if ($request->discount_amount) {
             $date = splitDateRange($request->discount_period);

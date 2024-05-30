@@ -147,6 +147,19 @@
                                 <input type="text" placeholder="Enter stock" id="" name="stock"
                                     class="form-control" value="{{ old('stock', $product->stock) }}">
                             </div>
+                            <div class="mb-3 col-6">
+                                <div class="form-group mb-3">
+                                    <label for="product-status">Add to Feature</label> <br>
+                                    <input
+                                    type="checkbox"
+                                    name="featured"
+                                    class="switchery"
+                                    id="product-status"
+                                    value="1"
+                                    @checked($product->featured)
+                                    />
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">

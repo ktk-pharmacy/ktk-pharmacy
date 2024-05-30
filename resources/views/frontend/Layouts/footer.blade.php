@@ -111,6 +111,13 @@
             // arrows: false,
         })
 
+        $('#related-products').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            // arrows: false,
+        })
+
         $('button.slick-next').html('>');
 
         $('button.slick-prev').html('<');

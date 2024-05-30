@@ -41,10 +41,6 @@
             @endforeach
         </div>
     </div>
-
-    <div style="z-index: 1;" class="service-text w-75 pb-4 border-secondary border-bottom">
-        <h3 class="text-white">{{ __('root.services') }}</h3>
-    </div>
 </section>
 <button id="modal_call" data-bs-toggle="modal" data-bs-target="#exampleModal" class="d-none">Modal</button>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,6 +56,7 @@
 </div>
 <!-- ***** Main Banner Area End ***** -->
 <section class="services">
+    <h2 class="text-center mb-3">{{ __('root.services') }}</h2>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -72,6 +69,7 @@
                     >
                         md-btn
                     </button>
+
                     @foreach ($service_settings as $service)
                         <a
                           href="javascript:void(0)"
@@ -128,16 +126,14 @@
                     @endforeach
                 </div>
             </div>
-            <h5 class=" text-end">
-                <a style="text-decoration: underline !important;" href="{{ route('brand_products', 'all') }}" class="text-black d-inline-block py-2 px-1">All Products...</a>
-            </h5>
         </div>
     </div>
 </section>
 
-<section class="our-courses mb-5" id="courses">
+<section class="our-courses mb-3" id="courses">
     <div class="container">
         <div class="row">
+            @if ($featureProducts->count() > 0)
             <div class="col-12">
                 <div class="section-heading mt-0 partner">
                     <h2
@@ -168,6 +164,10 @@
                 </div>
 
             </div>
+            @endif
+            <h5 class=" text-end">
+                <a style="text-decoration: underline !important;" href="{{ route('brand_products', 'all') }}" class="text-black d-inline-block py-2 px-1">All Products...</a>
+            </h5>
         </div>
     </div>
 </section>
@@ -222,7 +222,7 @@
                      style="width: 100%; border-radius: 10px"
                      autoplay muted loop>
                         <source
-                        src="{{asset('assets/images/db-2.mp4')}}" type="video/mp4">
+                        src="{{ asset('assets/images/db-2.mp4') }}" type="video/mp4">
                     </video>
                 </div>
             </div>
