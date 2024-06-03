@@ -25,7 +25,7 @@ class HomeController extends Controller
             $brands = Brand::publish()->active()->get();
             $service_settings = ServiceSetting::active()->publish()->get();
             $categorygroup = CategoryGroup::publish()->active()->get();
-            $featureProducts = Products::publish()->active()->whereFeatured(1)->orderBy('id', 'desc')->take(12)->get();
+            $featureProducts = Products::publish()->active()->whereFeatured(1)->orderBy('id', 'desc')->get();
             return view('frontend.home', compact('brands', 'categorygroup', 'service_settings', 'featureProducts'));
         } catch (\Exception $ex) {
             return response()->json([
