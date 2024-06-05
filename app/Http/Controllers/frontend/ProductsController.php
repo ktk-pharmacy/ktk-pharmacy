@@ -13,6 +13,7 @@ use App\Exports\ProductsExport;
 use App\Imports\ProductsImport;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
+use App\Imports\ProductBulkEdit;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductsController extends Controller
@@ -23,20 +24,6 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /* Front End */
-    /** Product Category*/
-    // public function categories()
-    // {
-    //     try{
-    //         return view('frontend.categories');
-    //     }
-    //     catch(\Exception $ex){
-    //         return response()->json([
-    //             'message' => 'Something Went Wrong ProductsController.index',
-    //             'error' => $ex->getMessage()
-    //         ],400);
-    //     }
-    // }
     /**Product List*/
     public function products(SubCategory $sub_category, Request $request)
     {
@@ -247,6 +234,17 @@ class ProductsController extends Controller
         Excel::import(new ProductsImport, $request->file);
 
         return redirect()->back()->with('success', 'Successfully imported!');
+    }
+
+    public function bulk_edit(Request $request)
+    {
+        $request->validate([
+            'file' => 'required'
+        ]);
+
+        Excel::import(new ProductBulkEdit, $request->file);
+
+        return redirect()->back()->with('success', 'Successfully Edited!');
     }
 
     private function helperProduct($request,$type)

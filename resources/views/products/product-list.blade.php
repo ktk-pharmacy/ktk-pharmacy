@@ -15,7 +15,37 @@
                         </button>
                     @endcan
 
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#edit-form"
+                        class="btn btn-warning mb-2 ml-2 float-left btn-icon-text text-white">
+                        <i class="mdi mdi-file-upload btn-icon-prepend"></i>Bulk Edit
+                    </button>
                     <!-- Button trigger modal -->
+                    <div class="modal fade" id="edit-form" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <h3 class="mb-2">Bulk Edit Products</h3>
+                                    <form
+                                      action="{{ route('product_bulk_edit') }}"
+                                      method="POST"
+                                      id="bulk-edit"
+                                      enctype="multipart/form-data"
+                                    >
+                                        @csrf
+                                        <label for="file" class="form-label mb-1">Please choose a file</label>
+                                        <input type="file" id="name" name="file" class="form-control">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" form="bulk-edit"
+                                        class="btn btn-primary">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"

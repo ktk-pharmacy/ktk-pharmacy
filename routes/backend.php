@@ -34,6 +34,7 @@ Route::middleware('auth')
                 Route::delete('/product_delete/{product}', 'destroy')->name('product_destroy');
                 Route::get('/product_export', 'export')->name('product_export');
                 Route::post('/product_import', 'import')->name('product_import');
+                Route::post('/product_bulk_edit', 'bulk_edit')->name('product_bulk_edit');
                 Route::get('/product/ssd', 'ssd')->name('product_server_side_data');
             });
 
@@ -139,6 +140,7 @@ Route::middleware('auth')
                 Route::patch('/logistic_edit/{logistic}', 'update')->name('logistic_update');
                 Route::delete('/logistic_delete/{logistic}', 'destroy')->name('logistic_destroy');
             });
+
         Route::controller(OrderController::class)
             ->group(function () {
                 Route::get('/order_list', 'index')->name('order_list');

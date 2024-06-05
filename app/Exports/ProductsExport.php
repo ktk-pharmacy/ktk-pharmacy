@@ -21,6 +21,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping
     public function headings(): array
     {
         return [
+            'Id',
             'Name',
             'Name MM',
             'Product Code',
@@ -28,14 +29,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping
             'Category',
             'Description',
             'Packaging',
-            ' UOM ',
-            'Availability',
+            'UOM',
             'Distributed By',
             'Manufacturer',
             'status',
             'Product Detail',
             'Other Information',
-            'Deleted_at',
+            'Deleted At',
+            'Stock'
         ];
     }
 
@@ -48,7 +49,16 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping
             $deleted_at = date("Y-m-d H:i A", strtotime($item->deleted_at));
         }
 
+        if($item->stock === null) {
+            $stock = $item->availability?1:0;
+        } elseif($item->stock === 0) {
+            $stock = 0;
+        } else {
+            $stock = $item->stock;
+        }
+
         return [
+            $item->id,
             $item->name,
             $item->name_mm,
             $item->product_code,
@@ -57,13 +67,13 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping
             $item->description,
             $item->packaging,
             $item->UOM,
-            $item->availability,
             $item->distributed_by,
             $item->manufacturer,
             $status,
             strip_tags(preg_replace("/&#?[a-z0-9]+;/i", "", $item->product_details)),
             strip_tags(preg_replace("/&#?[a-z0-9]+;/i", "", $item->other_information)),
             $item->deleted_at ? $deleted_at : "",
+            $stock
         ];
     }
 
