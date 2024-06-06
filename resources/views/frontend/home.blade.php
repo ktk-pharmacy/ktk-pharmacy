@@ -222,7 +222,7 @@
                      style="width: 100%; border-radius: 10px"
                      autoplay muted loop>
                         <source
-                        src="{{ asset('assets/images/db-2.mp4') }}" type="video/mp4">
+                        src="{{ site_settings()['home_video']??asset('assets/images/db-2.mp4') }}" type="video/mp4">
                     </video>
                 </div>
             </div>

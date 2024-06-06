@@ -84,6 +84,11 @@ class SettingsController extends Controller
         if ($request->hasFile('pop_up')) {
             $keys['pop_up'] = $this->fileStorage($request, 'pop_up');
         }
+
+        if($request->hasFile('home_video')) {
+            $keys['home_video'] = $this->fileStorage($request, 'home_video');
+        }
+
         foreach ($keys as $key => $value) {
             $entry = Settings::where('key', $key)->first();
 
@@ -94,9 +99,19 @@ class SettingsController extends Controller
                 $entry->value = $value;
                 $entry->saveOrFail();
             } else {
-                $new_entry = Settings::where('key', str_replace("_mm", "", $key))->firstOrFail();
-                $new_entry->value_mm = $value;
-                $new_entry->saveOrFail();
+                $new_entry = Settings::where('key', str_replace("_mm", "", $key))->first();
+
+                if ($new_entry) {
+                    $new_entry->value_mm = $value;
+                    $new_entry->saveOrFail();
+                } else {
+                    Settings::create([
+                        'key'      => $key,
+                        'value'    => $value,
+                        'value_mm' => $value
+                    ]);
+                }
+
             }
         }
         $pop_up_status = Settings::where('key','pop_up_status')->first();

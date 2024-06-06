@@ -12,7 +12,8 @@ class Settings extends Model
 
     protected $fillable = [
         'value_mm',
-        'value'
+        'value',
+        'key'
     ];
     public const UPLOAD_PATH = 'upload/settings';
 

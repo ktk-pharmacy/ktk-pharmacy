@@ -38,6 +38,10 @@
                                         href="#setting-theme-tab" role="tab" aria-controls="setting-theme-tab"
                                         aria-selected="false">
                                         Theme</a>
+                                    <a class="nav-link mb-1" id="setting-home" data-toggle="pill"
+                                        href="#setting-home-tab" role="tab" aria-controls="setting-home-tab"
+                                        aria-selected="false">
+                                        Home</a>
                                 </div>
                             </div> <!-- end col-->
                             <div class="col-md-6 mt-3">
@@ -364,6 +368,36 @@
                                         </div>
                                     </div>
 
+                                    <div class="tab-pane fade" id="setting-home-tab" role="tabpanel" aria-labelledby="setting-home">
+                                        <div class="form-group row mb-3">
+                                            <div class="col-12">
+                                                <label for="pop_up" class="form-label">
+                                                    Home Page Video
+                                                </label>
+
+                                                <input
+                                                type="file"
+                                                name="home_video"
+                                                id="home_video"
+                                                accept="video/*"
+                                                class="form-control mb-3"
+                                                >
+
+                                                <div class="video">
+                                                    <video
+                                                        id="vdo"
+                                                        style="width: 100%; border-radius: 10px"
+                                                        autoplay muted loop>
+                                                        <source
+                                                        src="{{
+                                                            $site_settings['home_video']['value']??asset('assets/images/db-2.mp4')
+                                                        }}" type="video/mp4">
+                                                    </video>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div> <!-- end col-->
                         </div>
@@ -383,4 +417,6 @@
             </div>
         </div>
     </div>
+
+
 </x-app-layout>

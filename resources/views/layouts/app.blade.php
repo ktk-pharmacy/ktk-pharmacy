@@ -283,6 +283,23 @@
         });
     </script>
 
+<script>
+    $(function () {
+
+        $('#home_video').change(function (e) {
+            e.preventDefault();
+
+            console.log(e.target.files[0]);
+            var reader = new FileReader();
+
+            reader.readAsDataURL(e.target.files[0]);
+
+            reader.onload = function(e) {
+                $('#vdo').attr('src', e.target.result);
+            }
+        });
+    });
+</script>
     @stack('script')
 </body>
 
