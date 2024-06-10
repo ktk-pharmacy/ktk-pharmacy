@@ -77,7 +77,10 @@
                     </div>
                 </div>
             </div>
-            <p class="mt-3">{{ site_settings()['footer_copyright_text'] }}</p>
+            <p class="mt-3">
+                COPYRIGHT © 2024 ALL RIGHTS RESERVED BY
+                <a class="" href="javascript:void(0)">KTK PHARMACY </a>.
+            </p>
         </div>
     </section>
 </footer>

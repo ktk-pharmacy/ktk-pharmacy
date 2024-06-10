@@ -15,6 +15,7 @@ class Settings extends Model
         'value',
         'key'
     ];
+
     public const UPLOAD_PATH = 'upload/settings';
 
     protected function valueFilter(): Attribute
