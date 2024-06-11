@@ -9,6 +9,35 @@
     <meta name="author" content="TemplateMo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
+    <meta
+    name="description"
+    content="KTK pharmacy who's selling the Pharmaceuticals & Consumer Daily Needs with fair prices in one place">
+
+    <meta
+    name="keywords"
+    content="KTK, Medicines, Wholesale, FDA Products, Customer Service"
+    >
+
+    <link rel="canonical" href="https://ktkpharmacy.com">
+
+
+    <meta property="og:title" content="KTK Pharmacy">
+    <meta property="og:description"
+    content="KTK pharmacy who's selling the Pharmaceuticals & Consumer Daily Needs with fair prices in one place.">
+
+    <meta property="og:image" content="{{ asset('assets/images/ktk_icon.jpg') }}">
+    <meta property="og:url" content="https://ktkpharmacy.com">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KTK Pharmacy">
+    <meta name="twitter:description" content="KTK pharmacy who's selling the Pharmaceuticals & Consumer Daily Needs with fair prices in one place.">
+    <meta name="twitter:image" content="{{ asset('assets/images/ktk_icon.jpg') }}">
+    <meta name="twitter:url" content="https://ktkpharmacy.com">
+
+    <meta name="author" content="Ling Myat Aung">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="refresh" content="30">
+
     <title>KTK Pharmacy</title>
 
     <!-- Bootstrap core CSS -->
@@ -52,7 +81,7 @@
 
     </style>
 
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="{{ asset('assets/libs/slick-slider/slick-slider.css') }}">
     <!--
 
 
