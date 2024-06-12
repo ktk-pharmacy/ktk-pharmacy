@@ -79,6 +79,15 @@
             left: -6%;
         }
 
+        a.ft-lk {
+            color: #fff !important;
+            transition: all 0.5s;
+        }
+
+        a.ft-lk:hover {
+            color: #eea425 !important;
+        }
+
     </style>
 
     <link rel="stylesheet" href="{{ asset('assets/libs/slick-slider/slick-slider.css') }}">

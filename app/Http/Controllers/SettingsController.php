@@ -126,6 +126,15 @@ class SettingsController extends Controller
                 'value' => 'false',
             ]);
         }
+
+        $homeVid = Settings::where('key','home_video')->first();
+
+        if ($homeVid) {
+            $homeVid->update([
+                'value_mm' => $homeVid->value,
+            ]);
+        }
+
         return redirect()->back()->with('success', 'Successfully updated');
     }
 
